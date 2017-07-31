@@ -34,5 +34,12 @@ export default {
       ]
     }
   },
-  "svgSpriteLoaderDirs": svgSpriteDirs
+  "svgSpriteLoaderDirs": svgSpriteDirs,
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:3060/",
+      "changeOrigin": false,
+      "pathRewrite": { "^/api" : "" }
+    }
+  }
 }
