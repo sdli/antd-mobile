@@ -3,6 +3,10 @@ import MainPageSVG from "../../assets/svgs/university.svg";
 import MsgSVG from "../../assets/svgs/commenting-o.svg";
 import ReadingSVG from "../../assets/svgs/book.svg";
 import UserCenterSVG from "../../assets/svgs/user-circle-o.svg";
+import Carou from "../cards/carousel.card.js";
+import HeadStat from "../cards/headStat.card.js";
+import LessionList from "../cards/headLesson.card.js";
+
 /* eslint global-require: 0 */
 
 class TabBarExample extends React.Component {
@@ -10,7 +14,7 @@ class TabBarExample extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'redTab',
+      selectedTab: 'blueTab',
       hidden: false,
     };
   }
@@ -55,7 +59,13 @@ class TabBarExample extends React.Component {
           }}
           data-seed="logId"
         >
-          {this.renderContent('课程')}
+          { <div>
+              <Carou />
+              <HeadStat />
+              <div style={{height:"32px"}}></div>
+              <LessionList />
+            </div>
+          }
         </TabBar.Item>
         <TabBar.Item
           icon={<Icon type={ReadingSVG} />}
