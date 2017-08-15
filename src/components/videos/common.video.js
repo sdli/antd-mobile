@@ -29,10 +29,16 @@ class CommonVedio extends Component{
                     clearInterval(catchViedo);
                 }else{
                     if(parseInt(video.currentTime) == 10){
+                        video.pause();
                         that.setState({
                             s: true,
                             c: "visa视频广告，点击收藏。"
                         });
+                        if(confirm("专家收藏：这是visa视频广告，请收藏！")){
+                            video.play();
+                        }else{
+                            video.play();
+                        }
                     }
                 }
             },1000);
