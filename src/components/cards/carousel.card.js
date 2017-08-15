@@ -5,10 +5,10 @@ const data=["","",""];
 const carousel = function(){
     return(
          <Carousel
-            className={{
+            style={{
                   display: "inline-block",
                   width: "100%",
-                  height: "200px"
+                  height: "auto"
             }}
             autoplay={false}
             infinite
@@ -18,11 +18,11 @@ const carousel = function(){
             afterChange={index => console.log('slide to', index)}
             >
             {data.map(ii => (
-                <a href="http://www.baidu.com" key={ii} style={{height:"200px",width:"100%"}}>
+                <a href="http://www.baidu.com" key={ii} style={{width:"100%"}}>
                 <img
                     src={Img}
                     alt="icon"
-                    style={{width:"100%",height:"320px"}}
+                    style={{width:"100%"}}
                 />
                 </a>
             ))}

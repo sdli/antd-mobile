@@ -1,4 +1,4 @@
-import styles from "./card.style.css";
+import styles from "./card.style.less";
 
 const headStat = function(lessons,timeLength){
     return (

@@ -9,6 +9,21 @@
 :global(#root){
   height: 100%;
 }
+:global(body){
+  background-color: #ffffff;
+}
 :global(.am-flexbox){
   display: flex;
+}
+:global(.divider){
+  height: 30px;
+  background: #E8E8E8;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}
+:global(.p_title){
+  line-height: 60px;
+  padding: 8px 16px;
+  border-bottom: 1px solid #E8E8E8;
+  font-size: 28px;
 }

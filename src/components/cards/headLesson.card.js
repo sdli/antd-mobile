@@ -1,6 +1,6 @@
 import { Progress, Button } from 'antd-mobile';
 import React, {Component} from "react";
-import styles from "./card.style.css";
+import styles from "./card.style.less";
 import Lushizhen from "../../assets/imgs/lushizhen.png";
 import Lizhaoliang from "../../assets/imgs/lizhaoliang.png";
 import Liwendao from "../../assets/imgs/liwendao.png";

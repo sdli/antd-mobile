@@ -63,7 +63,7 @@ class TabBarExample extends React.Component {
           { <div>
               <Carou />
               <HeadStat />
-              <div style={{height:"32px"}}></div>
+              <div className="divider"></div>
               <LessionList />
             </div>
           }
