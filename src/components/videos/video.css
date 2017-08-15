@@ -1,0 +1,32 @@
+.videoSection{
+    width: 100%;
+    position: relative;
+}
+.favoritesDiv{
+    position: absolute;
+    top: 0;
+    left:0;
+    height: 100%;
+    width: 100%;
+}
+
+.favoritesDivMask{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #000000;
+    opacity: 0.7;
+}
+.favoritesContent{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20% 16px;
+    width: 100%;
+}
+.favoritesContent > p {
+    color: #ffffff;
+    text-align: center;
+}

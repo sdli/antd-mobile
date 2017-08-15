@@ -6,6 +6,7 @@ import UserCenterSVG from "../../assets/svgs/user-circle-o.svg";
 import Carou from "../cards/carousel.card.js";
 import HeadStat from "../cards/headStat.card.js";
 import LessionList from "../cards/headLesson.card.js";
+import Video from "../videos/common.video.js";
 
 /* eslint global-require: 0 */
 
@@ -70,7 +71,7 @@ class TabBarExample extends React.Component {
         <TabBar.Item
           icon={<Icon type={ReadingSVG} />}
           selectedIcon={<Icon type={ReadingSVG} />}
-          title="阅读"
+          title="视频组件"
           key="reading"
           badge={'new'}
           selected={this.state.selectedTab === 'redTab'}
@@ -81,26 +82,7 @@ class TabBarExample extends React.Component {
           }}
           data-seed="logId1"
         >
-          {this.renderContent('阅读')}
-        </TabBar.Item>
-        <TabBar.Item
-          icon={
-            <Icon type={MsgSVG} />
-          }
-          selectedIcon={
-            <Icon type={MsgSVG} />
-          }
-          title="消息"
-          key="message"
-          dot
-          selected={this.state.selectedTab === 'greenTab'}
-          onPress={() => {
-            this.setState({
-              selectedTab: 'greenTab',
-            });
-          }}
-        >
-          {this.renderContent('消息')}
+          {<Video />}
         </TabBar.Item>
         <TabBar.Item
           icon={<Icon type={UserCenterSVG} />}

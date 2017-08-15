@@ -49,3 +49,7 @@
     line-height: 44px;
     font-size: 26px;
 }
+.linkInit{
+    text-decoration: none;
+    color: inherit;
+}

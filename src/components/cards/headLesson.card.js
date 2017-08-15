@@ -6,6 +6,7 @@ import Lizhaoliang from "../../assets/imgs/lizhaoliang.png";
 import Liwendao from "../../assets/imgs/liwendao.png";
 import Liuxiaoting from "../../assets/imgs/liuxiaoting.png";
 import Zhaogang from "../../assets/imgs/zhaogang.png";
+import {Link} from "react-router";
 
 class LessonList extends Component{
     constructor(props){
@@ -21,15 +22,17 @@ class LessonList extends Component{
                 <div>
                     <div className={styles.lessonCell}>
                         <img src={Lushizhen} />
-                        <div className={styles.lessonStat}>
-                            <h4>陆士桢教授</h4>
-                            <p>家风师德教育</p>
-                            <p>共计：8课时</p>
-                            <p>完成进度：2/8</p>
-                            <div style={{width:"100%",padding:"32px 0"}}>
-                               <Progress percent={34} position="normal" unfilled="show" />
+                        <Link to="/lessionList" className={styles.linkInit}>
+                            <div className={styles.lessonStat}>
+                                <h4>陆士桢教授</h4>
+                                <p>家风师德教育</p>
+                                <p>共计：8课时</p>
+                                <p>完成进度：2/8</p>
+                                <div style={{width:"100%",padding:"32px 0"}}>
+                                <Progress percent={34} position="normal" unfilled="show" />
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>
                     <div className={styles.lessonCell}>
                         <img src={Lizhaoliang} />
