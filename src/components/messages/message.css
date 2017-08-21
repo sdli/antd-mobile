@@ -13,3 +13,77 @@
     line-height: 0.3rem;
     font-size: 0.24rem;
 }
+.detailsTitle{
+    padding: 16px;
+}
+.detailsTitle > p:first-child{
+    line-height: 0.32rem;
+    font-size: 0.24rem;
+    color: #4d4d4d;
+}
+.detailsTitle > p:last-child{
+    line-height: 0.32rem;
+    font-size: 0.24rem;
+    color: #999;
+}
+.detailsTitle > p{
+    margin: 0.1rem 0 !important;
+    line-height: 0.40rem;
+    font-size: 0.28rem;
+    font-weight: bold;
+}
+.detailsBody{
+    background-color: #f6f6f6;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 16px;
+}
+.detailsCell{
+    padding: 16px 2rem 16px 0;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+.detailsCell:after{
+    clear: both;
+}
+.detailsCellContent{
+    width: 100%;
+    float: left;
+    display: block;
+}
+.detailsCellContent > p{
+    line-height: 0.36rem;
+    font-size: 0.24rem;
+}
+.detailsCellContent > div{
+    border:1px solid #ddd;
+    border-radius: 4px;
+    background-color: #ffffff;
+    min-height: 0.1rem;
+    padding: 16px;
+}
+.detailsCellContent > div > p{
+    line-height: 0.36rem;
+    font-size: 0.26rem;
+    padding-left: 16px;
+}
+.detailsCellTag{
+    width: 2rem;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    right: 0;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    text-align: center;
+    padding-top: 0.2rem;
+}
+.detailsCellTag > div {
+    flex: 1;
+}
+.detailsCellTag > div > span{
+    font-size: 0.24rem;
+    color: #4d4d4d;
+}
