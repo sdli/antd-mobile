@@ -1,11 +1,21 @@
 import LessonList from "../components/cards/lessionList.card";
+import React,{Component} from "react";
+import getQuery from "../components/tools/getQuery";
 
-const lessonList = function(){
-    return (
-        <div>
-            <LessonList />
-        </div>
-    );
+class lessonList extends Component{
+    constructor(props){
+        super(props);
+    }
+
+    render(){
+        const data = getQuery(this.props,"name");
+        console.log(data);
+        return (
+            <div>
+                <LessonList />
+            </div>
+        );
+    }
 }
 
 export default lessonList;

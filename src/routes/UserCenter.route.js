@@ -4,15 +4,15 @@ import IndexContent from "../components/index.content.web";
 import Cards from "../components/cards/index.card";
 import TabView from "../components/layout/tabView.layout.web";
 
-function IndexPage() {
+function UserCenterPage() {
   return (
     <div>
-      <TabView index="1" />
+      <TabView index="3" />
     </div>
   );
 }
 
-IndexPage.propTypes = {
+UserCenterPage.propTypes = {
 };
 
-export default connect()(IndexPage);
+export default connect()(UserCenterPage);

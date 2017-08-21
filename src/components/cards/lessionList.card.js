@@ -3,6 +3,7 @@ import styles from "./card.style.less";
 import Img from "../../assets/imgs/lu.png";
 import {Progress,Icon} from "antd-mobile";
 import VideoSvg from "../../assets/svgs/play-circle-o.svg";
+import {Link} from "react-router";
 
 class LessionList extends Component{
     constructor(props){
@@ -52,7 +53,9 @@ class LessionList extends Component{
                                 <p>时长：32分钟</p>
                             </div>
                             <div className={styles.lessionUlFunc}>
+                               <Link to={{pathname:"/videoplay",query:{lessionid:"0098"}}} className="linkInit">
                                 <p>75<span>分</span></p>
+                               </Link>
                             </div>
                         </li>
                         <li>

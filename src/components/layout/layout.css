@@ -1,0 +1,36 @@
+.sheetDiv{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.sheetMask{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+}
+.sheetContent{
+    position: absolute;
+    width: 90%;
+    height: 60%;
+    top: 15%;
+    left: 5%;
+    background: #ffffff;
+    border-radius: 4px;
+}
+.sheetFooter{
+    position: absolute;
+    width: 90%;
+    padding: 1px;
+    top: 1px solid #ddd;
+    height: 1rem;
+    top: 75%;
+    left: 5%;
+    background: #ffffff;
+    border-radius: 4px;
+}

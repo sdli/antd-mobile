@@ -1,0 +1,15 @@
+.commentTime{
+    font-size: 0.24rem;
+}
+.commentLink{
+    height: 2.5rem;
+    text-align: center;
+    padding: 0.6rem;
+}
+.commentLink > p:first-child{
+    line-height: 0.5rem;
+}
+.commentLink > p:last-child{
+    line-height: 0.3rem;
+    font-size: 0.24rem;
+}

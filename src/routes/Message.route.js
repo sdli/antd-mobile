@@ -4,15 +4,15 @@ import IndexContent from "../components/index.content.web";
 import Cards from "../components/cards/index.card";
 import TabView from "../components/layout/tabView.layout.web";
 
-function IndexPage() {
+function MessagePage() {
   return (
     <div>
-      <TabView index="1" />
+      <TabView index="2" />
     </div>
   );
 }
 
-IndexPage.propTypes = {
+MessagePage.propTypes = {
 };
 
-export default connect()(IndexPage);
+export default connect()(MessagePage);

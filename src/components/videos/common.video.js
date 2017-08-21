@@ -64,6 +64,10 @@ class CommonVedio extends Component{
                         </div>
                     )
                 }
+                <div className={styles.lessionDesc}>
+                    <p>课程简介：</p>
+                    <p>陆士桢，女，汉族，中共党员，出生于1947年8月，教授，硕士生导师，国务院特殊贡献专家津贴，在青少年研究和社会工作领域享有一定学术声誉。曾任中国青年政治学院党委书记。</p>
+                </div>
             </div>
         );
     }

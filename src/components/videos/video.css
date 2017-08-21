@@ -30,3 +30,16 @@
     color: #ffffff;
     text-align: center;
 }
+.lessionDesc{
+    padding: 16px;
+}
+.lessionDesc >p:first-child{
+    line-height: 0.44rem;
+    font-size: 0.26rem;
+    font-weight: bold;
+}
+.lessionDesc >p:last-child{
+    line-height: 0.32rem;
+    font-size: 0.24rem;
+    font-weight: lighter;
+}

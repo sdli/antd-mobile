@@ -6,7 +6,9 @@ import UserCenterSVG from "../../assets/svgs/user-circle-o.svg";
 import Carou from "../cards/carousel.card.js";
 import HeadStat from "../cards/headStat.card.js";
 import LessionList from "../cards/headLesson.card.js";
-import Video from "../videos/common.video.js";
+import Video from "./video.layout.web";
+
+import { hashHistory } from 'react-router';
 
 /* eslint global-require: 0 */
 
@@ -15,7 +17,7 @@ class TabBarExample extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'blueTab',
+      selectedTab: this.props.index,
       hidden: false,
     };
   }
@@ -51,12 +53,10 @@ class TabBarExample extends React.Component {
           key="lessons"
           icon={<Icon type={MainPageSVG} />}
           selectedIcon={<Icon type={MainPageSVG} />}
-          selected={this.state.selectedTab === 'blueTab'}
+          selected={this.state.selectedTab == 1 }
           badge={1}
           onPress={() => {
-            this.setState({
-              selectedTab: 'blueTab',
-            });
+            hashHistory.push("/");
           }}
           data-seed="logId"
         >
@@ -71,14 +71,12 @@ class TabBarExample extends React.Component {
         <TabBar.Item
           icon={<Icon type={ReadingSVG} />}
           selectedIcon={<Icon type={ReadingSVG} />}
-          title="视频组件"
+          title="消息"
           key="reading"
           badge={'new'}
-          selected={this.state.selectedTab === 'redTab'}
+          selected={this.state.selectedTab == 2}
           onPress={() => {
-            this.setState({
-              selectedTab: 'redTab',
-            });
+            hashHistory.push("/message");
           }}
           data-seed="logId1"
         >
@@ -87,13 +85,11 @@ class TabBarExample extends React.Component {
         <TabBar.Item
           icon={<Icon type={UserCenterSVG} />}
           selectedIcon={<Icon type={UserCenterSVG} />}
-          title="我的"
+          title="个人"
           key="user"
-          selected={this.state.selectedTab === 'yellowTab'}
+          selected={this.state.selectedTab == 3}
           onPress={() => {
-            this.setState({
-              selectedTab: 'yellowTab',
-            });
+            hashHistory.push("/user");
           }}
         >
           {this.renderContent('我的')}

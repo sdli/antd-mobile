@@ -10,7 +10,7 @@
   height: 100%;
 }
 :global(body){
-  background-color: #ffffff;
+  background-color: #ffffff !important;
 }
 :global(.am-flexbox){
   display: flex;
@@ -26,4 +26,14 @@
   padding: 8px 16px;
   border-bottom: 1px solid #E8E8E8;
   font-size: 28px;
+}
+:global(.linkInit){
+    text-decoration: none;
+    color: inherit;
+}
+:global(.am-list-content){
+    font-size: 0.26rem !important;
+}
+:global(.am-list-extra){
+    font-size: 0.26rem !important;
 }
