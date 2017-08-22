@@ -1,5 +1,5 @@
 import React from "react";
-import { List, TextareaItem, WhiteSpace } from 'antd-mobile';
+import { List, TextareaItem, WhiteSpace,Button } from 'antd-mobile';
 import { createForm } from 'rc-form';
 
 class Reply extends React.Component{
@@ -11,15 +11,16 @@ class Reply extends React.Component{
         const { getFieldProps } = this.props.form;
         return(
             <div>
-                <List renderHeader={() => 'Count'}>
+                <List renderHeader={() => '在此输入您的回复'}>
                     <TextareaItem
                         {...getFieldProps('count', {
-                        initialValue: '计数功能,我的意见是...',
+                        initialValue: '',
                         })}
-                        rows={5}
-                        count={100}
+                        rows={6}
+                        count={300}
                     />
                 </List>
+                <p style={{margin:"32px 0",padding:"0.5rem 16px"}} ><Button type="primary" size="small">提交留言</Button></p>
             </div>
         );
     }

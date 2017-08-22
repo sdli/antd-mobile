@@ -8,8 +8,8 @@ const headStat = function(lessons,timeLength){
                 <p><span>5</span>/36课时</p>
             </div>
             <div className={styles.headStatCell}>
-                <p>学习时长</p>
-                <p><span>120</span>分钟</p>
+                <p>平均得分</p>
+                <p><span>87</span>分</p>
             </div>
         </div>
     );

@@ -15,7 +15,7 @@ class LessonList extends Component{
 
     render(){
         return (
-            <div style={{backgroundColor:"#ffffff",marginTop:"16px",paddingBottom: "240px"}}>
+            <div style={{backgroundColor:"#ffffff",marginTop:"16px"}}>
                 <div className={styles.cardTitle}>
                     专家专栏
                 </div>
@@ -26,10 +26,9 @@ class LessonList extends Component{
                             <div className={styles.lessonStat}>
                                 <h4>陆士桢教授</h4>
                                 <p>家风师德教育</p>
-                                <p>共计：8课时</p>
-                                <p>完成进度：2/8</p>
-                                <div style={{width:"100%",padding:"32px 0"}}>
-                                <Progress percent={34} position="normal" unfilled="show" />
+                                <p>完成：2/8课时</p>
+                                <div className={styles.progressBar}>
+                                    <Progress percent={34} position="normal" unfilled="show" />
                                 </div>
                             </div>
                         </Link>
@@ -40,9 +39,8 @@ class LessonList extends Component{
                             <div className={styles.lessonStat}>
                                 <h4>李兆亮良教授</h4>
                                 <p>心理健康第一期</p>
-                                <p>共计：8课时</p>
-                                <p>完成进度：2/8</p>
-                                <div style={{width:"100%",padding:"32px 0"}}>
+                                <p>完成：2/8课时</p>
+                                <div className={styles.progressBar}>
                                     <Progress percent={34} position="normal" unfilled="show" />
                                 </div>
                             </div>
@@ -54,10 +52,9 @@ class LessonList extends Component{
                             <div className={styles.lessonStat}>
                                 <h4>李文道教授</h4>
                                 <p>心理健康第二期</p>
-                                <p>共计：8课时</p>
-                                <p>完成进度：2/8</p>
-                                <div style={{width:"100%",padding:"32px 0"}}>
-                                <Progress percent={34} position="normal" unfilled="show" />
+                                <p>完成：2/8课时</p>
+                                <div className={styles.progressBar}>
+                                    <Progress percent={34} position="normal" unfilled="show" />
                                 </div>
                             </div>
                         </Link>
@@ -68,9 +65,8 @@ class LessonList extends Component{
                             <div className={styles.lessonStat}>
                                 <h4>刘哮听教授</h4>
                                 <p>传统文化教育</p>
-                                <p>共计：8课时</p>
-                                <p>完成进度：2/8</p>
-                                <div style={{width:"100%",padding:"32px 0"}}>
+                                <p>完成：2/8课时</p>
+                                <div className={styles.progressBar}>
                                     <Progress percent={34} position="normal" unfilled="show" />
                                 </div>
                             </div>
@@ -82,10 +78,9 @@ class LessonList extends Component{
                             <div className={styles.lessonStat}>
                                 <h4>赵刚教授</h4>
                                 <p>家校共育</p>
-                                <p>共计：8课时</p>
-                                <p>完成进度：2/8</p>
-                                <div style={{width:"100%",padding:"32px 0"}}>
-                                <Progress percent={34} position="normal" unfilled="show" />
+                                <p>完成：2/8课时</p>
+                                <div className={styles.progressBar}>
+                                    <Progress percent={34} position="normal" unfilled="show" />
                                 </div>
                             </div>
                         </Link>

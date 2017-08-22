@@ -7,6 +7,7 @@ import Carou from "../cards/carousel.card.js";
 import HeadStat from "../cards/headStat.card.js";
 import LessionList from "../cards/headLesson.card.js";
 import Video from "./video.layout.web";
+import Footer from "../cards/footer.card";
 
 import { hashHistory } from 'react-router';
 
@@ -65,6 +66,7 @@ class TabBarExample extends React.Component {
               <HeadStat />
               <div className="divider"></div>
               <LessionList />
+              <Footer style={{backgroundColor:"#f6f6f6",marginBottom:"2rem"}} />
             </div>
           }
         </TabBar.Item>
