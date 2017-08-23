@@ -49,7 +49,7 @@ class CommonVedio extends Component{
         ];
         return (
             <div className={styles.videoSection} style={{width:this.state.w}}>
-                <video ref={(video)=>{this.video=video;}} controls playsInline style={{width:this.state.w}} src="blob:http://47.94.101.71:7003"/>
+                <video ref={(video)=>{this.video=video;}} controls playsInline style={{width:this.state.w}} src="http://116.77.66.164/variety.tc.qq.com/AY5-z9sccTSepYMGZxmydtsPrDg0pf-qWq2eNlkbeKNA/e02001daubo.p201.1.mp4?vkey=29B0AD053FE05B9E3280260B75EB7C362A50CCBE4E255FA8770D12014750A3ECAA6B644DD857F08FF5E5C8410D44BCBDDAEC9F3C2BDD7FBCC8A7F917D59691DF09C50E4090494F24C276F793FA0272DC7A50AE85D0962486&amp;platform=&amp;sdtfrom=&amp;fmt=shd&amp;level=0"/>
                 {this.state.s &&
                     (
                         <div className={styles.favoritesDiv}>
