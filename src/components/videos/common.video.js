@@ -28,7 +28,7 @@ class CommonVedio extends Component{
                 if(video.paused){
                     clearInterval(catchViedo);
                 }else{
-                    if(parseInt(video.currentTime) == 10){
+                    if(parseInt(video.currentTime) == 10 && !video.paused){
                         video.pause();
                         if(confirm("专家收藏：请收藏专家的总结！")){
                             video.play();
