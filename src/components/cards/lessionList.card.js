@@ -1,6 +1,6 @@
 import React , {Component } from "react";
 import styles from "./card.style.less";
-import Img from "../../assets/imgs/lu.png";
+import Img from "../../assets/imgs/lu.jpg";
 import {Progress,Icon,Button} from "antd-mobile";
 import {hashHistory} from "react-router";
 import VideoSvg from "../../assets/svgs/play-circle-o.svg";
@@ -41,7 +41,7 @@ class LessionList extends Component{
                             <Progress percent={34} position="normal" unfilled="show" />
                         </div>
                         <div className={styles.commentLink}>
-                            <p style={{padding:"0 20%"}}><Button size="small" type="ghost" icon={PencilSVG} inline onClick={()=>hashHistory.push("/commentDetails")}>写心得</Button></p>
+                            <p style={{padding:"0 20%"}}><Button size="small" type="ghost" icon={PencilSVG} inline onClick={()=>hashHistory.push("/xinde")}>写心得</Button></p>
                             <p>提交您的学习心得</p>
                         </div>
                     </div>

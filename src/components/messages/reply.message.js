@@ -9,18 +9,19 @@ class Reply extends React.Component{
 
     render(){
         const { getFieldProps } = this.props.form;
+        const { title } = this.props;
         return(
             <div>
-                <List renderHeader={() => '在此输入您的回复'}>
+                <List renderHeader={() => title}>
                     <TextareaItem
                         {...getFieldProps('count', {
-                        initialValue: '',
+                        initialValue: '请输入...',
                         })}
                         rows={6}
                         count={300}
                     />
                 </List>
-                <p style={{margin:"32px 0",padding:"0.5rem 16px"}} ><Button type="primary" size="small">提交留言</Button></p>
+                <p style={{margin:"32px 0",padding:"0.5rem 16px"}} ><Button type="primary" size="small">立即提交</Button></p>
             </div>
         );
     }

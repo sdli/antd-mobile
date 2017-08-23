@@ -6,6 +6,7 @@ import VideoPage from "./routes/VideoPage.route";
 import MessagePage from "./routes/Message.route";
 import UserCenterPage from "./routes/UserCenter.route";
 import CommentDetailsPage from "./routes/CommentDetails.route";
+import XindePage from "./routes/Xinde.route";
 import Nprogress from "./routes/Nprogress.route";
 
 function RouterConfig({ history }) {
@@ -18,6 +19,7 @@ function RouterConfig({ history }) {
         <Route path="/message" component={MessagePage} />
         <Route path="/user" component={UserCenterPage} />
         <Route path="/commentDetails" component={CommentDetailsPage} />
+        <Route path="/xinde" component={XindePage} />
       </Route>
     </Router>
   );
