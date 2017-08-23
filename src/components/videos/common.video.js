@@ -49,7 +49,7 @@ class CommonVedio extends Component{
         ];
         return (
             <div className={styles.videoSection} style={{width:this.state.w}}>
-                <video ref={(video)=>{this.video=video;}} controls playsInline style={{width:this.state.w}} src="http://47.94.101.71:7002"/>
+                <video ref={(video)=>{this.video=video;}} controls playsInline style={{width:this.state.w}} src="blob:http://47.94.101.71:7003"/>
                 {this.state.s &&
                     (
                         <div className={styles.favoritesDiv}>
