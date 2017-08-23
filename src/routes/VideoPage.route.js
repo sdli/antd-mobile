@@ -1,5 +1,5 @@
 import VideoPlayer from "../components/layout/video.layout.web.js";
-
+import { connect } from 'dva';
 import React , {Component} from "react";
 
 class VideoPage extends Component{
@@ -16,4 +16,4 @@ class VideoPage extends Component{
     }
 }
 
-export default VideoPage;
+export default connect()(VideoPage);

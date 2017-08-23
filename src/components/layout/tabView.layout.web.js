@@ -6,9 +6,9 @@ import UserCenterSVG from "../../assets/svgs/user-circle-o.svg";
 import Carou from "../cards/carousel.card.js";
 import HeadStat from "../cards/headStat.card.js";
 import LessionList from "../cards/headLesson.card.js";
-import Video from "./video.layout.web";
+import MessageList from "../messages/messageList.message";
 import Footer from "../cards/footer.card";
-
+import UserCenter from "../user/tabview.user";
 import { hashHistory } from 'react-router';
 
 /* eslint global-require: 0 */
@@ -82,7 +82,7 @@ class TabBarExample extends React.Component {
           }}
           data-seed="logId1"
         >
-          {<Video />}
+          {<MessageList />}
         </TabBar.Item>
         <TabBar.Item
           icon={<Icon type={UserCenterSVG} />}
@@ -94,7 +94,7 @@ class TabBarExample extends React.Component {
             hashHistory.push("/user");
           }}
         >
-          {this.renderContent('我的')}
+          {<UserCenter />}
         </TabBar.Item>
       </TabBar>
     );

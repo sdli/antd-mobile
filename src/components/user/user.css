@@ -1,0 +1,35 @@
+.userTitle{
+    height: 2rem;
+    padding: 0.4rem 0.16rem 0.4rem 1.6rem;
+    background-color: #108EE9; 
+}
+.userTitle > img{
+    height: 1.1rem;
+    width: 1.1rem;
+    border-radius: 50%;
+    float: left;
+    margin-left: -1.3rem !important;
+}
+.userTitle > div{
+    height: 1.1rem;
+    float: left;
+    padding: 0.2rem 0;
+}
+.userTitle > div >p:first-child{
+    line-height: 0.5rem;
+    font-size: 0.28rem;
+    color: #ffffff;
+    font-weight: bold;
+}
+.userTitle > div >p > span{
+    background-color: yellow;
+    border-radius: 4px;
+    font-size: 0.24rem;
+    color: #4d4d4d;
+    padding: 0.04rem; 
+}
+.userTitle > div >p:last-child{
+    line-height: 0.3rem;
+    font-size: 0.24rem;
+    color: #ffffff;
+}

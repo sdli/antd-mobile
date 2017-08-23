@@ -1,5 +1,6 @@
 import LessonList from "../components/cards/lessionList.card";
 import React,{Component} from "react";
+import { connect } from 'dva';
 import getQuery from "../components/tools/getQuery";
 
 class lessonList extends Component{
@@ -18,4 +19,4 @@ class lessonList extends Component{
     }
 }
 
-export default lessonList;
+export default connect()(lessonList);

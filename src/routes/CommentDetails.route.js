@@ -1,6 +1,7 @@
 import Details from "../components/messages/commentDetails.message";
 import Reply from "../components/messages/reply.message";
 import React from "react";
+import { connect } from 'dva';
 
 class CommentDetailsPage extends React.Component{
     constructor(props){
@@ -17,4 +18,4 @@ class CommentDetailsPage extends React.Component{
     }    
 }
 
-export default CommentDetailsPage;
+export default connect()(CommentDetailsPage);
