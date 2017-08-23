@@ -30,11 +30,7 @@ class CommonVedio extends Component{
                 }else{
                     if(parseInt(video.currentTime) == 10){
                         video.pause();
-                        that.setState({
-                            s: true,
-                            c: "visa视频广告，点击收藏。"
-                        });
-                        if(confirm("专家收藏：这是visa视频广告，请收藏！")){
+                        if(confirm("专家收藏：请收藏专家的总结！")){
                             video.play();
                         }else{
                             video.play();
@@ -53,7 +49,7 @@ class CommonVedio extends Component{
         ];
         return (
             <div className={styles.videoSection} style={{width:this.state.w}}>
-                <video ref={(video)=>{this.video=video;}} controls playsInline style={{width:this.state.w}} src="http://116.77.75.16/variety.tc.qq.com/A8Tp4g42he8sGQ1sdkeFjfp1qZbg4GTbWGsfEk3Cw8X8/q0200hhafx1.p201.1.mp4?vkey=A9CF4135FFD442A543DA472C671800C2B4F37621A8FE3B945E595611DB3B8136BBB4C94409482653ACDD4EB71F4F3C935E94DC112390630A144131CD39327881B6FA5E49388C15B8CFD394C3D364ED21F1F37EDA9CAD2FC4&platform=&sdtfrom=&fmt=shd&level=0"/>
+                <video ref={(video)=>{this.video=video;}} controls playsInline style={{width:this.state.w}} src="http://localhost:7002"/>
                 {this.state.s &&
                     (
                         <div className={styles.favoritesDiv}>

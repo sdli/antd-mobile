@@ -1,4 +1,7 @@
 import styles from "./card.style.less";
+import {Icon} from "antd-mobile";
+import ClockSVG from "../../assets/svgs/clock-o.svg";
+import {Link} from "react-router";
 
 const headStat = function(lessons,timeLength){
     return (
@@ -10,6 +13,21 @@ const headStat = function(lessons,timeLength){
             <div className={styles.headStatCell}>
                 <p>平均得分</p>
                 <p><span>87</span>分</p>
+            </div>
+            <div className={styles.headStatRecord}>
+                <div>
+                    <p style={{lineHeight: "0.8rem"}}>上次播放：</p>
+                </div>
+                <div>
+                    <p style={{lineHeight: "0.8rem",fontSize:"0.26rem"}}>
+                        <div style={{display:"inline-block",height:"0.8rem",padding:"0.1rem",float:"left"}}>
+                           <Icon type={ClockSVG} size="xs" style={{color:"#108EE9"}} />
+                        </div>
+                        <span style={{lineHeight:"0.8rem",display:"inline-block",float:"left"}}>
+                            <Link to="/videoplay" className="linkInit"> 家庭教育核心观念，第四讲。</Link>
+                        </span>
+                    </p>
+                </div>
             </div>
         </div>
     );

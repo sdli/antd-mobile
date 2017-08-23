@@ -12,3 +12,6 @@ npm-debug.log*
 
 # vscode files
 /.vscode
+
+# mp4
+/test.mp4

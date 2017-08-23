@@ -1,9 +1,11 @@
 import React , {Component } from "react";
 import styles from "./card.style.less";
 import Img from "../../assets/imgs/lu.png";
-import {Progress,Icon} from "antd-mobile";
+import {Progress,Icon,Button} from "antd-mobile";
+import {hashHistory} from "react-router";
 import VideoSvg from "../../assets/svgs/play-circle-o.svg";
 import {Link} from "react-router";
+import PencilSVG from "../../assets/svgs/pencil-square-o.svg";
 
 class LessionList extends Component{
     constructor(props){
@@ -38,6 +40,10 @@ class LessionList extends Component{
                         <div>
                             <Progress percent={34} position="normal" unfilled="show" />
                         </div>
+                        <div className={styles.commentLink}>
+                            <p style={{padding:"0 20%"}}><Button size="small" type="ghost" icon={PencilSVG} inline onClick={()=>hashHistory.push("/commentDetails")}>写心得</Button></p>
+                            <p>提交您的学习心得</p>
+                        </div>
                     </div>
                 </div>
                 <div className="divider"></div>
@@ -47,89 +53,93 @@ class LessionList extends Component{
                     </p>
                     <ul className={styles.lessionUl}>
                         <li>
-                            <Icon type={VideoSvg}/>
-                            <div className={styles.lessionUlTitle}>
-                                <p>家庭教育的10个注意事项，专题1</p>
-                                <p>时长：32分钟</p>
-                            </div>
-                            <div className={styles.lessionUlFunc}>
-                               <Link to={{pathname:"/videoplay",query:{lessionid:"0098"}}} className="linkInit">
-                                <p>75<span>分</span></p>
-                               </Link>
-                            </div>
+                            <Link to={{pathname:"/videoplay"}} className="linkInit">
+                                <Icon type={VideoSvg}/>
+                                <div className={styles.lessionUlTitle}>
+                                    <p>家庭教育的10个注意事项，专题1</p>
+                                    <p>时长：32分钟</p>
+                                </div>
+                                <div className={styles.lessionUlFunc}>
+                                        <p style={{lineHeight:"1rem",textAlign:"center",width:"100%",display:"block"}}>75<span className={styles.lessionUlSpan}>分</span></p>
+                                </div>
+                            </Link>
                         </li>
                         <li>
-                            <Icon type={VideoSvg}/>
-                            <div className={styles.lessionUlTitle}>
-                                <p>家庭教育的10个注意事项，专题1</p>
-                                <p>时长：32分钟</p>
-                            </div>
-                            <div className={styles.lessionUlFunc}>
-                                <p>75<span>分</span></p>
-                            </div>
+                            <Link to={{pathname:"/videoplay"}} className="linkInit">
+                                <Icon type={VideoSvg}/>
+                                <div className={styles.lessionUlTitle}>
+                                    <p>家庭教育的10个注意事项，专题1</p>
+                                    <p>时长：32分钟</p>
+                                </div>
+                                <div className={styles.lessionUlFunc}>
+                                        <p style={{lineHeight:"1rem",textAlign:"center",width:"100%",display:"block"}}>75<span className={styles.lessionUlSpan}>分</span></p>
+                                </div>
+                            </Link>
                         </li>
                         <li>
-                            <Icon type={VideoSvg}/>
-                            <div className={styles.lessionUlTitle}>
-                                <p>家庭教育的10个注意事项，专题1</p>
-                                <p>时长：32分钟</p>
-                            </div>
-                            <div className={styles.lessionUlFunc}>
-                                <p>75<span>分</span></p>
-                            </div>
+                            <Link to={{pathname:"/videoplay"}} className="linkInit">
+                                <Icon type={VideoSvg}/>
+                                <div className={styles.lessionUlTitle}>
+                                    <p>家庭教育的10个注意事项，专题1</p>
+                                    <p>时长：32分钟</p>
+                                </div>
+                                <div className={styles.lessionUlFunc}>
+                                        <p style={{lineHeight:"1rem",textAlign:"center",width:"100%",display:"block"}}>75<span className={styles.lessionUlSpan}>分</span></p>
+                                </div>
+                            </Link>
                         </li>
                         <li>
-                            <Icon type={VideoSvg}/>
-                            <div className={styles.lessionUlTitle}>
-                                <p>家庭教育的10个注意事项，专题1</p>
-                                <p>时长：32分钟</p>
-                            </div>
-                            <div className={styles.lessionUlFunc}>
-                                <p>75<span>分</span></p>
-                            </div>
+                            <Link to={{pathname:"/videoplay"}} className="linkInit">
+                                <Icon type={VideoSvg}/>
+                                <div className={styles.lessionUlTitle}>
+                                    <p>家庭教育的10个注意事项，专题1</p>
+                                    <p>时长：32分钟</p>
+                                </div>
+                                <div className={styles.lessionUlFunc}>
+                                        <p style={{lineHeight:"1rem",textAlign:"center",width:"100%",display:"block"}}>75<span className={styles.lessionUlSpan}>分</span></p>
+                                </div>
+                            </Link>
                         </li>
                         <li>
-                            <Icon type={VideoSvg}/>
-                            <div className={styles.lessionUlTitle}>
-                                <p>家庭教育的10个注意事项，专题1</p>
-                                <p>时长：32分钟</p>
-                            </div>
-                            <div className={styles.lessionUlFunc}>
-                                <p>75<span>分</span></p>
-                            </div>
+                            <Link to={{pathname:"/videoplay"}} className="linkInit">
+                                <Icon type={VideoSvg}/>
+                                <div className={styles.lessionUlTitle}>
+                                    <p>家庭教育的10个注意事项，专题1</p>
+                                    <p>时长：32分钟</p>
+                                </div>
+                                <div className={styles.lessionUlFunc}>
+                                        <p style={{lineHeight:"1rem",textAlign:"center",width:"100%",display:"block"}}>75<span className={styles.lessionUlSpan}>分</span></p>
+                                </div>
+                            </Link>
                         </li>
                         <li>
-                            <Icon type={VideoSvg}/>
-                            <div className={styles.lessionUlTitle}>
-                                <p>家庭教育的10个注意事项，专题1</p>
-                                <p>时长：32分钟</p>
-                            </div>
-                            <div className={styles.lessionUlFunc}>
-                                <p>75<span>分</span></p>
-                            </div>
+                            <Link to={{pathname:"/videoplay"}} className="linkInit">
+                                <Icon type={VideoSvg}/>
+                                <div className={styles.lessionUlTitle}>
+                                    <p>家庭教育的10个注意事项，专题1</p>
+                                    <p>时长：32分钟</p>
+                                </div>
+                                <div className={styles.lessionUlFunc}>
+                                        <p style={{lineHeight:"1rem",textAlign:"center",width:"100%",display:"block"}}>75<span className={styles.lessionUlSpan}>分</span></p>
+                                </div>
+                            </Link>
                         </li>
                         <li>
-                            <Icon type={VideoSvg}/>
-                            <div className={styles.lessionUlTitle}>
-                                <p>家庭教育的10个注意事项，专题1</p>
-                                <p>时长：32分钟</p>
-                            </div>
-                            <div className={styles.lessionUlFunc}>
-                                <p>75<span>分</span></p>
-                            </div>
+                            <Link to={{pathname:"/videoplay"}} className="linkInit">
+                                <Icon type={VideoSvg}/>
+                                <div className={styles.lessionUlTitle}>
+                                    <p>家庭教育的10个注意事项，专题1</p>
+                                    <p>时长：32分钟</p>
+                                </div>
+                                <div className={styles.lessionUlFunc}>
+                                        <p style={{lineHeight:"1rem",textAlign:"center",width:"100%",display:"block"}}>75<span className={styles.lessionUlSpan}>分</span></p>
+                                </div>
+                            </Link>
                         </li>
-                        <li>
-                            <Icon type={VideoSvg}/>
-                            <div className={styles.lessionUlTitle}>
-                                <p>家庭教育的10个注意事项，专题1</p>
-                                <p>时长：32分钟</p>
-                            </div>
-                            <div className={styles.lessionUlFunc}>
-                                <p>75<span>分</span></p>
-                            </div>
-                        </li>
+                       
                     </ul>
                 </div>
+                <div className="divider"></div>
             </div>
         );
     }

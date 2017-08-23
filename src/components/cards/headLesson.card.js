@@ -24,7 +24,7 @@ class LessonList extends Component{
                         <img src={Lushizhen} />
                         <Link to={{pathname:"/lessionList",query:{name:"lushizhen"}}} className={styles.linkInit}>
                             <div className={styles.lessonStat}>
-                                <h4>陆士桢教授</h4>
+                                <p>陆士桢 教授</p>
                                 <p>家风师德教育</p>
                                 <p>完成：2/8课时</p>
                                 <div className={styles.progressBar}>
@@ -37,7 +37,7 @@ class LessonList extends Component{
                         <img src={Lizhaoliang} />
                         <Link to={{pathname:"/lessionList",query:{name:"lizhaoliang"}}} className={styles.linkInit}>
                             <div className={styles.lessonStat}>
-                                <h4>李兆亮良教授</h4>
+                                <p>李兆亮良 教授</p>
                                 <p>心理健康第一期</p>
                                 <p>完成：2/8课时</p>
                                 <div className={styles.progressBar}>
@@ -50,7 +50,7 @@ class LessonList extends Component{
                         <img src={Liwendao} />
                         <Link to={{pathname:"/lessionList",query:{name:"liwendao"}}} className={styles.linkInit}>
                             <div className={styles.lessonStat}>
-                                <h4>李文道教授</h4>
+                                <p>李文道 教授</p>
                                 <p>心理健康第二期</p>
                                 <p>完成：2/8课时</p>
                                 <div className={styles.progressBar}>
@@ -63,7 +63,7 @@ class LessonList extends Component{
                         <img src={Liuxiaoting} />
                         <Link to={{pathname:"/lessionList",query:{name:"liuxiaoting"}}} className={styles.linkInit}>
                             <div className={styles.lessonStat}>
-                                <h4>刘哮听教授</h4>
+                                <p>刘孝听 教授</p>
                                 <p>传统文化教育</p>
                                 <p>完成：2/8课时</p>
                                 <div className={styles.progressBar}>
@@ -76,7 +76,7 @@ class LessonList extends Component{
                         <img src={Zhaogang} />
                         <Link to={{pathname:"/lessionList",query:{name:"zhaogang"}}} className={styles.linkInit}>
                             <div className={styles.lessonStat}>
-                                <h4>赵刚教授</h4>
+                                <p>赵刚 教授</p>
                                 <p>家校共育</p>
                                 <p>完成：2/8课时</p>
                                 <div className={styles.progressBar}>

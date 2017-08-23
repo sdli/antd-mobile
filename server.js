@@ -28,3 +28,19 @@ app.listen(serverPort,function(error) {
     console.info("==> 🌎  Server is listening on port %s. Open up http://localhost:%s/ in your browser.", serverPort, serverPort)
   }
 });
+
+var http = require('http');
+var fs = require('fs');
+
+http.createServer(function(request, response){
+    var mp4 = 'test.mp4';
+    var stat = fs.statSync(mp4);
+
+    response.writeHead(200, {
+        'Content-Type': 'video/mp4',
+        'Content-Length': stat.size
+    })
+
+    var readableStream = fs.createReadStream(mp4);
+    readableStream.pipe(response);
+}).listen(7002);

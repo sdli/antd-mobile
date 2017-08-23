@@ -1,8 +1,8 @@
 .headStat{
     width: 100%;
-    height: 1.5rem;
+    height: 2.3rem;
     background: #ffffff;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid #ddd;
     position: relative;
 }
 .headStat:first-child{
@@ -24,6 +24,23 @@
     font-size: 0.44rem;
     color: #00AD1B;
 }
+.headStatRecord{
+    clear: both;
+    padding: 0 0.16rem 0 2rem;
+    height: 0.8rem;
+    border-top: 1px solid #ddd;
+}
+.headStatRecord > div:first-child{
+    margin-left: -1.6rem !important;
+    width: 1.5rem;
+    text-align: center;
+    font-size: 0.26rem;
+    float: left;
+}
+.headStatRecord > div{
+    float: left;
+    height: 0.8rem;
+}
 .lessonCell{
     padding: 0.16rem 0.16rem 0.16rem 2.2rem;
     height: 2.4rem;
@@ -36,19 +53,26 @@
     float: left;
 }
 .cardTitle{
-    height: 0.64rem;
+    line-height: 0.64rem;
     padding: 0.08rem 0.16rem;
     border-bottom: 1px solid #f0f0f0;
+    font-size: 0.24rem;
+    color: #999999;
 }
 .lessonStat{
     width: 100%;
     float: left;
     padding: 0.1rem 0.16px;
 }
+.lessonStat > p:first-child{
+    line-height: 0.5rem;
+    font-size: 0.28rem;
+    color: #4d4d4d;
+}
 .lessonStat > p{
     line-height: 0.5rem;
-    font-size: 0.26rem;
-    color: #4d4d4d;
+    font-size: 0.24rem;
+    color: #999999;
 }
 .linkInit{
     text-decoration: none;
@@ -125,7 +149,7 @@
     position:relative;
     border-bottom:1px solid #E8E8E8;
 }
-.lessionUl > li > svg{
+.lessionUl > li > a >svg{
     position: relative;
     opacity: 0.3;
     height: 1rem;
@@ -158,14 +182,16 @@
 .lessionUlFunc{
     float: right;
     margin-right: -1rem !important;
+    text-align: center;
 }
 .lessionUlFunc > p{
     line-height: 1rem;
     font-size: 0.36rem;
 }
-.lessionUlFunc > p > span{
+.lessionUlSpan{
     font-size: 0.20rem;
 }
+
 .progressBar{
     padding: 0.3rem 0 0.1rem 0;
 }
@@ -178,4 +204,17 @@
     line-height: 0.36rem;
     font-size: 0.24rem;
     color: #999999;
+}
+.commentLink{
+    height: 1.5rem;
+    text-align: center;
+    padding: 0.3rem;
+}
+.commentLink > p:first-child{
+    line-height: 0.4rem;
+}
+.commentLink > p:last-child{
+    line-height: 0.5rem;
+    font-size: 0.24rem;
+    color: #4d4d4d;
 }

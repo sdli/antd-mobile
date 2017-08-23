@@ -2,5 +2,10 @@
     "name"        : "server",
     "script"      : "server.js",
     "error_file" : "./src/logs/server.log"
+},
+{
+    "name"        : "video",
+    "script"      : "video.js",
+    "error_file" : "./src/logs/video.log"
 }
 ]
