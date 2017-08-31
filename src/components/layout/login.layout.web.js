@@ -8,6 +8,7 @@ import LockSvg from "../../assets/svgs/lock.svg";
 import MesgSvg from "../../assets/svgs/commenting.svg";
 import CodeImg from "../../assets/imgs/code.png";
 import Footer from "../cards/footer.card";
+import {hashHistory} from "react-router";
 
 const TabPane = Tabs.TabPane;
 
@@ -76,7 +77,7 @@ class LoginLayout extends React.Component{
                                         <div style={{clear:"both"}}></div>
                                     </div>
                                      <div style={{padding:"0.16rem 0.32rem"}}>
-                                        <Button className="btn" type="primary" size="small">登  录</Button>
+                                        <Button className="btn" type="primary" size="small" onClick={()=>hashHistory.push("/")}>登  录</Button>
                                      </div>
                                 </List>
                                 <p style={{lineHeight:"0.88rem",fontSize:"0.24rem",textAlign:"center",color:"#4d4d4d"}}>如忘记密码，可使用手机验证码登录。</p>
@@ -117,7 +118,7 @@ class LoginLayout extends React.Component{
                                         <div style={{clear:"both"}}></div>
                                     </div>
                                      <div style={{padding:"0.16rem 0.32rem"}}>
-                                        <Button className="btn" type="primary" size="small">登  录</Button>
+                                        <Button className="btn" type="primary" size="small" onClick={()=>hashHistory.push("/")}>登  录</Button>
                                      </div>
                                 </List>
                                 <p style={{lineHeight:"0.88rem",fontSize:"0.24rem",textAlign:"center",color:"#4d4d4d"}}>如忘记密码，可使用手机验证码登录。</p>
