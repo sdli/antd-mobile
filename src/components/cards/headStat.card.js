@@ -3,6 +3,7 @@ import {Icon} from "antd-mobile";
 import ClockSVG from "../../assets/svgs/clock-o.svg";
 import {Link} from "react-router";
 
+console.log(React);
 const headStat = function(lessons,timeLength){
     return (
         <div className={styles.headStat}>
@@ -20,9 +21,9 @@ const headStat = function(lessons,timeLength){
                 </div>
                 <div>
                     <p style={{lineHeight: "0.8rem",fontSize:"0.26rem"}}>
-                        <div style={{display:"inline-block",height:"0.8rem",padding:"0.1rem",float:"left"}}>
+                        <span style={{display:"inline-block",height:"0.8rem",padding:"0.1rem",float:"left"}}>
                            <Icon type={ClockSVG} size="xs" style={{color:"#108EE9"}} />
-                        </div>
+                        </span>
                         <span style={{lineHeight:"0.8rem",display:"inline-block",float:"left"}}>
                             <Link to="/videoplay" className="linkInit"> 家庭教育核心观念，第四讲。</Link>
                         </span>

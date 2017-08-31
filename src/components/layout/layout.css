@@ -34,3 +34,42 @@
     background: #ffffff;
     border-radius: 4px;
 }
+
+.loginPage{
+    position:relative;
+    min-height: 10rem;
+    padding-bottom: 1rem;
+    background-color: #f6f6f6;
+}
+
+.loginPage > img{
+    width: 100%;
+    z-index: 9000;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.loginContent{
+    position: relative;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    left: 0;
+    padding: 0.1rem 6%;
+}
+.loginContent > p{
+    line-height: 1.5rem;
+    font-size: 0.36rem;
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+}
+.loginContent > div{
+    background-color: #ffffff;
+    min-height: 2rem;
+    border-radius: 5px;
+}
+.loginTab{
+    box-shadow: 0 8px 8px #ddd;
+}

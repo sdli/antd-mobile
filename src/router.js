@@ -8,18 +8,21 @@ import UserCenterPage from "./routes/UserCenter.route";
 import CommentDetailsPage from "./routes/CommentDetails.route";
 import XindePage from "./routes/Xinde.route";
 import Nprogress from "./routes/Nprogress.route";
+import Progress from "nprogress";
+import LoginPage from "./routes/Login.route";
 
 function RouterConfig({ history }) {
   return (
     <Router history={history}>
-      <Route path="/" component={Nprogress}>
-        <IndexRoute component={IndexPage}/>
+      <Route path="/" component={Nprogress} >
+        <IndexRoute component={IndexPage} />
         <Route path="/lessionList" component={LessonList} />
         <Route path="/videoplay" component={VideoPage} />
         <Route path="/message" component={MessagePage} />
         <Route path="/user" component={UserCenterPage} />
         <Route path="/commentDetails" component={CommentDetailsPage} />
         <Route path="/xinde" component={XindePage} />
+        <Route path="/login" component={LoginPage} />
       </Route>
     </Router>
   );

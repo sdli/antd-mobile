@@ -66,21 +66,23 @@ class TabExample extends React.Component{
         }
     }
 
-    showSheet(that){
-        return function(){
-            that.setState({
+    showSheet(){
+        const showFunc = function(){
+            this.setState({
                 showSheet: true
             });
         }
+        return showFunc.bind(this);
     }
 
-    submitSheet(that){
-        return function(){
+    submitSheet(){
+        const submitFunc = function(){
             console.log("close");
-            that.setState({
+            this.setState({
                 showSheet: false
             });
         }
+        return submitFunc.bind(this);
     }
 
     render(){
@@ -102,7 +104,7 @@ class TabExample extends React.Component{
                             <List renderHeader={() => '问卷得分'} className="my-list" style={{width:"100%",overflow:"hidden",borderBottom: "1px solid #ddd"}}>
                                 {scoreList.map(function(val,index){
                                     return (
-                                        <Item extra={val.score} multipleLine align="center" wrap style={{fontSize:"0.20rem"}} onClick={that.showSheet(that)}>
+                                        <Item extra={val.score} multipleLine align="center" wrap style={{fontSize:"0.20rem"}} onClick={that.showSheet()}>
                                             {(index+1)+". "+val.title}
                                         </Item>
                                     );
@@ -117,7 +119,7 @@ class TabExample extends React.Component{
                     </TabPane>
                 </Tabs>
                 <WhiteSpace />
-                {this.state.showSheet && <Sheet close={that.submitSheet(that)} submit={that.submitSheet(that)} />}
+                {this.state.showSheet && <Sheet close={this.submitSheet()} submit={this.submitSheet()} />}
             </div>
         );
     }

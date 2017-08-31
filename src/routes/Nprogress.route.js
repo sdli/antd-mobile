@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import Nprogress from "nprogress";
+import 'nprogress/nprogress.css';
 
 console.log(Nprogress);
 class ProgressPage extends React.Component{
@@ -10,17 +11,13 @@ class ProgressPage extends React.Component{
 
     render(){
         const {loading} = this.props;
-        console.log(loading.global);
-        setTimeout(function(){
-            Nprogress.start();
-            console.log("进度条完成");
-            Nprogress.done();
-        },1000);
+        loading.global?Nprogress.start():Nprogress.done();
         return this.props.children;
     }
 }
 
 ProgressPage.propTypes = {
+
 };
 
-export default connect(({loading})=>{return {loading};})(ProgressPage);
+export default connect(({example,loading})=>{return {example,loading};})(ProgressPage);

@@ -37,3 +37,12 @@
 :global(.am-list-extra){
     font-size: 0.26rem !important;
 }
+:global(.am-input-label-5){
+    width: 0.8rem !important;
+}
+:global(input){
+    font-size: 0.24rem !important;
+}
+:global(.am-input-extra){
+    overflow: visible !important;
+}
