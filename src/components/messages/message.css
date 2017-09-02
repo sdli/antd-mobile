@@ -15,6 +15,10 @@
 }
 .detailsTitle{
     padding: 16px;
+    margin: 0.16rem;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #ddd;
 }
 .detailsTitle > p:first-child{
     line-height: 0.32rem;
@@ -33,10 +37,10 @@
     font-weight: bold;
 }
 .detailsBody{
-    background-color: #f6f6f6;
+    background-color: #f0f0f0;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
-    padding: 16px;
+    padding: 0.32rem 0.16rem;
 }
 .detailsCell{
     padding: 16px 2rem 16px 0;

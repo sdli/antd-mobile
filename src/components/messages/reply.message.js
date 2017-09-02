@@ -11,7 +11,7 @@ class Reply extends React.Component{
         const { getFieldProps } = this.props.form;
         const { title } = this.props;
         return(
-            <div>
+            <div style={{padding:"0.16rem",margin:"0.16rem",border:"1px solid #ddd"}}>
                 <List renderHeader={() => title}>
                     <TextareaItem
                         {...getFieldProps('count', {

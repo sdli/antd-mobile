@@ -10,6 +10,8 @@ import XindePage from "./routes/Xinde.route";
 import Nprogress from "./routes/Nprogress.route";
 import Progress from "nprogress";
 import LoginPage from "./routes/Login.route";
+import UserStatics from "./routes/lessionStatics.route";
+import UserInfoPage from "./routes/UserInfoPage.route";
 
 function RouterConfig({ history }) {
   return (
@@ -19,7 +21,11 @@ function RouterConfig({ history }) {
         <Route path="/lessionList" component={LessonList} />
         <Route path="/videoplay" component={VideoPage} />
         <Route path="/message" component={MessagePage} />
-        <Route path="/user" component={UserCenterPage} />
+        <Route path="/user" >
+          <IndexRoute component={UserCenterPage} />
+          <Route path="/user/statics" component={UserStatics} />
+          <Route path="/user/info" component={UserInfoPage} />
+        </Route>
         <Route path="/commentDetails" component={CommentDetailsPage} />
         <Route path="/xinde" component={XindePage} />
         <Route path="/login" component={LoginPage} />

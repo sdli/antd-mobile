@@ -1,6 +1,9 @@
 import React , {Component} from "react";
 import styles from "./video.css";
 import isMobile from "../tools/isMobile";
+import Img from "../../assets/imgs/lu.jpg";
+import PlaySvg from "../../assets/svgs/play.svg";
+import {Icon } from "antd-mobile";
 
 class CommonVedio extends Component{
     constructor(props){
@@ -48,23 +51,43 @@ class CommonVedio extends Component{
             {time:20,content:"让亲情不被打断，点击收藏。",score:10},
         ];
         return (
-            <div className={styles.videoSection} style={{width:this.state.w}}>
-                <video ref={(video)=>{this.video=video;}} controls playsInline style={{width:this.state.w}} src="http://116.77.66.164/variety.tc.qq.com/AY5-z9sccTSepYMGZxmydtsPrDg0pf-qWq2eNlkbeKNA/e02001daubo.p201.1.mp4?vkey=29B0AD053FE05B9E3280260B75EB7C362A50CCBE4E255FA8770D12014750A3ECAA6B644DD857F08FF5E5C8410D44BCBDDAEC9F3C2BDD7FBCC8A7F917D59691DF09C50E4090494F24C276F793FA0272DC7A50AE85D0962486&amp;platform=&amp;sdtfrom=&amp;fmt=shd&amp;level=0"/>
-                {this.state.s &&
-                    (
-                        <div className={styles.favoritesDiv}>
-                            <div className={styles.favoritesDivMask}></div>
-                            <div className={styles.favoritesContent}>
-                                <p>{this.state.c}</p>
+            <div>
+                <div className={styles.videoSection} style={{width:this.state.w}}>
+                    <video 
+                        ref={(video)=>{this.video=video;}} 
+                        controls 
+                        playsInline 
+                        style={{width:this.state.w}}
+                        poster = {Img}
+                        src="http://116.77.75.16/vlive.qqvideo.tc.qq.com/AABSbFWEjPDdRP8No8YgVfOjkH5bkzaM54MjRbjRxCds/h002479qfd7.p212.1.mp4?sdtfrom=v1010&guid=00b8567265e9843e817cadb58599b100&vkey=9D3D228331BFCB6D500272BC3093367E3E238F7DF90A2226AA22C2F82215EE9CDD1F437F7A5CC028416CADB2AEF0A78D047F98F4171655FD35BDF48ADB4C7DCBA9F2E90BCFB08BCD98AB4FE3230E18138D77DEF72BE52F022290F5F7CE5E2587C02088232BE87EB4EE19269DCC96CFD8EE39C02FE7FB7392&platform=2"/>
+                    {
+                        !this.state.s 
+                        &&
+                        <div className={styles.videoMask}>
+                            <div></div>
+                            <div className={styles.videoPlay}>
+                                <h3>家庭教育的核心是什么？</h3>
+                                <p onClick={()=>{this.video.play();this.setState({s:true})}}><span><Icon type={PlaySvg} style={{height: "0.28rem",width:"0.28rem"}}/> 播放</span></p>
+                            </div>
+                            <div className={styles.score}>
+                                <div className={styles.lessionLength}>
+                                    <p>课程专家：陆士桢教授</p>
+                                    <p>视频时常：32分钟</p>
+                                </div>
+                                <div className={styles.myScore}>
+                                    <p>85<span>分</span></p>
+                                    <p>我的成绩</p>
+                                </div>
                             </div>
                         </div>
-                    )
-                }
+                    }
+                </div>
                 <div className={styles.lessionDesc}>
                     <p>课程简介：</p>
                     <p>陆士桢，女，汉族，中共党员，出生于1947年8月，教授，硕士生导师，国务院特殊贡献专家津贴，在青少年研究和社会工作领域享有一定学术声誉。曾任中国青年政治学院党委书记。</p>
                 </div>
             </div>
+
         );
     }
 }

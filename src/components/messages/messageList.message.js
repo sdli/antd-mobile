@@ -2,6 +2,7 @@ import React from "react";
 import { Tabs, WhiteSpace, Badge,List,Icon } from 'antd-mobile';
 import CommentList from "../messages/comments.message";
 import styles from "./message.css";
+import {hashHistory} from "react-router";
 
 const TabPane = Tabs.TabPane;
 const Item = List.Item;
@@ -19,19 +20,22 @@ class MessageList extends React.Component{
         super(props);
     }
 
-    render(){
+    goPage(){
+        hashHistory.push("/commentDetails");
+    }
+    render(){ 
         return(
             <div>
                 <Tabs defaultActiveKey="1" onChange={callback} onTabClick={handleTabClick} animated={false} swipeable={false}>
                     <TabPane tab={<Badge text={'3'}>留言回复</Badge>} key="1">
                         <List style={{borderBottom:"1px solid #ddd"}}>
-                            <Item multipleLine extra={<span>点击回复</span> }>
+                            <Item multipleLine extra={<span onClick={this.goPage}>点击回复</span> }>
                                 李教授 给您回复<Brief>家庭教育的核心是什么？</Brief><Brief><span className={styles.commentTime}>2017.09.01</span></Brief>
                             </Item>
-                            <Item multipleLine extra={<span>点击回复</span> }>
+                            <Item multipleLine extra={<span onClick={this.goPage}>点击回复</span> }>
                                 李教授 给您回复<Brief>家庭教育的核心是什么？</Brief><Brief><span className={styles.commentTime}>2017.09.01</span></Brief>
                             </Item>
-                            <Item multipleLine extra={<span>点击回复</span> }>
+                            <Item multipleLine extra={<span onClick={this.goPage}>点击回复</span> }>
                                 李教授 给您回复<Brief>家庭教育的核心是什么？</Brief><Brief><span className={styles.commentTime}>2017.09.01</span></Brief>
                             </Item>
                         </List>

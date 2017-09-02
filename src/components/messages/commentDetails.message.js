@@ -8,14 +8,14 @@ class Details extends React.Component{
 
     render(){
         return(
-            <div>
-                <div className={styles.detailsTitle}>
-                    <p>留言 <span>想家的孩子</span></p>
-                    <p>我曾经那么地快乐，为啥现在觉得不快乐，我是不是有心理疾病？</p>
-                    <p>2016.08.09</p>
-                </div>  
+            <div>  
                 <div className={styles.detailsBody}>
-                    <p style={{textAlign:"center",fontSize:"0.24rem",lineHeight:"0.4rem"}}>共计 5 条回复</p>
+                    <div className={styles.detailsTitle}>
+                        <p>留言 <span>想家的孩子</span></p>
+                        <p>我曾经那么地快乐，为啥现在觉得不快乐，我是不是有心理疾病？</p>
+                        <p>2016.08.09</p>
+                    </div>
+                    <p style={{textAlign:"center",fontSize:"0.24rem",lineHeight:"0.6rem"}}>共计 5 条回复</p>
                     <div className={styles.detailsCell}>
                         <div className={styles.detailsCellContent}>
                             <p>陆教授</p>

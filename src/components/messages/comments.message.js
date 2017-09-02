@@ -20,16 +20,16 @@ class CommentList extends React.Component {
               <p>提交后，专家将看到您的留言</p>
             </div>
             <List style={{borderBottom:"1px solid #ddd"}}>
-                <Item multipleLine extra={<span><Icon type={CommentSvg} size="xxs" /> 1</span> }>
+                <Item multipleLine extra={<span><Icon type={CommentSvg} size="xxs" onClick={()=>hashHistory.push("/commentDetails")} /> 1</span> }>
                   李道然<Brief>家庭教育的核心是什么？</Brief><Brief><span className={styles.commentTime}>2017.09.01</span></Brief>
                 </Item>
-                <Item multipleLine extra={<span><Icon type={CommentSvg} size="xxs" /> 1</span> }>
+                <Item multipleLine extra={<span><Icon type={CommentSvg} size="xxs" onClick={()=>hashHistory.push("/commentDetails")} /> 1</span> }>
                   李道然<Brief>家庭教育的核心是什么？</Brief><Brief><span className={styles.commentTime}>2017.09.01</span></Brief>
                 </Item>
-                <Item multipleLine extra={<span><Icon type={CommentSvg} size="xxs" /> 1</span> }>
+                <Item multipleLine extra={<span><Icon type={CommentSvg} size="xxs" onClick={()=>hashHistory.push("/commentDetails")} /> 1</span> }>
                   李道然<Brief>家庭教育的核心是什么？</Brief><Brief><span className={styles.commentTime}>2017.09.01</span></Brief>
                 </Item>
-                <Item multipleLine extra={<span><Icon type={CommentSvg} size="xxs" /> 1</span> }>
+                <Item multipleLine extra={<span><Icon type={CommentSvg} size="xxs" onClick={()=>hashHistory.push("/commentDetails")} /> 1</span> }>
                   李道然<Brief>家庭教育的核心是什么？</Brief><Brief><span className={styles.commentTime}>2017.09.01</span></Brief>
                 </Item>
             </List>

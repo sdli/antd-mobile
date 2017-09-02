@@ -41,8 +41,11 @@
     width: 0.8rem !important;
 }
 :global(input){
-    font-size: 0.24rem !important;
+    font-size: 0.26rem !important;
 }
 :global(.am-input-extra){
     overflow: visible !important;
+}
+:global(textarea){
+    font-size: 0.26rem !important;
 }
