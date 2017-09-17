@@ -15,8 +15,18 @@ var headers ={
     "Authorization": "Basic d2VpbGluX2h0dHA6QFB4dzE3RCM="
 };
 
+//redis配置
+var redis = {
+   "host" : "172.18.0.4",
+   "port" : "6699",
+   "db" : 1,
+   "ttl" : 1800,
+   "logErrors" : true
+};
+
 module.exports = {
     apiPort: 3061,
+    redis: redis,
     dev:{
         headers: headers,
         hostname: '47.94.101.71',

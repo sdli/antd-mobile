@@ -38,7 +38,7 @@ var listen = function(port){
 // 微信openid获取,存入session
 var getOpenid = function(req,res){
     var code = req.body.code;
-    if(typeof req.session.openid !== "undefined"){
+    if(typeof req.session !== "undefined" && typeof req.session.openid !== "undefined"){
         console.log("有openid");
     }else{
         console.log("openid为空，您现在可以获取;通过此code："+ code);
@@ -51,7 +51,7 @@ var appInit = function(app,options){
     (typeof options.cookieParser !== "undefined" && options.cookieParser)?app.use(cookieParser()):null;
     (typeof options.jsonParser !== "undefined" && options.cookieParser)?app.use(bodyParser.json()):null;
     (typeof options.jsonParser !== "undefined" && options.cookieParser)?app.use(bodyParser.urlencoded({ extended: false })):null;
-    (typeof options.sessionOptions !== "undefined" && options.cookieParser)?app.use(session(Object.assign(options.sessionOptions,{store: new RedisStore()}))):null;
+    (typeof options.sessionOptions !== "undefined" && options.cookieParser)?app.use(session(Object.assign(options.sessionOptions,{store: new RedisStore(configs.redis)}))):null;
     (typeof options.img !== "undefined" && options.cookieParser)?app.get("/verifycode",imgGenerator(options.img)):null;
     (typeof options.listen !== "undefined")?app.listen(options.listen,listen(options.listen)):null;
     (typeof options.openid !== "undefined")?app.get("/getOpenid",getOpenid):null;
