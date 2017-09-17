@@ -5,7 +5,7 @@
     "lint": "eslint --ext .js src test",
     "build": "roadhog build",
     "build-api": "babel ./src/api/ -d ./src/api-build --source-maps",
-    "git-pull":"git checkout .&& git pull origin master&& cnpm run build"
+    "git-pull":"git checkout .&& git pull origin master&& cnpm run build&& pm2 restart pm2.json"
   },
   "engines": {
     "install-node": "6.9.2"
