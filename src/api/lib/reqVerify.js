@@ -30,7 +30,7 @@ var reqVerify = function(req,res){
         case ("VerifyCodeReq"):
             return pass({Phone:body.Phone,Type:body.Type}); // 登录时type为2,注册为1，前端控制
         case ("checkOpenid"):
-            console.log(req.session,req.session.openid);
+            console.info(req.session,req.session.openid,"here!!!!");
             return (typeof req.session !== "undefined" && req.session.openid != "")?passToRes({openid: 1}):passToRes({openid:0});
         default:
             return pass();
