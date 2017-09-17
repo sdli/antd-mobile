@@ -38,6 +38,7 @@ export default {
       var checkOpenid = yield call(request,{bodyObj:{reqType:"checkOpenid"}});
       if(typeof checkOpenid.data.data.openid !== "undefined"){
         var ifOpenid = checkOpenid.data.data.openid;
+        console.log(ifOpenid);
         if(ifOpenid == 0){
           window.location.href = redirect_uri;
         }
