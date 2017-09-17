@@ -1,0 +1,349 @@
+syntax = "proto3";
+package teacher;
+
+//视频请求
+
+//课程查询
+message CourseQueryReq
+{
+}
+
+message CourseQueryResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+	repeated Course CourseList = 3;  //所有课程
+}
+
+//短信验证码获取
+message VerifyCodeReq
+{
+	string Phone = 1;
+	int32 Type = 2;  //1:注册  2:登录
+}
+
+message VerifyCodeResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+}
+
+//注册
+message RegisterReq
+{
+	string Phone = 1;  //手机号
+	string PassWord = 2;  //密码
+	string OpenId = 3;  //开放平台id
+	string VerifyCode = 4;  //短信验证码
+	int32 AreaId = 5;  //地区id
+	string Iden = 6;  //身份类型
+}
+
+message RegisterResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+}
+
+//教师登录
+message TeacherLoginReq
+{
+	int32 Type = 1;  //登录类型  1:phone+passwd  2:phone+verifycode  3:openid
+	string Phone = 2;
+	string PassWd = 3;
+	int32 VerifyCode = 4;
+	string OpenId = 5;
+}
+
+message TeacherLoginResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+	int64 TeacherId = 3;
+}
+
+//教师获取个人信息
+message TeaInfoQueryReq   //请求
+{
+	int64 TeacherId = 1;  //教师id
+}
+
+message TeacherInfo
+{
+	string Phone = 1;
+	string Name = 2;
+	string IdNo = 3;  //身份证号
+	string HeadPortrait = 4;  //头像url
+	string School = 5;  //学校
+	int32 CanLeaveMsg = 6;  //是否有权限留言，-1：无， 1：有
+}
+
+message TeaInfoQueryResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+	repeated TeacherInfo TeacherList = 3;
+}
+
+//教师账号密码修改
+message TeaModifyPasswdReq
+{
+	int64 TeacherId = 1;
+	string OldPasswd = 2;
+	string NewPasswd = 3;
+}
+
+message TeaModifyPasswdResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+}
+
+//教师获取课程信息
+message TeacherCourseReq
+{
+	int64 TeacherId = 1;  //教师id
+}
+
+message Lesson
+{
+	int32 LessonId = 1;  //课时索引
+	string Description = 2;  //课时简介
+	int32 LessonScore = 3; //课时得分
+	string Url = 4;  //链接地址
+}
+
+message Course
+{
+	int32 CourseId = 1;  //课程id
+	string CourseName = 2;  //课程名称
+	string Description = 3; //课程简介
+	string Professor = 4;  //授课教授
+	string ProfessorTitle = 5;  //教授头衔
+	int32 LessonNum = 6;  //课时数
+	int32 FinishLesson = 7;  //已完成课时数
+	int32 Score = 8;  //课程得分
+	string Opionion = 9;  //心得
+	int32 WatchNum = 10;  //观看人数
+	repeated Lesson LessonList = 11;  //课程链接
+}
+
+message TeacherCourseResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+	repeated Course CourseList = 3;
+}
+
+//获取弹窗信息
+message CollectInfoQueryReq
+{
+	int64 TeacherId = 1; //教师id
+	int64 CourseId = 2;  //课程id
+	int32 LessonId = 3;  //课时id
+}
+
+message CollectInfo
+{
+	int32 CollectIndex = 1;  //弹窗序号
+	string CollectCnt = 2; //弹窗语句
+	int32 Time = 3;  //弹窗时间
+	int32 Status = 4;  //状态 0:未收藏  1:已收藏
+}
+
+message CollectInfoQueryResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+	repeated CollectInfo CollectList = 3;
+}
+
+//弹窗收藏得分提交
+message DialogCollectReq
+{
+	int64 TeacherId = 1;
+	int32 CourseId = 2;
+	int32 LessonId = 3;  //课时id
+	int32 CollectIndex = 4;  //弹窗序号
+	int32 Score = 5;  //收藏得分
+}
+
+message DialogCollectResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+}
+
+//课程测试问题获取
+message TestCaseQueryReq
+{
+	int64 TeacherId = 1; //教师id
+	int64 CourseId = 2;  //课程id
+	int32 LessonId = 3;  //课时id
+}
+
+message TestCase
+{
+	int32 TestIndex = 1;  //序号
+	string TestProblem = 2; //测试问题
+	int32 Time = 3;  //弹窗时间
+	int32 Status = 4;  //状态 0:未回答  1:已回答
+}
+
+message TestCaseQueryResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+	repeated TestCase TestList = 3;
+}
+
+//课程测试答案提交
+message TestAnswerCommitReq
+{
+	int64 TeacherId = 1;
+	int32 CourseId = 2;
+	int32 LessonId = 3;
+	int32 TestIndex = 4;
+	string Answer = 5;
+}
+
+message TestAnswerCommitResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+}
+
+//用户支付课程费用
+message PayCourseReq
+{
+	int64 TeacherId = 1;
+	int32 CourseId = 2;
+	int32 Money = 3;  //金额
+}
+
+message PayCourseResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+	string OrderNum = 3;  //订单号
+}
+
+//个人信息编辑
+message UserInfoEditReq
+{
+	string Phone = 1;
+	string Name = 2;
+	string IdNo = 3;
+	string School = 4;
+}
+
+message UserInfoEditResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+}
+
+//用户留言消息查询
+message LeaveMsgQueryReq
+{
+	int32 Type = 1;  //1.教师   2.专家
+	int64 UserId = 2;  //教师id或专家id
+}
+
+message LeaveMessage
+{
+	int64 MessageId = 1;
+	int64 Mark = 2;  //标记，回复关系的留言该值一致
+	int64 LeaverId = 3;  //留言者
+	int64 ReceiverId = 4;  //留言接收方
+	int64 ReplyIndex = 5;  //回复留言序号，该留言是对相应序号信息的回复,如果非回复信息，则填0
+	int32 CourseId = 6;  //课程id
+	int32 LessonId = 7;  //课时索引
+	string LeaveMessage = 8;  //留言内容
+}
+
+message LeaveMsgQueryResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+	repeated LeaveMessage MessageList = 3;
+}
+
+//用户留言请求
+message LeaveMsgReq
+{
+	int32 UesrType = 1;  //1.教师   2.专家
+	int64 LeaverId = 2;  //留言人id
+	int64 ReceiverId = 3;  //留言接收者id，首次留言填0
+	int32 MessageType = 4; //1.首次留言 2.留言回复
+	int32 CourseId = 5;  //课程id
+	int32 LessonId = 6;  //课时索引
+	string LeaveMessage = 7;  //留言内容
+}
+
+message LeaveMsgResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+}
+
+//用户留言状态提交
+message LeaveMsgStatusCommitReq
+{
+	int64 MessageId = 1;  //消息id
+}
+
+message LeaveMsgStatusCommitResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+}
+
+//系统信息查询
+message SysMsgQueryReq
+{
+	int32 Type = 1;  //1.教师   2.专家
+	int64 UserId = 2;  //教师id或专家id
+}
+
+message SysMsg
+{
+	int64 MessageId = 1;
+	string MsgContent = 2;
+}
+
+message SysMsgQueryResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+	repeated SysMsg MsgList = 3;
+}
+
+//系统信息状态提交
+message MsgStatusCommitReq
+{
+	int32 Type = 1;  //	1、教师   2、专家
+	int64 UserId = 2;  //教师id或专家id
+	int64 MessageId = 3;  //消息id
+}
+
+message MsgStatusCommitResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+}
+
+//获取视频播放凭证或地址
+message SecurityTokenReq
+{
+	int32 Type = 1;  //1:凭证  2:地址
+	string VideoId = 2;
+}
+
+message SecurityTokenResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+	string CoverURL = 3;   //封面
+	string RetString = 4; // 凭证/地址
+}

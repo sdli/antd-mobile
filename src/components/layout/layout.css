@@ -44,7 +44,7 @@
 
 .loginPage > img{
     width: 100%;
-    z-index: 9000;
+    z-index: 1;
     position: absolute;
     top: 0;
     left: 0;
@@ -53,7 +53,7 @@
 .loginContent{
     position: relative;
     top: 0;
-    z-index: 9999;
+    z-index: 2;
     width: 100%;
     left: 0;
     padding: 0.1rem 6%;

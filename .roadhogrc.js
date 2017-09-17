@@ -38,7 +38,7 @@ export default {
   "svgSpriteLoaderDirs": svgSpriteDirs,
   "proxy": {
     "/api": {
-      "target": "http://localhost:3060/",
+      "target": "http://localhost:3061/",
       "changeOrigin": false,
       "pathRewrite": { "^/api" : "" }
     }

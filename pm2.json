@@ -1,11 +1,19 @@
 [{
-    "name"        : "server",
+    "name"        : "teacher_server",
     "script"      : "server.js",
-    "error_file" : "./src/logs/server.log"
+    "error_file" : "./src/logs/server.log",
+    "env": {
+        "NODE_ENV": "production"
+    },
+    "watch" : true
 },
 {
-    "name"        : "video",
-    "script"      : "video.js",
-    "error_file" : "./src/logs/video.log"
+    "name"        : "teacher_api",
+    "script"      : "./src/api/index.js",
+    "error_file" : "./src/logs/api.log",
+    "env": {
+        "NODE_ENV": "production"
+    },
+    "watch": true
 }
 ]

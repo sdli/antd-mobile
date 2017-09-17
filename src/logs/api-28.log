@@ -1,0 +1,110 @@
+TypeError: Cannot set property 'pngNum' of undefined
+    at /data/node/teacher_m/src/api/lib/appInit.js:13:28
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+    at next (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/route.js:137:13)
+    at Route.dispatch (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+    at /data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:281:22
+    at Function.process_params (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:335:12)
+    at next (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:275:10)
+    at session (/data/node/teacher_m/node_modules/_express-session@1.15.5@express-session/index.js:189:7)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+TypeError: Cannot read property 'openid' of undefined
+    at reqVerify (/data/node/teacher_m/src/api/lib/reqVerify.js:33:39)
+    at /data/node/teacher_m/src/api/index.js:35:24
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+    at next (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/route.js:137:13)
+    at Route.dispatch (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+    at /data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:281:22
+    at Function.process_params (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:335:12)
+    at next (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:275:10)
+    at session (/data/node/teacher_m/node_modules/_express-session@1.15.5@express-session/index.js:189:7)
+TypeError: Cannot read property 'openid' of undefined
+    at reqVerify (/data/node/teacher_m/src/api/lib/reqVerify.js:33:39)
+    at /data/node/teacher_m/src/api/index.js:35:24
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+    at next (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/route.js:137:13)
+    at Route.dispatch (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+    at /data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:281:22
+    at Function.process_params (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:335:12)
+    at next (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:275:10)
+    at session (/data/node/teacher_m/node_modules/_express-session@1.15.5@express-session/index.js:189:7)
+TypeError: Cannot set property 'pngNum' of undefined
+    at /data/node/teacher_m/src/api/lib/appInit.js:13:28
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+    at next (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/route.js:137:13)
+    at Route.dispatch (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+    at /data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:281:22
+    at Function.process_params (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:335:12)
+    at next (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:275:10)
+    at session (/data/node/teacher_m/node_modules/_express-session@1.15.5@express-session/index.js:189:7)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+TypeError: Cannot set property 'pngNum' of undefined
+    at /data/node/teacher_m/src/api/lib/appInit.js:13:28
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+    at next (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/route.js:137:13)
+    at Route.dispatch (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+    at /data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:281:22
+    at Function.process_params (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:335:12)
+    at next (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:275:10)
+    at session (/data/node/teacher_m/node_modules/_express-session@1.15.5@express-session/index.js:189:7)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+TypeError: Cannot set property 'pngNum' of undefined
+    at /data/node/teacher_m/src/api/lib/appInit.js:13:28
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+    at next (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/route.js:137:13)
+    at Route.dispatch (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+    at /data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:281:22
+    at Function.process_params (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:335:12)
+    at next (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:275:10)
+    at session (/data/node/teacher_m/node_modules/_express-session@1.15.5@express-session/index.js:189:7)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+TypeError: Cannot read property 'openid' of undefined
+    at getOpenid (/data/node/teacher_m/src/api/lib/appInit.js:41:26)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+    at next (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/route.js:137:13)
+    at Route.dispatch (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+    at /data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:281:22
+    at Function.process_params (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:335:12)
+    at next (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:275:10)
+    at session (/data/node/teacher_m/node_modules/_express-session@1.15.5@express-session/index.js:189:7)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+TypeError: Cannot set property 'pngNum' of undefined
+    at /data/node/teacher_m/src/api/lib/appInit.js:13:28
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+    at next (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/route.js:137:13)
+    at Route.dispatch (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+    at /data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:281:22
+    at Function.process_params (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:335:12)
+    at next (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:275:10)
+    at session (/data/node/teacher_m/node_modules/_express-session@1.15.5@express-session/index.js:189:7)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+TypeError: Cannot read property 'openid' of undefined
+    at getOpenid (/data/node/teacher_m/src/api/lib/appInit.js:41:26)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+    at next (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/route.js:137:13)
+    at Route.dispatch (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+    at /data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:281:22
+    at Function.process_params (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:335:12)
+    at next (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:275:10)
+    at session (/data/node/teacher_m/node_modules/_express-session@1.15.5@express-session/index.js:189:7)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+TypeError: Cannot read property 'openid' of undefined
+    at getOpenid (/data/node/teacher_m/src/api/lib/appInit.js:41:26)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+    at next (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/route.js:137:13)
+    at Route.dispatch (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
+    at /data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:281:22
+    at Function.process_params (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:335:12)
+    at next (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/index.js:275:10)
+    at session (/data/node/teacher_m/node_modules/_express-session@1.15.5@express-session/index.js:189:7)
+    at Layer.handle [as handle_request] (/data/node/teacher_m/node_modules/_express@4.15.4@express/lib/router/layer.js:95:5)
