@@ -31,7 +31,7 @@ var reqVerify = function(req,res){
             return pass({Phone:body.Phone,Type:body.Type}); // 登录时type为2,注册为1，前端控制
         case ("checkOpenid"):
             console.info(req.session,req.session.openid,"here!!!!");
-            return (typeof req.session !== "undefined" && typeof req.session.openid != "")?passToRes({openid: 1}):passToRes({openid:0});
+            return (typeof req.session !== "undefined" && typeof req.session.openid !== "undefined")?passToRes({openid: 1}):passToRes({openid:0});
         default:
             return pass();
     }
