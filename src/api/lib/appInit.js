@@ -37,7 +37,7 @@ var listen = function(port){
 
 // 微信openid获取,存入session
 var getOpenid = function(req,res){
-    var code = req.body.code;
+    var code = req.query.code;
     if(typeof req.session !== "undefined" && typeof req.session.openid !== "undefined"){
         console.log("有openid");
     }else{
