@@ -18,10 +18,10 @@ var headers ={
 
 //redis配置
 var redis = {
-   "host" : "172.18.0.4",
+   "host" : "172.17.134.132",
    "port" : "6699",
    "db" : 1,
-   "ttl" : 3600,
+   "ttl" : 1800,
    "logErrors" : true
 };
 
