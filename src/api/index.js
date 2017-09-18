@@ -21,11 +21,10 @@ appInit(app,{
     jsonParser: true, // 开启json解析
     sessionOptions:{
         secret: 'sessiontest',
-        resave: false,
-        saveUninitialized: true,
+        resave: true,
+        saveUninitialized: false,
         cookie: {
-            secure: true,
-            maxAge: 60000
+            secure: false
         }
     },
     sessionDevOptions:{
