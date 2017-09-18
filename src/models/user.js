@@ -17,8 +17,11 @@ export default {
   subscriptions: {
     setup({ dispatch, history }) {  // eslint-disable-line
       history.listen(({ pathname }) => {
-        if(pathname !== "/login" && pathname != "/register"){
+        if(pathname !== "/login" && pathname != "/register" && pathname != "/loginSelect"){
           dispatch({type:"checkLogin"});
+        }
+        if(pathname == "/videoplay"){
+          dispatch({type:"checkLoginDeep"});
         }
       });
     },
@@ -44,6 +47,12 @@ export default {
     *checkLogin({},{call,put}){
       var loginStatus = yield call(request,{bodyObj:{reqType:"checkLogin"}});
       console.log(loginStatus,"检测登录状态");
+    },
+    *checkLoginDeep({},{call,put}){
+      var loginStatus = yield call(request,{bodyObj:{reqType:"checkLogin"}});
+      if(!loginStatus.data.data.login){
+          hashHistory.push("/loginSelect");
+      }
     },
     *getVerifyCode({bodyObj},{call,put}){
       var code = yield call(request,{bodyObj});
