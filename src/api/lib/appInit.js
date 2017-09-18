@@ -52,7 +52,7 @@ var appInit = function(app,options){
     (typeof options.jsonParser !== "undefined" && options.cookieParser)?app.use(bodyParser.json()):null;
     (typeof options.jsonParser !== "undefined" && options.cookieParser)?app.use(bodyParser.urlencoded({ extended: false })):null;
     (typeof options.sessionOptions !== "undefined" && options.cookieParser && typeof process.env.NODE_ENV !== "undefined" && process.env.NODE_ENV == "production")?app.use(session(Object.assign(options.sessionOptions,{store: new RedisStore(configs.redis)}))):null;
-    (typeof options.sessionDevOptions !== "undefined" && options.cookieParser)?app.use(session(options.sessionDevOptions)):null;
+    (typeof options.sessionDevOptions !== "undefined" && options.cookieParser && typeof process.env.NODE_ENV !== "production" )?app.use(session(options.sessionDevOptions)):null;
     (typeof options.img !== "undefined" && options.cookieParser)?app.get("/verifycode",imgGenerator(options.img)):null;
     (typeof options.listen !== "undefined")?app.listen(options.listen,listen(options.listen)):null;
     (typeof options.openid !== "undefined")?app.get("/getOpenid",getOpenid):null;
