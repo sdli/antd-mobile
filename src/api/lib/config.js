@@ -7,7 +7,8 @@ var dictionary = {
     TeacherLoginReq: "TeacherLoginResp",
     CollectInfoQueryReq: "CollectInfoQueryResp",
     TestCaseQueryReq: "TestCaseQueryResp",
-    VerifyCodeReq: "VerifyCodeResp"
+    VerifyCodeReq: "VerifyCodeResp",
+    RegisterReq: "RegisterResp"
 };
 
 var headers ={

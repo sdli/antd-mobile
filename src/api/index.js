@@ -26,7 +26,13 @@ appInit(app,{
         cookie: {
             secure: true,
             maxAge: 60000
-        } //不设置过期时间
+        }
+    },
+    sessionDevOptions:{
+        secret: 'sessiontest',
+        resave: true,
+        saveUninitialized: false,
+        cookie: {secure: false} //不设置过期时间
     },
     openid: true // 开启微信openid获取
 });
@@ -37,7 +43,7 @@ app.post('/',function(req,res){
     var verifyResult = reqVerify(req,res);
     console.log(verifyResult);
     if(verifyResult.result == 1){
-        console.log(verifyResult.verifiedBody);
+        console.log(verifyResult.verifiedBody,"verified");
         protoBuffer.singleRequest(
             body.reqType,
             "POST",
@@ -45,6 +51,7 @@ app.post('/',function(req,res){
             function(data){
                 res.setHeader("Content-Type", "application/json");
                 console.log(data);
+                (verifyResult.func != null)?verifyResult.func(req)(data):null;
                 res.json(data);
             }
         );

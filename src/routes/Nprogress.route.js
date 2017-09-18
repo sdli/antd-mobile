@@ -16,16 +16,16 @@ class ProgressPage extends React.Component{
             console.log(nextProps.toast.type,nextProps.toast.msg)
             Toast[nextProps.toast.type](nextProps.toast.msg,1);
             setTimeout(()=>Toast.hide(),1000);
+            this.props.dispatch({type:"toast/clearToast"});
         }
         nextProps.loading.global?Nprogress.start():Nprogress.done();
     }
-
 
     render(){
         const {loading,toast} = this.props;
         return (
             <div>
-                {!loading.global && this.props.children}
+                {this.props.children}
             </div>
         );
     }

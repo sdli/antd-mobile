@@ -8,7 +8,7 @@ import LockSvg from "../../assets/svgs/lock.svg";
 import MesgSvg from "../../assets/svgs/commenting.svg";
 import CodeImg from "../../assets/imgs/code.png";
 import Footer from "../cards/footer.card";
-import {hashHistory} from "react-router";
+import {hashHistory,Link} from "react-router";
 
 const TabPane = Tabs.TabPane;
 
@@ -173,7 +173,6 @@ class LoginLayout extends React.Component{
         var that = this;
         return function(){
             form.validateFields((error,values) => {
-                console.log(values);
                 if(that.verifyType3(values.phone1)){
                     methods.getVerifyCode({Phone:that.trim(values.phone1),reqType: "VerifyCodeReq",Type:"2"});
                 }
@@ -223,25 +222,27 @@ class LoginLayout extends React.Component{
                                             <Icon type={MesgSvg} style={{width:"0.38rem",height:"0.38rem",color:"#4d4d4d"}}/>
                                         </div>
                                     </InputItem>
-                                    <div style={{height:"2rem",padding:"0.32rem 1.8rem 0.32rem 0.16rem",textAlign:"right",position:"relative"}}>
+                                    {false && 
+                                        <div style={{height:"2rem",padding:"0.32rem 1.8rem 0.32rem 0.16rem",textAlign:"right",position:"relative"}}>
                                         <p style={{lineHeight:"1.36rem",width:"100%",float:"left",fontSize:"0.26rem",fontWeight:"lighter"}}>绑定此微信，自动登录</p>
                                         <div style={{position:"absolute",width:"1.6rem",top:"0.8rem",right:"0.16rem"}}>
-                                            <Switch
-                                                    {...getFieldProps('Switch1', {
-                                                        initialValue: true,
-                                                        valuePropName: 'checked',
-                                                    })}
-                                                    onClick={(checked) => { console.log(checked); }}
-                                                    platform="android"
-                                            />
+                                                <Switch
+                                                        {...getFieldProps('Switch1', {
+                                                            initialValue: true,
+                                                            valuePropName: 'checked',
+                                                        })}
+                                                        onClick={(checked) => { console.log(checked); }}
+                                                        platform="android"
+                                                />
+                                            </div>
+                                            <div style={{clear:"both"}}></div>
                                         </div>
-                                        <div style={{clear:"both"}}></div>
-                                    </div>
+                                    }
                                      <div style={{padding:"0.16rem 0.32rem"}}>
                                         <Button className="btn" type="primary" size="small" onClick={this.submitType("password")}>登  录</Button>
                                      </div>
                                 </List>
-                                <p style={{lineHeight:"0.88rem",fontSize:"0.24rem",textAlign:"center",color:"#4d4d4d"}}>如忘记密码，可使用手机验证码登录。</p>
+                                <p style={{lineHeight:"0.88rem",fontSize:"0.24rem",textAlign:"center",color:"#4d4d4d"}}>没有账户？ <Link to="/register" style={{color:"#108ee9"}}> 请先注册。</Link></p>
                             </div>
                         </TabPane>
                         <TabPane tab={<Badge>验证码登录</Badge>} key="2">
@@ -267,25 +268,27 @@ class LoginLayout extends React.Component{
                                             <Icon type={MesgSvg} style={{width:"0.38rem",height:"0.38rem",color:"#4d4d4d"}}/>
                                         </div>
                                     </InputItem>
-                                    <div style={{height:"2rem",padding:"0.32rem 1.8rem 0.32rem 0.16rem",textAlign:"right",position:"relative"}}>
-                                        <p style={{lineHeight:"1.36rem",width:"100%",float:"left",fontSize:"0.26rem",fontWeight:"lighter"}}>绑定此微信，自动登录</p>
-                                        <div style={{position:"absolute",width:"1.6rem",top:"0.8rem",right:"0.16rem"}}>
-                                            <Switch
-                                                    {...getFieldProps('Switch1', {
-                                                        initialValue: true,
-                                                        valuePropName: 'checked',
-                                                    })}
-                                                    onClick={(checked) => { console.log(checked); }}
-                                                    platform="android"
-                                            />
+                                    {false && 
+                                        <div style={{height:"2rem",padding:"0.32rem 1.8rem 0.32rem 0.16rem",textAlign:"right",position:"relative"}}>
+                                            <p style={{lineHeight:"1.36rem",width:"100%",float:"left",fontSize:"0.26rem",fontWeight:"lighter"}}>绑定此微信，自动登录</p>
+                                            <div style={{position:"absolute",width:"1.6rem",top:"0.8rem",right:"0.16rem"}}>
+                                                <Switch
+                                                        {...getFieldProps('Switch1', {
+                                                            initialValue: true,
+                                                            valuePropName: 'checked',
+                                                        })}
+                                                        onClick={(checked) => { console.log(checked); }}
+                                                        platform="android"
+                                                />
+                                            </div>
+                                            <div style={{clear:"both"}}></div>
                                         </div>
-                                        <div style={{clear:"both"}}></div>
-                                    </div>
+                                    }
                                      <div style={{padding:"0.16rem 0.32rem"}}>
                                         <Button className="btn" type="primary" size="small" onClick={this.submitType("code")}>登  录</Button>
                                      </div>
                                 </List>
-                                <p style={{lineHeight:"0.88rem",fontSize:"0.24rem",textAlign:"center",color:"#4d4d4d"}}>如忘记密码，可使用手机验证码登录。</p>
+                                <p style={{lineHeight:"0.88rem",fontSize:"0.24rem",textAlign:"center",color:"#4d4d4d"}}>没有账户？ <Link to="/register" style={{color:"#108ee9"}}> 请先注册。</Link></p>
                             </div>
                         </TabPane>
                         </Tabs>

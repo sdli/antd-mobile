@@ -12,6 +12,8 @@ import Progress from "nprogress";
 import LoginPage from "./routes/Login.route";
 import UserStatics from "./routes/lessionStatics.route";
 import UserInfoPage from "./routes/UserInfoPage.route";
+import RegisterPage from "./routes/RegisterPage.route";
+import LoginSelectPage from "./routes/LoginSelect.route";
 
 function RouterConfig({ history }) {
   return (
@@ -29,6 +31,8 @@ function RouterConfig({ history }) {
         <Route path="/commentDetails" component={CommentDetailsPage} />
         <Route path="/xinde" component={XindePage} />
         <Route path="/login" component={LoginPage} />
+        <Route path="/register" component={RegisterPage} />
+        <Route path="/loginSelect" component={LoginSelectPage} />
       </Route>
     </Router>
   );

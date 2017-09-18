@@ -6,7 +6,7 @@ var captchapng = require('captchapng');
 var serverConfigs = require("../../utils/configs");
 var RedisStore = require("connect-redis")(session);
 
-//获取png图片方法
+// 获取png图片方法
 var imgGenerator = function(num){
     return function(req,res){
         var pngNum = parseInt(Math.random()*9*Math.pow(10,num-1)+Math.pow(10,num-1));
@@ -51,7 +51,8 @@ var appInit = function(app,options){
     (typeof options.cookieParser !== "undefined" && options.cookieParser)?app.use(cookieParser()):null;
     (typeof options.jsonParser !== "undefined" && options.cookieParser)?app.use(bodyParser.json()):null;
     (typeof options.jsonParser !== "undefined" && options.cookieParser)?app.use(bodyParser.urlencoded({ extended: false })):null;
-    (typeof options.sessionOptions !== "undefined" && options.cookieParser)?app.use(session(Object.assign(options.sessionOptions,{store: new RedisStore(configs.redis)}))):null;
+    (typeof options.sessionOptions !== "undefined" && options.cookieParser && typeof process.env.NODE_ENV !== "undefined" && process.env.NODE_ENV == "production")?app.use(session(Object.assign(options.sessionOptions,{store: new RedisStore(configs.redis)}))):null;
+    (typeof options.sessionDevOptions !== "undefined" && options.cookieParser)?app.use(session(options.sessionDevOptions)):null;
     (typeof options.img !== "undefined" && options.cookieParser)?app.get("/verifycode",imgGenerator(options.img)):null;
     (typeof options.listen !== "undefined")?app.listen(options.listen,listen(options.listen)):null;
     (typeof options.openid !== "undefined")?app.get("/getOpenid",getOpenid):null;
