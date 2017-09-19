@@ -110,7 +110,8 @@ message Lesson
 	int32 LessonId = 1;  //课时索引
 	string Description = 2;  //课时简介
 	int32 LessonScore = 3; //课时得分
-	string Url = 4;  //链接地址
+	string VideoId = 4;  //视频id
+	int32 VideoLength = 5;  //视频长度,秒
 }
 
 message Course
@@ -125,7 +126,7 @@ message Course
 	int32 Score = 8;  //课程得分
 	string Opionion = 9;  //心得
 	int32 WatchNum = 10;  //观看人数
-	repeated Lesson LessonList = 11;  //课程链接
+	repeated Lesson LessonList = 11;  //课时列表
 }
 
 message TeacherCourseResp

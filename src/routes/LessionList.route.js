@@ -9,14 +9,14 @@ class lessonList extends Component{
     }
 
     render(){
-        const data = getQuery(this.props,"name");
-        console.log(data);
+        const data = getQuery(this.props,"CourseId");
+        const {user} = this.props;
         return (
             <div>
-                <LessonList />
+                <LessonList courseList={user.courses} CourseId={data} />
             </div>
         );
     }
 }
 
-export default connect()(lessonList);
+export default connect(({user})=>({user}))(lessonList);

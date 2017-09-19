@@ -11,7 +11,9 @@ export default {
   namespace: 'user',
 
   state: {
-    loginToken: ""
+    loginToken: "",
+    courses: {},
+    courseDetails: {}
   },
 
   subscriptions: {
@@ -22,6 +24,12 @@ export default {
         }
         if(pathname == "/videoplay"){
           dispatch({type:"checkLoginDeep"});
+        }
+        if(pathname == "/"){
+          dispatch({type:"getCourseMain"});
+        }
+        if(pathname == "/lessionList"){
+          dispatch({type:"checkCourseMain"});
         }
       });
     },
@@ -54,10 +62,26 @@ export default {
           hashHistory.push("/loginSelect");
       }
     },
+    *getCourseMain({},{call,put,select}){
+      var courses = yield call(request,{bodyObj:{reqType:"CourseQueryReq"}});
+      console.log(courses);
+      yield put({type:"setCourses",courses:courses.data});
+    },
+    *checkCourseMain({},{call,put,select}){
+      var courseList = yield select(({user})=>user.courses);
+      if(JSON.stringify(courseList) == "{}"){
+        var courses = yield call(request,{bodyObj:{reqType:"CourseQueryReq"}});
+        yield put({type:"setCourses",courses:courses.data});
+      }
+    },
     *getVerifyCode({bodyObj},{call,put}){
       var code = yield call(request,{bodyObj});
       console.log(code);
       yield toastInit(put,code,{msg:"发送成功！",type:"info"},{msg:"发送失败，号码未注册。",type:"fail"});
+    },
+    *lessonDetails({bodyObj},{call,pu}){
+      var lessonDetails = yield call(reques,{bodyObj});
+      console.log(lessonDetails);
     },
     *checkOpenid({},{call,put}){
       var checkOpenid = yield call(request,{bodyObj:{reqType:"checkOpenid"}});
@@ -72,9 +96,12 @@ export default {
   },
 
   reducers: {
-    save(state, action) {
-      return { ...state, ...action.payload };
+    setCourses(state, action) {
+      return { ...state, courses:action.courses };
     },
+    setCoursesDetails(state,action){
+      return {...state,courseDetails:action.courseDetails}
+    }
   },
 
 };

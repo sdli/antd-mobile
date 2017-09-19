@@ -10,92 +10,25 @@ class listUl extends React.Component{
     }
 
     render(){
+        const {LessionList,CourseId} = this.props;
         return(
                   <ul className={styles.lessionUl}>
-                        <li>
-                            <Link to={{pathname:"/videoplay"}} className="linkInit">
-                                <Icon type={VideoSvg}/>
-                                <div className={styles.lessionUlTitle}>
-                                    <p>家庭教育的10个注意事项，专题1</p>
-                                    <p>时长：32分钟</p>
-                                </div>
-                                <div className={styles.lessionUlFunc}>
-                                        <p style={{lineHeight:"1rem",textAlign:"center",width:"100%",display:"block"}}>75<span className={styles.lessionUlSpan}>分</span></p>
-                                </div>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={{pathname:"/videoplay"}} className="linkInit">
-                                <Icon type={VideoSvg}/>
-                                <div className={styles.lessionUlTitle}>
-                                    <p>家庭教育的10个注意事项，专题1</p>
-                                    <p>时长：32分钟</p>
-                                </div>
-                                <div className={styles.lessionUlFunc}>
-                                        <p style={{lineHeight:"1rem",textAlign:"center",width:"100%",display:"block"}}>75<span className={styles.lessionUlSpan}>分</span></p>
-                                </div>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={{pathname:"/videoplay"}} className="linkInit">
-                                <Icon type={VideoSvg}/>
-                                <div className={styles.lessionUlTitle}>
-                                    <p>家庭教育的10个注意事项，专题1</p>
-                                    <p>时长：32分钟</p>
-                                </div>
-                                <div className={styles.lessionUlFunc}>
-                                        <p style={{lineHeight:"1rem",textAlign:"center",width:"100%",display:"block"}}>75<span className={styles.lessionUlSpan}>分</span></p>
-                                </div>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={{pathname:"/videoplay"}} className="linkInit">
-                                <Icon type={VideoSvg}/>
-                                <div className={styles.lessionUlTitle}>
-                                    <p>家庭教育的10个注意事项，专题1</p>
-                                    <p>时长：32分钟</p>
-                                </div>
-                                <div className={styles.lessionUlFunc}>
-                                        <p style={{lineHeight:"1rem",textAlign:"center",width:"100%",display:"block"}}>75<span className={styles.lessionUlSpan}>分</span></p>
-                                </div>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={{pathname:"/videoplay"}} className="linkInit">
-                                <Icon type={VideoSvg}/>
-                                <div className={styles.lessionUlTitle}>
-                                    <p>家庭教育的10个注意事项，专题1</p>
-                                    <p>时长：32分钟</p>
-                                </div>
-                                <div className={styles.lessionUlFunc}>
-                                        <p style={{lineHeight:"1rem",textAlign:"center",width:"100%",display:"block"}}>75<span className={styles.lessionUlSpan}>分</span></p>
-                                </div>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={{pathname:"/videoplay"}} className="linkInit">
-                                <Icon type={VideoSvg}/>
-                                <div className={styles.lessionUlTitle}>
-                                    <p>家庭教育的10个注意事项，专题1</p>
-                                    <p>时长：32分钟</p>
-                                </div>
-                                <div className={styles.lessionUlFunc}>
-                                        <p style={{lineHeight:"1rem",textAlign:"center",width:"100%",display:"block"}}>75<span className={styles.lessionUlSpan}>分</span></p>
-                                </div>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={{pathname:"/videoplay"}} className="linkInit">
-                                <Icon type={VideoSvg}/>
-                                <div className={styles.lessionUlTitle}>
-                                    <p>家庭教育的10个注意事项，专题1</p>
-                                    <p>时长：32分钟</p>
-                                </div>
-                                <div className={styles.lessionUlFunc}>
-                                        <p style={{lineHeight:"1rem",textAlign:"center",width:"100%",display:"block"}}>75<span className={styles.lessionUlSpan}>分</span></p>
-                                </div>
-                            </Link>
-                        </li>
+                        {LessionList !== "undefined" && LessionList.map((val)=>{
+                            return (
+                                <li>
+                                    <Link to={{pathname:"/videoplay?CourseId="+CourseId+"&LessonId="+val.LessonId}} className="linkInit">
+                                        <Icon type={VideoSvg}/>
+                                        <div className={styles.lessionUlTitle}>
+                                            <p>{val.Description}</p>
+                                            <p>时长：32分钟</p>
+                                        </div>
+                                        <div className={styles.lessionUlFunc}>
+                                                <p style={{lineHeight:"1rem",textAlign:"center",width:"100%",display:"block"}}>{val.LessonScore}<span className={styles.lessionUlSpan}>分</span></p>
+                                        </div>
+                                    </Link>
+                                </li>
+                            );
+                        })}
                     </ul>
         );
     }

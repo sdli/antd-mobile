@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'dva';
-import IndexContent from "../components/index.content.web";
 import Cards from "../components/cards/index.card";
 import TabView from "../components/layout/tabView.layout.web";
 
-function IndexPage() {
+function IndexPage({user}) {
   return (
     <div>
-      <TabView index="1" />
+      <TabView index="1" courses={user.courses} />
     </div>
   );
 }
@@ -15,4 +14,4 @@ function IndexPage() {
 IndexPage.propTypes = {
 };
 
-export default connect()(IndexPage);
+export default connect(({user})=>({user}))(IndexPage);

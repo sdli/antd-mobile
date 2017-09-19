@@ -55,7 +55,6 @@ class LoginLayout extends React.Component{
                         });
                         return true;
                     }
-                    break;
                 case 1:
                     var password = val;
                     if(password && typeof password != null){

@@ -44,13 +44,21 @@ app.post('/',function(req,res){
     if(verifyResult.result == 1){
         console.log(verifyResult.verifiedBody,"verified");
         protoBuffer.singleRequest(
-            body.reqType,
+            verifyResult.reqType,
             "POST",
             verifyResult.verifiedBody,
             function(data){
                 res.setHeader("Content-Type", "application/json");
                 console.log(data);
                 (verifyResult.func != null)?verifyResult.func(req)(data):null;
+                res.json(data);
+            }
+        );
+    }else if(verifyResult.result == 2){
+        console.log(verifyResult.verifiedBodies);
+        protoBuffer.multiRequests(
+            verifyResult.verifiedBodies,
+            function(data){
                 res.json(data);
             }
         );

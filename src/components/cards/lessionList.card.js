@@ -13,22 +13,39 @@ class LessionList extends Component{
         this.state={};
     }
 
+    getCourseData(courses,CourseId){
+        if(typeof courses === "undefined" || JSON.stringify(courses) == "{}") return [];
+        var coursesList = (courses.hasOwnProperty("CourseList"))?courses.CourseList:courses.CourseQueryReq.CourseList;
+        return coursesList.find((val)=>val.CourseId == CourseId);
+    }
+
+    getUserCourse(courses,CourseId){
+        if(typeof courses === "undefined" || JSON.stringify(courses) == "{}" || !courses.hasOwnProperty("TeacherCourseReq")) return [];
+        return courses.TeacherCourseReq.CourseList.find((val)=>parseInt(val.CourseId) == CourseId);
+    }
+
     render(){
+        const {courseList,CourseId} = this.props;
+        if(JSON.stringify(courseList) == "{}" || typeof courseList === "undefined") return null;
+        console.log(courseList);
+        var CourseData =  this.getCourseData(courseList,CourseId);
+        var UserData = this.getUserCourse(courseList,CourseId);
+        console.log(CourseData,UserData);
         return(
             <div>
                 <div className={styles.lessionImg}>
                     <img src={Img} />
                     <div className={styles.bottomMask}>
                         <div>
-                            <p>陆士桢<span>教授，硕士生导师</span></p>
-                            <p>授课：家风师德教育</p>
-                            <p>课时：8课时</p>
+                            <p>{CourseData.Professor}<span>{CourseData.ProfessorTitle}</span></p>
+                            <p>授课：{CourseData.CourseName}</p>
+                            <p>课时：{CourseData.LessonList.length}课时</p>
                         </div> 
                     </div>
                 </div>
                 <div className={styles.lessionDesc}>
                     <p>课程简介：</p>
-                    <p>陆士桢，女，汉族，中共党员，出生于1947年8月，教授，硕士生导师，国务院特殊贡献专家津贴，在青少年研究和社会工作领域享有一定学术声誉。曾任中国青年政治学院党委书记。</p>
+                    <p>{CourseData.Description}</p>
                 </div>
                 <div className="divider"></div>
                 <div>
@@ -36,14 +53,17 @@ class LessionList extends Component{
                         我的进度
                     </p>
                     <div className={styles.lessionProgress}>
-                        <p>学习课程：2/8</p>
+                        <p>学习课程：{(typeof UserData !== "undefined" && UserData.length!=0)?UserData.FinishLesson:"0"}/{CourseData.LessonList.length}</p>
                         <div>
                             <Progress percent={34} position="normal" unfilled="show" />
                         </div>
-                        <div className={styles.commentLink}>
-                            <p style={{padding:"0 20%"}}><Button size="small" type="ghost" icon={PencilSVG} inline onClick={()=>hashHistory.push("/xinde")}>写心得</Button></p>
-                            <p>提交您的学习心得</p>
-                        </div>
+                        {
+                            (UserData && UserData.FinishLesson == CourseData.LessonList.length) &&
+                            <div className={styles.commentLink}>
+                                    <p style={{padding:"0 20%"}}><Button size="small" type="ghost" icon={PencilSVG} inline onClick={()=>hashHistory.push("/xinde?CourseId="+CourseId)}>写心得</Button></p>
+                                <p>提交您的学习心得</p>
+                            </div>
+                        }
                     </div>
                 </div>
                 <div className="divider"></div>
@@ -51,7 +71,7 @@ class LessionList extends Component{
                     <p className="p_title">
                         课程列表
                     </p>
-                    <LessionUl />
+                    <LessionUl LessionList={(typeof UserData !== "undefined" && UserData.length!=0)?UserData.LessonList:CourseData.LessonList} CourseId={CourseId} />
                 </div>
                 <div className="divider"></div>
             </div>

@@ -19,7 +19,7 @@ class TabBarExample extends React.Component {
     super(props);
     this.state = {
       selectedTab: this.props.index,
-      hidden: false,
+      hidden: false
     };
   }
 
@@ -42,6 +42,7 @@ class TabBarExample extends React.Component {
   }
 
   render() {
+    const {courses} = this.props;
     return (
       <TabBar
         unselectedTintColor="#949494"
@@ -55,7 +56,6 @@ class TabBarExample extends React.Component {
           icon={<Icon type={MainPageSVG} />}
           selectedIcon={<Icon type={MainPageSVG} />}
           selected={this.state.selectedTab == 1 }
-          badge={1}
           onPress={() => {
             hashHistory.push("/");
           }}
@@ -65,7 +65,7 @@ class TabBarExample extends React.Component {
               <Carou />
               <HeadStat />
               <div className="divider"></div>
-              <LessionList />
+              <LessionList courses={courses} />
               <Footer style={{backgroundColor:"#f6f6f6",marginBottom:"2rem"}} />
             </div>
           }
@@ -75,7 +75,6 @@ class TabBarExample extends React.Component {
           selectedIcon={<Icon type={ReadingSVG} />}
           title="消息"
           key="reading"
-          badge={'new'}
           selected={this.state.selectedTab == 2}
           onPress={() => {
             hashHistory.push("/message");

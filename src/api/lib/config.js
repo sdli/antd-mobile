@@ -8,7 +8,9 @@ var dictionary = {
     CollectInfoQueryReq: "CollectInfoQueryResp",
     TestCaseQueryReq: "TestCaseQueryResp",
     VerifyCodeReq: "VerifyCodeResp",
-    RegisterReq: "RegisterResp"
+    RegisterReq: "RegisterResp",
+    CourseQueryReq: "CourseQueryResp",
+    TeacherCourseReq: "TeacherCourseResp"
 };
 
 var headers ={
