@@ -43,17 +43,25 @@ app.post('/',function(req,res){
     console.log(verifyResult);
     if(verifyResult.result == 1){
         console.log(verifyResult.verifiedBody,"verified");
-        protoBuffer.singleRequest(
-            verifyResult.reqType,
-            "POST",
-            verifyResult.verifiedBody,
-            function(data){
-                res.setHeader("Content-Type", "application/json");
-                console.log(data);
-                (verifyResult.func != null)?verifyResult.func(req)(data):null;
-                res.json(data);
-            }
-        );
+        if(typeof verifyResult.reqType !== "undefined"){
+            protoBuffer.singleRequest(
+                verifyResult.reqType,
+                "POST",
+                verifyResult.verifiedBody,
+                function(data){
+                    res.setHeader("Content-Type", "application/json");
+                    console.log(data);
+                    (verifyResult.func != null)?verifyResult.func(req)(data):null;
+                    res.json(data);
+                }
+            );
+        }else{
+            res.json({
+                Result: -1,
+                ErrMsg: "请求出错",
+                data: {}
+            });
+        }
     }else if(verifyResult.result == 2){
         console.log(verifyResult.verifiedBodies);
         protoBuffer.multiRequests(
@@ -70,4 +78,9 @@ app.post('/',function(req,res){
             data: (typeof verifyResult.verifiedBody !== "undefined")?verifyResult.verifiedBody:""
         });
     }
+});
+
+
+process.on('unhandledRejection', (reason, p) => {
+    console.log("Unhandled Rejection at: Promise ", p, " reason: ", reason);
 });

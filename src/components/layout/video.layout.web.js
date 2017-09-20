@@ -130,12 +130,34 @@ class Videoplayer extends React.Component{
         super(props);
     }
 
+    componentDidMount(){
+        const {dispatch,CourseId,LessonId,VideoId,lessonDetails} = this.props;
+        dispatch({
+            type:"user/lessonDetails",
+            bodyObj:{
+                    CourseId: CourseId,
+                    LessonId: LessonId,
+                    VideoId: VideoId,
+                    videoType: 1,
+                    reqType: "CollectInfoQueryReq"
+                }
+            }
+        );
+    }
+
     render(){
+        const {lessonDetails, CourseId, LessonId ,VideoId} = this.props;
+        console.log(lessonDetails, CourseId, LessonId);
         return(
             <div>
-                <CommonPlayer />
-                <div className="divider" />
-                <TabExample />
+                {
+                    (JSON.stringify(lessonDetails) != "{}") &&
+                    <div>
+                        <CommonPlayer CoverURL={lessonDetails.SecurityTokenReq.CoverURL} RetString={lessonDetails.SecurityTokenReq.RetString} VideoId={VideoId} />
+                        <div className="divider" />
+                        <TabExample />
+                    </div>
+                }
             </div>
         );
     }

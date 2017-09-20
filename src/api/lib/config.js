@@ -10,7 +10,8 @@ var dictionary = {
     VerifyCodeReq: "VerifyCodeResp",
     RegisterReq: "RegisterResp",
     CourseQueryReq: "CourseQueryResp",
-    TeacherCourseReq: "TeacherCourseResp"
+    TeacherCourseReq: "TeacherCourseResp",
+    SecurityTokenReq: "SecurityTokenResp"
 };
 
 var headers ={

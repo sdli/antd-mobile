@@ -13,10 +13,10 @@ class listUl extends React.Component{
         const {LessionList,CourseId} = this.props;
         return(
                   <ul className={styles.lessionUl}>
-                        {LessionList !== "undefined" && LessionList.map((val)=>{
+                        {LessionList !== "undefined" && LessionList.map((val,index)=>{
                             return (
-                                <li>
-                                    <Link to={{pathname:"/videoplay?CourseId="+CourseId+"&LessonId="+val.LessonId}} className="linkInit">
+                                <li key={index}>
+                                    <Link to={{pathname:"/videoplay",query:{CourseId:CourseId,LessonId:val.LessonId,VideoId:val.VideoId}}} className="linkInit">
                                         <Icon type={VideoSvg}/>
                                         <div className={styles.lessionUlTitle}>
                                             <p>{val.Description}</p>

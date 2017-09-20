@@ -13,11 +13,13 @@ export default {
   state: {
     loginToken: "",
     courses: {},
-    courseDetails: {}
+    lessonDetails: {},
+    login: false
   },
 
   subscriptions: {
-    setup({ dispatch, history }) {  // eslint-disable-line
+    setup({ dispatch, history ,query}) {  // eslint-disable-line
+      console.log(arguments,query);
       history.listen(({ pathname }) => {
         if(pathname !== "/login" && pathname != "/register" && pathname != "/loginSelect"){
           dispatch({type:"checkLogin"});
@@ -54,7 +56,9 @@ export default {
     },
     *checkLogin({},{call,put}){
       var loginStatus = yield call(request,{bodyObj:{reqType:"checkLogin"}});
-      console.log(loginStatus,"检测登录状态");
+      if(loginStatus.data.data.login){
+         yield put({type:"loginOK"});
+      }
     },
     *checkLoginDeep({},{call,put}){
       var loginStatus = yield call(request,{bodyObj:{reqType:"checkLogin"}});
@@ -79,9 +83,10 @@ export default {
       console.log(code);
       yield toastInit(put,code,{msg:"发送成功！",type:"info"},{msg:"发送失败，号码未注册。",type:"fail"});
     },
-    *lessonDetails({bodyObj},{call,pu}){
-      var lessonDetails = yield call(reques,{bodyObj});
-      console.log(lessonDetails);
+    *lessonDetails({bodyObj},{call,put}){
+      var lessonDetails = yield call(request,{bodyObj:bodyObj});
+      console.log("lesson request!!!");
+      yield put({type:"setLessonDetails",lessonDetails:lessonDetails.data})
     },
     *checkOpenid({},{call,put}){
       var checkOpenid = yield call(request,{bodyObj:{reqType:"checkOpenid"}});
@@ -99,8 +104,11 @@ export default {
     setCourses(state, action) {
       return { ...state, courses:action.courses };
     },
-    setCoursesDetails(state,action){
-      return {...state,courseDetails:action.courseDetails}
+    setLessonDetails(state,action){
+      return {...state,lessonDetails:action.lessonDetails}
+    },
+    loginOK(state,action){
+      return {...state,login: true};
     }
   },
 

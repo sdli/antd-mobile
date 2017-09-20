@@ -118,6 +118,39 @@ var reqVerify = function(req,res){
             }else{
                 return pass({},body.reqType); 
             }
+        case ("CollectInfoQueryReq"):
+            if(typeof req.session.phone !== "undefined" && req.session.phone.length == 11 && req.session.teacherid != ""){
+                return passMulti(
+                    [
+                        {
+                            reqProtoMessageName: "CollectInfoQueryReq",
+                            method:"POST",
+                            data:{
+                                TeacherId: req.session.teacherid,
+                                CourseId: req.body.CourseId,
+                                LessonId : req.body.LessonId
+                            }
+                        },
+                        {
+                            reqProtoMessageName: "TestCaseQueryReq",
+                            method:"POST",
+                            data:{
+                                TeacherId: req.session.teacherid,
+                                CourseId: req.body.CourseId,
+                                LessonId : req.body.LessonId 
+                            }
+                        },
+                        {
+                            reqProtoMessageName: "SecurityTokenReq",
+                            method:"POST",
+                            data:{
+                                Type: req.body.videoType,
+                                VideoId: req.body.VideoId
+                            }  
+                        }
+                    ]
+                );
+            }
         default:
             return pass();
     }

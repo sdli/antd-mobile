@@ -23,29 +23,30 @@ class CommonVedio extends Component{
 
 
     componentDidMount(){
-        this.getWindowWidth();
-        let video = this.video;
-        const that = this;
-        video.addEventListener("play",function(){
-            var catchViedo = setInterval(function(){
-                if(video.paused){
-                    clearInterval(catchViedo);
-                }else{
-                    if(parseInt(video.currentTime) == 10 && !video.paused){
-                        video.pause();
-                        if(confirm("专家收藏：请收藏专家的总结！")){
-                            video.play();
-                        }else{
-                            video.play();
-                        }
-                    }
-                }
-            },1000);
+        var {CoverURL,RetString,VideoId} = this.props;
+        console.log(CoverURL,RetString,VideoId);
+        var player = new prismplayer({
+            id: 'J_prismPlayer',
+            width: '100%',
+            autoplay: true,
+            vid : VideoId,
+            playauth : RetString,
+            cover: CoverURL
+        });
+
+        console.log({
+            id: 'J_prismPlayer',
+            width: '100%',
+            autoplay: true,
+            vid : VideoId,
+            playauth : RetString,
+            cover: CoverURL
         });
     }
 
     render(){
         console.log(isMobile);
+        const {SecurityTokenReq}  = this.props;
         const favorites = [
             {time:10,content:"visa视频广告，点击收藏。",score:5},
             {time:20,content:"让亲情不被打断，点击收藏。",score:10},
@@ -53,15 +54,9 @@ class CommonVedio extends Component{
         return (
             <div>
                 <div className={styles.videoSection} style={{width:this.state.w}}>
-                    <video 
-                        ref={(video)=>{this.video=video;}} 
-                        controls 
-                        playsInline 
-                        style={{width:this.state.w}}
-                        poster = {Img}
-                        src="http://116.77.75.16/vlive.qqvideo.tc.qq.com/AABSbFWEjPDdRP8No8YgVfOjkH5bkzaM54MjRbjRxCds/h002479qfd7.p212.1.mp4?sdtfrom=v1010&guid=00b8567265e9843e817cadb58599b100&vkey=9D3D228331BFCB6D500272BC3093367E3E238F7DF90A2226AA22C2F82215EE9CDD1F437F7A5CC028416CADB2AEF0A78D047F98F4171655FD35BDF48ADB4C7DCBA9F2E90BCFB08BCD98AB4FE3230E18138D77DEF72BE52F022290F5F7CE5E2587C02088232BE87EB4EE19269DCC96CFD8EE39C02FE7FB7392&platform=2"/>
+                <div  className="prism-player" id="J_prismPlayer"></div>
                     {
-                        !this.state.s 
+                        this.state.s 
                         &&
                         <div className={styles.videoMask}>
                             <div></div>

@@ -8,30 +8,23 @@ class VideoPage extends Component{
         super(props);
     }
 
-    componentDidMount(){
-        const {dispatch} = this.props;
+    render(){
+        const {user,dispatch} = this.props;
         const CourseId = getQuery(this.props,"CourseId");
         const LessonId = getQuery(this.props,"LessonId");
-        dispatch({
-            type:"user/lessonDetails",
-            bodyObj:{
-                    CourseId: CourseId,
-                    LessonId: LessonId,
-                    reqType: "CollectInfoQueryReq"
-                }
-            }
-        );
-    }
-
-    render(){
-
-        const {user} = this.props;
-        return(
+        const VideoId = getQuery(this.props,"VideoId");
+        const ifData = (JSON.stringify(user.lessonDetails) != "{}");
+        return (
             <div>
-                <VideoPlayer Courses={user.courses} LessonId={LessonId} CourseId={CourseId} />
+                <div>
+                    {
+                        user.login &&
+                        <VideoPlayer dispatch={dispatch} lessonDetails={user.lessonDetails} LessonId={LessonId} CourseId={CourseId} VideoId={VideoId} />
+                    }  
+                </div>
             </div>
         );
     }
 }
 
-export default connect(({user})=>{user})(VideoPage);
+export default connect(({user})=>({user}))(VideoPage);
