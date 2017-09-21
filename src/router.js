@@ -14,6 +14,8 @@ import UserStatics from "./routes/lessionStatics.route";
 import UserInfoPage from "./routes/UserInfoPage.route";
 import RegisterPage from "./routes/RegisterPage.route";
 import LoginSelectPage from "./routes/LoginSelect.route";
+import GetOpenidPage from "./routes/GetOpenid.route";
+import PayPage from "./routes/PayPage.route";
 
 function RouterConfig({ history }) {
   return (
@@ -33,6 +35,8 @@ function RouterConfig({ history }) {
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
         <Route path="/loginSelect" component={LoginSelectPage} />
+        <Route path="/getOpenid" component={GetOpenidPage} />
+        <Route path="/pay" component={PayPage} />
       </Route>
     </Router>
   );

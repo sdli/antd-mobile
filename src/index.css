@@ -49,3 +49,8 @@
 :global(textarea){
     font-size: 0.26rem !important;
 }
+:global(.prism-time-display){
+    line-height: 0.7rem !important;
+    height: 0.7rem !important;
+    padding-left: 0.16rem;
+}

@@ -24,17 +24,26 @@ class CommonVedio extends Component{
 
     componentDidMount(){
         var {CoverURL,RetString,VideoId,CollectList} = this.props;
-        var playButton = document.getElementById("playButton");
-        var that = this;
+        var that = this, pause = false;
         console.log(CoverURL,RetString,VideoId);
         var player = new prismplayer({
-            id: 'J_prismPlayer',
-            width: '100%',
+            id: "J_prismPlayer",
             autoplay: false,
+            playsinline:true,
+            width:"100%",
+            height:"100%",
+            controlBarVisibility:"clicked",
+            useH5Prism:true,
+            useFlashPrism:false,
             vid : VideoId,
             playauth : RetString,
             cover: CoverURL,
-            controlBarVisibility:"click"
+            skinLayout:[{"name":"bigPlayButton","align":"blabs","x":30,"y":80},
+            {"name":"H5Loading","align":"cc"},
+            {"name":"controlBar","align":"blabs","x":0,"y":0,"children":[{"name":"progress","align":"tlabs","x":0,"y":0},
+            {"name":"timeDisplay","align":"tl","x":10,"y":24}
+        ]}]  
+            
         });
         var catchViedo;
         window.catchViedo = catchViedo;
@@ -42,6 +51,7 @@ class CommonVedio extends Component{
         clearTimeout(catchViedo);
 
         player.on("play",function(){
+            pause= false;
             timeCheck(player,CollectList);
         });
 
@@ -49,23 +59,34 @@ class CommonVedio extends Component{
             timeCheck(player,CollectList);
         });
         player.on("pause",function(){
+            pause = true;
             clearTimeout(window.catchViedo);
         });
 
-        playButton.addEventListener("click",function(){
+        this.playButton.addEventListener("click",function(){
             that.setState({s:true});
             player.play();
+        });
+
+        this.video.addEventListener("click",function(){
+            if(!pause){
+                player.pause();
+            }else{
+                player.play();
+            } 
         });
 
         function timeCheck(player,Collects){
             var timeDeleted = 0;
             var currentTime = player.getCurrentTime();
             var text = "";
+            var count = 1;
             for(var i = 0;i<Collects.length;i++){
                 console.log(Collects[i].Time,currentTime);
                 if(currentTime < Collects[i].Time){
                     timeDeleted = Collects[i].Time-currentTime;
                     text = Collects[i].CollectCnt;
+                    count = i;
                     break;
                 }
             }
@@ -88,6 +109,7 @@ class CommonVedio extends Component{
                         },timeDeleted*1000
                     );
                 }
+                console.log("设置为第"+(count+1)+"弹窗"+"，弹窗时间："+timeDeleted+"秒以后，弹窗内容："+text);
         }
     }
 
@@ -101,7 +123,7 @@ class CommonVedio extends Component{
         return (
             <div>
                 <div className={styles.videoSection}>
-                <div  className="prism-player" id="J_prismPlayer"></div>
+                <div  className="prism-player" id="J_prismPlayer" ref={(video)=>{this.video = video;}}></div>
                     {
                         !this.state.s 
                         &&
@@ -109,7 +131,7 @@ class CommonVedio extends Component{
                             <div></div>
                             <div className={styles.videoPlay}>
                                 <h3>家庭教育的核心是什么？</h3>
-                                <p><span id="playButton"><Icon type={PlaySvg} style={{height: "0.28rem",width:"0.28rem"}}/> 播放</span></p>
+                                <p><span ref={(playButton)=>{this.playButton = playButton;}}><Icon type={PlaySvg} style={{height: "0.28rem",width:"0.28rem"}}/> 播放</span></p>
                             </div>
                             <div className={styles.score}>
                                 <div className={styles.lessionLength}>

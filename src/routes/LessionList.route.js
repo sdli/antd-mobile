@@ -11,9 +11,10 @@ class lessonList extends Component{
     render(){
         const data = getQuery(this.props,"CourseId");
         const {user} = this.props;
+        console.log(user);
         return (
             <div>
-                <LessonList courseList={user.courses} CourseId={data} />
+                <LessonList courseList={user.courses} CourseId={data} login={user.login} />
             </div>
         );
     }

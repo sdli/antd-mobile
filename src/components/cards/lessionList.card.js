@@ -25,7 +25,7 @@ class LessionList extends Component{
     }
 
     render(){
-        const {courseList,CourseId} = this.props;
+        const {courseList,CourseId,login} = this.props;
         if(JSON.stringify(courseList) == "{}" || typeof courseList === "undefined") return null;
         console.log(courseList);
         var CourseData =  this.getCourseData(courseList,CourseId);
@@ -71,9 +71,21 @@ class LessionList extends Component{
                     <p className="p_title">
                         课程列表
                     </p>
-                    <LessionUl LessionList={(typeof UserData !== "undefined" && UserData.length!=0)?UserData.LessonList:CourseData.LessonList} CourseId={CourseId} />
+                    <LessionUl bought={(UserData.length==0)?false:true} LessionList={(typeof UserData !== "undefined" && UserData.length!=0)?UserData.LessonList:CourseData.LessonList} CourseId={CourseId} />
                 </div>
-                <div className="divider"></div>
+                <div className="divider" style={{height:"2rem"}}></div>
+                {
+                    !login &&
+                    <div className={styles.loginBottom} onClick={()=>{hashHistory.push("/loginSelect")}}>
+                        <p>请登录后查看详细课程</p>
+                    </div>
+                }
+                {
+                    login && UserData.length!=0 &&
+                    <div className={styles.loginBottom} onClick={()=>{hashHistory.push("/pay")}}>
+                        <p>请购买后查看此课程</p>
+                    </div>
+                }
             </div>
         );
     }

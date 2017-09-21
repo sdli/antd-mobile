@@ -29,6 +29,16 @@ var passToRes = function(obj){
     );
 }
 
+// http get请求
+var passToHttpGet = function(obj){
+    return {
+        result: 3,
+        msg: "通过",
+        verifiedBody: obj,
+        func: func
+    }
+}
+
 var reqVerify = function(req,res){
     var body = req.body;
     switch (body.reqType){
@@ -151,6 +161,10 @@ var reqVerify = function(req,res){
                     ]
                 );
             }
+        case "getOpenid":
+            var baseUrl =  "https://api.weixin.qq.com/sns/oauth2/access_token";
+            var reqUrl = baseUrl+"?appid="+config.appId+"&secret="+config.appSecret +"&code="+ req.body.code+"&grant_type=authorization_code";
+            return pass({reqUrl: reqUrl});
         default:
             return pass();
     }

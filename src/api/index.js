@@ -1,5 +1,6 @@
 var protoBuffer = require("protobuf-tools");
 var path = require("path");
+var http = require("http");
 var configs = require("./lib/config.js");
 var appInit = require("./lib/appInit.js"); // app配置
 var reqVerify = require("./lib/reqVerify.js");
@@ -70,6 +71,13 @@ app.post('/',function(req,res){
                 res.json(data);
             }
         );
+    }else if(verifyResult.result == 3){
+        http.get(verifyResult.verifiedBody.reqUrl,function(req){
+            req.on("data",function(data){
+                console.log(data,"我是openid！！");
+                res.json({openid:1});
+            });
+        });
     }else{
         res.setHeader("Content-Type", "application/json");
         res.json({
@@ -79,7 +87,6 @@ app.post('/',function(req,res){
         });
     }
 });
-
 
 process.on('unhandledRejection', (reason, p) => {
     console.log("Unhandled Rejection at: Promise ", p, " reason: ", reason);

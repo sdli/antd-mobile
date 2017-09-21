@@ -31,6 +31,8 @@ var redis = {
 module.exports = {
     apiPort: 3061,
     redis: redis,
+    appId:"wx7d69cc6664fea758",
+    appSecret:"ed630046456d36d2ac82f0456f79a06b",
     dev:{
         headers: headers,
         hostname: '47.94.101.71',
