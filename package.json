@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "start": "set PORT=7001&&roadhog server",
+    "start-api": "node ./src/api/index.js",
     "lint": "eslint --ext .js src test",
     "build": "roadhog build",
     "build-api": "babel ./src/api/ -d ./src/api-build --source-maps",

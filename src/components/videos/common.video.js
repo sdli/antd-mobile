@@ -23,25 +23,72 @@ class CommonVedio extends Component{
 
 
     componentDidMount(){
-        var {CoverURL,RetString,VideoId} = this.props;
+        var {CoverURL,RetString,VideoId,CollectList} = this.props;
+        var playButton = document.getElementById("playButton");
+        var that = this;
         console.log(CoverURL,RetString,VideoId);
         var player = new prismplayer({
             id: 'J_prismPlayer',
             width: '100%',
-            autoplay: true,
+            autoplay: false,
             vid : VideoId,
             playauth : RetString,
-            cover: CoverURL
+            cover: CoverURL,
+            controlBarVisibility:"click"
+        });
+        var catchViedo;
+        window.catchViedo = catchViedo;
+
+        clearTimeout(catchViedo);
+
+        player.on("play",function(){
+            timeCheck(player,CollectList);
         });
 
-        console.log({
-            id: 'J_prismPlayer',
-            width: '100%',
-            autoplay: true,
-            vid : VideoId,
-            playauth : RetString,
-            cover: CoverURL
+        player.on("seek",function(){
+            timeCheck(player,CollectList);
         });
+        player.on("pause",function(){
+            clearTimeout(window.catchViedo);
+        });
+
+        playButton.addEventListener("click",function(){
+            that.setState({s:true});
+            player.play();
+        });
+
+        function timeCheck(player,Collects){
+            var timeDeleted = 0;
+            var currentTime = player.getCurrentTime();
+            var text = "";
+            for(var i = 0;i<Collects.length;i++){
+                console.log(Collects[i].Time,currentTime);
+                if(currentTime < Collects[i].Time){
+                    timeDeleted = Collects[i].Time-currentTime;
+                    text = Collects[i].CollectCnt;
+                    break;
+                }
+            }
+
+            console.log(timeDeleted);
+            if(timeDeleted == 0){
+                return false
+            }else{
+                clearTimeout(window.catchViedo);
+                window.catchViedo = setTimeout(
+                        function(){
+                            player.pause();
+                            if(confirm(text)){
+                                console.log("通过，开始下一个计时");
+                                timeCheck(player,Collects);
+                            }else{ 
+                                console.log("未通过，下一个问题开始计时");
+                                timeCheck(player,Collects);
+                            }
+                        },timeDeleted*1000
+                    );
+                }
+        }
     }
 
     render(){
@@ -53,16 +100,16 @@ class CommonVedio extends Component{
         ];
         return (
             <div>
-                <div className={styles.videoSection} style={{width:this.state.w}}>
+                <div className={styles.videoSection}>
                 <div  className="prism-player" id="J_prismPlayer"></div>
                     {
-                        this.state.s 
+                        !this.state.s 
                         &&
                         <div className={styles.videoMask}>
                             <div></div>
                             <div className={styles.videoPlay}>
                                 <h3>家庭教育的核心是什么？</h3>
-                                <p onClick={()=>{this.video.play();this.setState({s:true})}}><span><Icon type={PlaySvg} style={{height: "0.28rem",width:"0.28rem"}}/> 播放</span></p>
+                                <p><span id="playButton"><Icon type={PlaySvg} style={{height: "0.28rem",width:"0.28rem"}}/> 播放</span></p>
                             </div>
                             <div className={styles.score}>
                                 <div className={styles.lessionLength}>
