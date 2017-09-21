@@ -9,6 +9,7 @@ class IndexPage extends React.Component {
   }
 
   render(){
+    const {user} = this.props;
     return (
       <div>
         <TabView index="1" courses={user.courses} />

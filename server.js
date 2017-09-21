@@ -34,7 +34,8 @@ app.get("/MP_verify_8NkWdD5pYfIZ0k0p.txt",(req,res)=>{
 // 微信重定向
 app.get("/getOpenid",(req,res)=>{
   var code = req.query.code;
-  res.location("/#/getOpenid?code="+code);
+  res.writeHead(301, {'Location': 'http://teacher.yiaitech.com/#/getOpenid?code='+code});
+  res.end();
 });
 
 // 监听方法
