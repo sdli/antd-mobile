@@ -4,7 +4,7 @@ import toastInit from "./lib/toastInit";
 import configs from "../utils/configs";
 import {setLocalStore,getLocalStore} from "../utils/setLocalStore";
 
-const api_route = "http%3a%2f%2fteacher.yiaitech.com%2f%23%2fgetOpenid";
+const api_route = "http%3a%2f%2fteacher.yiaitech.com%2fgetOpenid";
 const redirect_uri = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+configs.appId+"&redirect_uri="+api_route+"&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect"
 export default {
 

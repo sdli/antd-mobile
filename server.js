@@ -4,6 +4,7 @@ var app = new (express)();
 var httpProxy = require('http-proxy');
 var compression = require('compression');
 var config = require("./src/utils/configs");
+var bodyParse = require("body-parser");
 
 app.use(compression());
 
@@ -28,6 +29,12 @@ app.get("/MP_verify_8NkWdD5pYfIZ0k0p.txt",(req,res)=>{
   res.writeHead(200, {'Content-Type': 'text/html'});
   res.write(body);
   res.end();
+});
+
+// 微信重定向
+app.get("/getOpenid",(req,res)=>{
+  var code = req.query.code;
+  res.location("/#/getOpenid?code="+code);
 });
 
 // 监听方法
