@@ -4,7 +4,7 @@ import toastInit from "./lib/toastInit";
 import configs from "../utils/configs";
 import {setLocalStore,getLocalStore} from "../utils/setLocalStore";
 
-const api_route = "http%3a%2f%2fteacher.yiaitech.com%2fgetOpenid";
+const api_route = encodeURI(configs.domain + "/api/getOpenid");
 const redirect_uri = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+configs.appId+"&redirect_uri="+api_route+"&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect"
 export default {
 
@@ -14,27 +14,28 @@ export default {
     loginToken: "",
     courses: {},
     lessonDetails: {},
-    login: false
+    login: false,
+    userInfo: {}
   },
 
   subscriptions: {
     setup({ dispatch, history ,query}) {  // eslint-disable-line
       console.log(arguments,query);
       history.listen(({ pathname }) => {
-        if(pathname !== "/login" && pathname != "/register" && pathname != "/loginSelect" && pathname != "/pay"){
+        if(pathname !== "/login" && pathname != "/register" && pathname != "/loginSelect"){
           dispatch({type:"checkLogin"});
         }
         if(pathname == "/videoplay"){
           dispatch({type:"checkLoginDeep"});
+        }
+        if((new RegExp(/\user?/g)).test(pathname)){
+          dispatch({type:"getUserInfo"});
         }
         if(pathname == "/"){
           dispatch({type:"getCourseMain"});
         }
         if(pathname == "/lessionList"){
           dispatch({type:"checkCourseMain"});
-        }
-        if(pathname == "/pay"){
-          dispatch({type:"checkOpenid"});
         }
       });
     },
@@ -47,7 +48,6 @@ export default {
       if(loginResult.data.Result == 0){
         hashHistory.push("/");
         setLocalStore("tel",bodyObj.Phone,30);
-        yield put({type:"loginOK"});
       }
     },
     *register({bodyObj},{call,put}){
@@ -56,7 +56,6 @@ export default {
       if(registerResult.data.Result == 0){
         hashHistory.push("/");
         setLocalStore("tel",bodyObj.Phone,30);
-        yield put({type:"loginOK"});
       }
     },
     *checkLogin({},{call,put}){
@@ -69,8 +68,15 @@ export default {
       var loginStatus = yield call(request,{bodyObj:{reqType:"checkLogin"}});
       if(!loginStatus.data.data.login){
           hashHistory.push("/loginSelect");
+      }
+    },
+    *getUserInfo({},{call,put}){
+      var loginStatus = yield call(request,{bodyObj:{reqType:"checkLogin"}});
+      if(!loginStatus.data.data.login){
+          hashHistory.push("/loginSelect");
       }else{
-         yield put({type:"loginOK"});
+          var userInfo = yield call(request,{bodyObj:{reqType:"TeaInfoQueryReq"}});
+          yield put({type:"setUserInfo",userInfo:userInfo.data.TeacherList[0]});
       }
     },
     *getCourseMain({},{call,put,select}){
@@ -95,7 +101,7 @@ export default {
       console.log("lesson request!!!");
       yield put({type:"setLessonDetails",lessonDetails:lessonDetails.data})
     },
-    *checkOpenid({url},{call,put}){
+    *checkOpenid({},{call,put}){
       var checkOpenid = yield call(request,{bodyObj:{reqType:"checkOpenid"}});
       if(typeof checkOpenid.data.data.openid !== "undefined"){
         var ifOpenid = checkOpenid.data.data.openid;
@@ -104,10 +110,6 @@ export default {
           window.location.href = redirect_uri;
         }
       }
-    },
-    *getOpenid({bodyObj},{call,put}){
-      var openid = yield call(request,{bodyObj:bodyObj});
-      console.log(openid);
     }
   },
 
@@ -120,6 +122,9 @@ export default {
     },
     loginOK(state,action){
       return {...state,login: true};
+    },
+    setUserInfo(state,action){
+      return {...state,userInfo:action.userInfo};
     }
   },
 

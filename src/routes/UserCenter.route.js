@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'dva';
-import IndexContent from "../components/index.content.web";
 import Cards from "../components/cards/index.card";
 import TabView from "../components/layout/tabView.layout.web";
 
-function UserCenterPage() {
+function UserCenterPage({user}) {
   return (
     <div>
-      <TabView index="3" />
+      <TabView index="3" userInfo={user.userInfo} />
     </div>
   );
 }
@@ -15,4 +14,4 @@ function UserCenterPage() {
 UserCenterPage.propTypes = {
 };
 
-export default connect()(UserCenterPage);
+export default connect(({user})=>({user}))(UserCenterPage);

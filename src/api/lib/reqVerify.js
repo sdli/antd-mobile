@@ -164,7 +164,15 @@ var reqVerify = function(req,res){
         case "getOpenid":
             var baseUrl =  "https://api.weixin.qq.com/sns/oauth2/access_token";
             var reqUrl = baseUrl+"?appid="+config.appId+"&secret="+config.appSecret +"&code="+ req.body.code+"&grant_type=authorization_code";
-            return pass({reqUrl: reqUrl});
+            return passToHttpGet({reqUrl: reqUrl});
+        case "TeaInfoQueryReq":
+            if(typeof req.session.teacherid !== 'undefined'){
+                return pass({
+                        TeacherId: req.session.teacherid 
+                    },
+                    req.body.reqType
+                );
+            }
         default:
             return pass();
     }

@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'dva';
 import Statics from "../components/user/lessionStatics.user";
 
-function UserStaticsPage() {
+function UserStaticsPage({user,dispatch}) {
   return (
     <div>
-      <Statics />
+      <Statics courses={user.courses} dispatch={dispatch} />
     </div>
   );
 }
@@ -13,4 +13,4 @@ function UserStaticsPage() {
 UserStaticsPage.propTypes = {
 };
 
-export default connect()(UserStaticsPage);
+export default connect(({user})=>({user}))(UserStaticsPage);

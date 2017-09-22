@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./user.css";
-import UserImg from "../../assets/imgs/user.png";
+import UserImg from "../../assets/imgs/logo.png";
 import { List,Icon } from 'antd-mobile';
 import ListAltSVG from "../../assets/svgs/list-alt.svg";
 import StarHalfSVG from "../../assets/svgs/star-half-o.svg";
@@ -16,18 +16,24 @@ class UserCenter extends React.Component{
     }
 
     render(){
+        const {userInfo} = this.props;
         return(
+            
             <div>
-                <div className={styles.userTitle}>
-                    <img src={UserImg} />
-                    <div className={styles.userInfoHead}>
-                        <p>李大牛 <span>教师</span></p>
-                        <p>15098985191</p>
+                { 
+                    (typeof userInfo !== "undefined") &&
+                    <div className={styles.userTitle}>
+                        <img src={UserImg} />
+                        <div className={styles.userInfoHead}>
+                            <p>{userInfo.name?userInfo.name:"益爱用户"} <span>{(userInfo.IdNo==1)?"教师":"普通用户"}</span></p>
+                            <p>{userInfo.Phone}</p>
+                        </div>
+                        <div className={styles.userInfoTag} onClick={()=>hashHistory.push("/user/info")}>
+                            <Icon type={EditSVG} style={{with:"0.36rem",height:"0.36rem",color:"#ffffff"}} />
+                        </div>
                     </div>
-                    <div className={styles.userInfoTag} onClick={()=>hashHistory.push("/user/info")}>
-                        <Icon type={EditSVG} style={{with:"0.36rem",height:"0.36rem",color:"#ffffff"}} />
-                    </div>
-                </div>
+                }
+                
                 <div className="divider" />
                 <div>
                     <List renderHeader={() => '个人功能'}>
@@ -38,7 +44,7 @@ class UserCenter extends React.Component{
                         arrow="horizontal"
                         onClick={() => {hashHistory.push("/user/statics")}}
                         ><span style={{paddingLeft:"0.2rem"}}>学习进度</span></Item>
-                        <Item 
+                        {/* <Item 
                         thumb={<Icon type={StarHalfSVG} 
                         size="sm"
                         onClick={() => {hashHistory.push("/user/stars")}}
@@ -46,7 +52,7 @@ class UserCenter extends React.Component{
                         />} 
                         arrow="horizontal">
                          <span style={{paddingLeft:"0.2rem"}}>课程评分</span>
-                        </Item>
+                        </Item> */}
                     </List>
                 </div>
                 <div className="divider" />
@@ -55,7 +61,7 @@ class UserCenter extends React.Component{
                         <Item
                         thumb={<Icon type={HeadPhoneSVG} size="sm" style={{color: "#999999"}} />}
                         arrow="horizontal"
-                        onClick={() => {}}
+                        onClick={() => {alert("尊敬的用户，请在微信公众号直接留言提交！");}}
                         >
                         <span style={{paddingLeft:"0.2rem"}}>提交反馈</span>
                         </Item>

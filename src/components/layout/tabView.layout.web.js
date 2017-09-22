@@ -42,7 +42,7 @@ class TabBarExample extends React.Component {
   }
 
   render() {
-    const {courses} = this.props;
+    const {courses,userInfo} = this.props;
     return (
       <TabBar
         unselectedTintColor="#949494"
@@ -93,7 +93,7 @@ class TabBarExample extends React.Component {
             hashHistory.push("/user");
           }}
         >
-          {<UserCenter />}
+          {<UserCenter userInfo={userInfo} />}
         </TabBar.Item>
       </TabBar>
     );

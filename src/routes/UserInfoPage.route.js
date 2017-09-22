@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'dva';
 import UserInfo from "../components/user/info.user";
 
-function UserInfoPage() {
+function UserInfoPage({user}) {
   return (
     <div>
-      <UserInfo />
+      <UserInfo userInfo={user.userInfo}/>
     </div>
   );
 }
@@ -13,4 +13,4 @@ function UserInfoPage() {
 UserInfoPage.propTypes = {
 };
 
-export default connect()(UserInfoPage);
+export default connect(({user})=>({user}))(UserInfoPage);

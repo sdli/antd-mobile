@@ -20,7 +20,7 @@ class listUl extends React.Component{
         const {LessionList,CourseId,bought} = this.props;
         return(
                   <ul className={styles.lessionUl}>
-                        {LessionList !== "undefined" && LessionList.map((val,index)=>{
+                        {typeof LessionList !== "undefined" && LessionList.map((val,index)=>{
                             return  bought?
                                 (<li key={index}>
                                     <Link to={{pathname:"/videoplay",query:{CourseId:CourseId,LessonId:val.LessonId,VideoId:val.VideoId}}} className="linkInit">
@@ -34,7 +34,7 @@ class listUl extends React.Component{
                                         </div>
                                     </Link>
                                 </li>):(
-                                    <li key={index} onClick = {()=>{ifYouWannaBuy()}}>
+                                    <li key={index} onClick = {()=>{this.ifYouWannaBuy()}}>
                                         <Icon type={VideoSvg}/>
                                         <div className={styles.lessionUlTitle}>
                                             <p>{val.Description}</p>
