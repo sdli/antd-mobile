@@ -4,6 +4,7 @@ var md5=crypto.createHash("md5");
 
 function payInit(appId,prepay_id){
     this.appId = appId,
+    this.pack = "prepay_id=" + prepay_id,
     this.nonceStr = this.getNonceStr(32);
     this.timeStamp = this.getTimeStamp();
     this.options = {
@@ -12,7 +13,7 @@ function payInit(appId,prepay_id){
         "nonceStr": this.nonceStr,
         "package":"prepay_id=" + prepay_id,
         "signType":"MD5",
-        "paySign": this.getPaySign(this.appId,this.nonceStr,"prepay_id=" + prepay_id,"MD5",this.timeStamp)
+        "paySign": this.getPaySign(this.appId,this.nonceStr,this.pack,"MD5",this.timeStamp)
     };
     this.jsApiCall = function(){
         WeixinJSBridge.invoke(
