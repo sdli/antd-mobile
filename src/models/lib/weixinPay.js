@@ -13,7 +13,7 @@ function payInit(appId,prepay_id){
         "nonceStr": this.nonceStr,
         "package":"prepay_id=" + prepay_id,
         "signType":"MD5",
-        "paySign": this.getPaySign(this.appId,this.nonceStr,prepay_id,"MD5",this.timeStamp)
+        "paySign": this.getPaySign(this.appId,this.nonceStr,this.pack,"MD5",this.timeStamp)
     };
     this.jsApiCall = function(){
         WeixinJSBridge.invoke(
@@ -42,7 +42,7 @@ payInit.prototype.getNonceStr = function(int){
 
 payInit.prototype.getPaySign = function(appId,nonceStr,pack,signType,timeStamp){
     const key = "3foptz6c3zk3lh28jd5vpu0q8y4umnai";
-    const str1 = "appid="+appId+"&nonceStr="+nonceStr+"&prepay_id="+pack+"&signType="+signType+"&timeStamp="+timeStamp;
+    const str1 = "appid="+appId+"&nonceStr="+nonceStr+"&package="+pack+"&signType="+signType+"&timeStamp="+timeStamp;
     const newStr = str1 +"&key="+key;
     return md5.update(newStr).digest("hex").toUpperCase();
 }

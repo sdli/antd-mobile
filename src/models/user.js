@@ -114,7 +114,7 @@ export default {
     },
     *getPreIdAndPay({bodyObj},{call,put}){
       // var getPrePay = yield call(request,{bodyObj:bodyObj});
-      var pay = new WexinPay(configs.appId,"wx20170923142647ba75d1ab3f0123646621");
+      var pay = new WexinPay(configs.appId,"wx201709231619538114f0cfcc0322680862");
       pay.callpay();
     }
   },
