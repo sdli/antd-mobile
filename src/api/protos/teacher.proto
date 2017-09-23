@@ -157,6 +157,7 @@ message CollectInfoQueryResp
 	int32 Result = 1;
 	string ErrMsg = 2;
 	repeated CollectInfo CollectList = 3;
+	int32 Score = 4;  //得分
 }
 
 //弹窗收藏得分提交
@@ -166,7 +167,6 @@ message DialogCollectReq
 	int32 CourseId = 2;
 	int32 LessonId = 3;  //课时id
 	int32 CollectIndex = 4;  //弹窗序号
-	int32 Score = 5;  //收藏得分
 }
 
 message DialogCollectResp
@@ -189,6 +189,7 @@ message TestCase
 	string TestProblem = 2; //测试问题
 	int32 Time = 3;  //弹窗时间
 	int32 Status = 4;  //状态 0:未回答  1:已回答
+	string CommitedAnswer = 5; //Status为0时则改值为空
 }
 
 message TestCaseQueryResp
@@ -196,6 +197,7 @@ message TestCaseQueryResp
 	int32 Result = 1;
 	string ErrMsg = 2;
 	repeated TestCase TestList = 3;
+	int32 Score = 4;  //得分
 }
 
 //课程测试答案提交
@@ -218,7 +220,7 @@ message TestAnswerCommitResp
 message PayCourseReq
 {
 	int64 TeacherId = 1;
-	int32 CourseId = 2;
+	string CourseId = 2; //多个课程,逗号隔开
 	int32 Money = 3;  //金额
 }
 
@@ -226,7 +228,7 @@ message PayCourseResp
 {
 	int32 Result = 1;
 	string ErrMsg = 2;
-	string OrderNum = 3;  //订单号
+	string PrepayId = 3;  //预支付id
 }
 
 //个人信息编辑

@@ -64,4 +64,4 @@ payInit.prototype.callpay = function(){
     }
 }
 
-export default payInit;
+module.exports = payInit;
