@@ -12,7 +12,8 @@ var dictionary = {
     CourseQueryReq: "CourseQueryResp",
     TeacherCourseReq: "TeacherCourseResp",
     SecurityTokenReq: "SecurityTokenResp",
-    TeaInfoQueryReq: "TeaInfoQueryResp"
+    TeaInfoQueryReq: "TeaInfoQueryResp",
+    PayCourseReq:"PayCourseResp"
 };
 
 var headers ={

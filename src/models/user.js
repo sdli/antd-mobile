@@ -3,6 +3,7 @@ import {hashHistory} from "react-router";
 import toastInit from "./lib/toastInit";
 import configs from "../utils/configs";
 import {setLocalStore,getLocalStore} from "../utils/setLocalStore";
+import WexinPay from "./lib/weixinPay";
 
 const api_route = encodeURI(configs.domain + "/api/getOpenid");
 const redirect_uri = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+configs.appId+"&redirect_uri="+api_route+"&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect"
@@ -110,6 +111,11 @@ export default {
           window.location.href = redirect_uri;
         }
       }
+    },
+    *getPreIdAndPay({bodyObj},{call,put}){
+      // var getPrePay = yield call(request,{bodyObj:bodyObj});
+      var pay = new WexinPay(configs.appId,"wx20170923142647ba75d1ab3f0123646621");
+      pay.callpay();
     }
   },
 

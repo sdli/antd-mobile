@@ -173,6 +173,15 @@ var reqVerify = function(req,res){
                     req.body.reqType
                 );
             }
+        case "getPrePay":
+            if(typeof req.session.teacherid !== "undefined"){
+                return pass({
+                    TeacherId:req.session.teacherid,
+                    CourseId:req.body.CourseId,
+                    Money: req.body.Money,
+                    reqType: "PayCourseReq"
+                });
+            }
         default:
             return pass();
     }

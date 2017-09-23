@@ -45,11 +45,11 @@ class UserCenter extends React.Component{
                         onClick={() => {hashHistory.push("/user/statics")}}
                         ><span style={{paddingLeft:"0.2rem"}}>学习进度</span></Item>
                         {/* <Item 
-                        thumb={<Icon type={StarHalfSVG} 
+                        thumb={<Icon type={StarHalfSVG}
                         size="sm"
                         onClick={() => {hashHistory.push("/user/stars")}}
                         style={{color: "#00D040"}} 
-                        />} 
+                        />}
                         arrow="horizontal">
                          <span style={{paddingLeft:"0.2rem"}}>课程评分</span>
                         </Item> */}
