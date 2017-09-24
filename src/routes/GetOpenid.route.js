@@ -11,7 +11,7 @@ class GetOpenid extends React.Component{
         const {dispatch} = this.props;
         const code = getQuery(this.props,"code");
         console.log(code);
-        // dispatch({type:"user/getOpenid",bodyObj:{code:code,reqType:"getOpenid"}});
+        dispatch({type:"user/getOpenid",bodyObj:{code:code,reqType:"getOpenid",url:"/pay"}});
     }
 
     render(){

@@ -1,6 +1,6 @@
 var protoBuffer = require("protobuf-tools");
 var path = require("path");
-var http = require("http");
+var https = require("https");
 var configs = require("./lib/config.js");
 var appInit = require("./lib/appInit.js"); // app配置
 var reqVerify = require("./lib/reqVerify.js");
@@ -72,10 +72,17 @@ app.post('/',function(req,res){
             }
         );
     }else if(verifyResult.result == 3){
-        http.get(verifyResult.verifiedBody.reqUrl,function(req){
-            req.on("data",function(data){
-                console.log(data,"我是openid！！");
-                res.json({openid:1});
+        https.get(verifyResult.verifiedBody.reqUrl,function(httpReq){
+            httpReq.on("data",function(data){
+                var data = JSON.parse(data);
+                if(typeof data.openid !== "undefined"){
+                    req.session.openid = data.openid;
+                    res.json({
+                        Result: 0,
+                        ErrMsg: "获取微信openid成功！",
+                        data: {}
+                    });
+                }
             });
         });
     }else{

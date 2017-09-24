@@ -16,14 +16,15 @@ export default {
     courses: {},
     lessonDetails: {},
     login: false,
-    userInfo: {}
+    userInfo: {},
+    openid: 0
   },
 
   subscriptions: {
     setup({ dispatch, history ,query}) {  // eslint-disable-line
       console.log(arguments,query);
       history.listen(({ pathname }) => {
-        if(pathname !== "/login" && pathname != "/register" && pathname != "/loginSelect"){
+        if(pathname !== "/login" && pathname != "/register" && pathname != "/loginSelect" && pathname !== "/pay"){
           dispatch({type:"checkLogin"});
         }
         if(pathname == "/videoplay"){
@@ -37,6 +38,9 @@ export default {
         }
         if(pathname == "/lessionList"){
           dispatch({type:"checkCourseMain"});
+        }
+        if(pathname == "/pay"){
+          dispatch({type:"checkOpenid"});
         }
       });
     },
@@ -109,6 +113,8 @@ export default {
         console.log(ifOpenid);
         if(ifOpenid == 0){
           window.location.href = redirect_uri;
+        }else{
+          yield put({type:"hasOpenid"});
         }
       }
     },
@@ -117,6 +123,14 @@ export default {
       console.log(getPrePay);
       // var pay = new WexinPay(configs.appId,"wx201709231619538114f0cfcc0322680862");
       // pay.callpay();
+    },
+    *getOpenid({bodyObj},{call,put}){
+      var data = yield call(request,{bodyObj:bodyObj});
+      if(data.data.Result == 0){
+        hashHistory.push(bodyObj.url);
+      }else{
+        alert("获取微信openid失败，请稍后重试！");
+      }
     }
   },
 
@@ -132,7 +146,9 @@ export default {
     },
     setUserInfo(state,action){
       return {...state,userInfo:action.userInfo};
+    },
+    hasOpenid(state,action){
+      return {...state,openid:1};
     }
   },
-
 };

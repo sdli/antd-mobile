@@ -176,11 +176,11 @@ var reqVerify = function(req,res){
         case "getPrePay":
             if(typeof req.session.teacherid !== "undefined"){
                 return pass({
-                    TeacherId:req.session.teacherid,
-                    CourseId:req.body.CourseId,
-                    Money: req.body.Money,
-                    reqType: "PayCourseReq"
-                });
+                        TeacherId:req.session.teacherid,
+                        CourseId:req.body.CourseId,
+                        Money: req.body.Money,
+                    },
+                    "PayCourseReq");
             }
         default:
             return pass();

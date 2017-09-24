@@ -71,7 +71,7 @@ class LessionList extends Component{
                     <p className="p_title">
                         课程列表
                     </p>
-                    <LessionUl bought={(UserData.length==0)?false:true} LessionList={(typeof UserData !== "undefined" && UserData.length!=0)?UserData.LessonList:CourseData.LessonList} CourseId={CourseId} />
+                    <LessionUl login={login} bought={(UserData.length==0)?false:true} LessionList={(typeof UserData !== "undefined" && UserData.length!=0)?UserData.LessonList:CourseData.LessonList} CourseId={CourseId} />
                 </div>
                 <div className="divider" style={{height:"2rem"}}></div>
                 {

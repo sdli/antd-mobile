@@ -11,13 +11,20 @@ class listUl extends React.Component{
     }
 
     ifYouWannaBuy(){
-        if(confirm("您尚未购买本课程，请确认是否购买？")){
-            hashHistory.push("/");
+        const {login} = this.props;
+        if(login){
+            if(confirm("您尚未购买本课程，请确认是否购买？")){
+                hashHistory.push("/pay");
+            }
+        }else{
+            if(confirm("请登录后查看课程详细。")){
+                hashHistory.push("/loginSelect");
+            }
         }
     }
 
     render(){
-        const {LessionList,CourseId,bought} = this.props;
+        const {LessionList,CourseId,bought,login} = this.props;
         return(
                   <ul className={styles.lessionUl}>
                         {typeof LessionList !== "undefined" && LessionList.map((val,index)=>{
@@ -35,14 +42,16 @@ class listUl extends React.Component{
                                     </Link>
                                 </li>):(
                                     <li key={index} onClick = {()=>{this.ifYouWannaBuy()}}>
-                                        <Icon type={VideoSvg}/>
-                                        <div className={styles.lessionUlTitle}>
-                                            <p>{val.Description}</p>
-                                            <p>时长：32分钟</p>
-                                        </div>
-                                        <div className={styles.lessionUlFunc}>
-                                                <p style={{lineHeight:"1rem",textAlign:"center",width:"100%",display:"block"}}>{val.LessonScore}<span className={styles.lessionUlSpan}>分</span></p>
-                                        </div>
+                                        <Link className="linkInit" >
+                                            <Icon type={VideoSvg}/>
+                                            <div className={styles.lessionUlTitle}>
+                                                <p>{val.Description}</p>
+                                                <p>时长：32分钟</p>
+                                            </div>
+                                            <div className={styles.lessionUlFunc}>
+                                                    <p style={{lineHeight:"1rem",textAlign:"center",width:"100%",display:"block"}}>{val.LessonScore}<span className={styles.lessionUlSpan}>分</span></p>
+                                            </div>
+                                        </Link>
                                     </li>
                                 );
                         })}
