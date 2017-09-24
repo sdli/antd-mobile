@@ -34,8 +34,7 @@ var passToHttpGet = function(obj){
     return {
         result: 3,
         msg: "通过",
-        verifiedBody: obj,
-        func: func
+        verifiedBody: obj
     }
 }
 
