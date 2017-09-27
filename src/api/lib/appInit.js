@@ -1,10 +1,10 @@
-var configs = require("./config.js");
-var bodyParser = require("body-parser");
-var session = require("express-session");
-var cookieParser = require("cookie-parser");
-var captchapng = require('captchapng');
-var serverConfigs = require("../../utils/configs");
-var RedisStore = require("connect-redis")(session);
+var configs             = require("./config.js");
+var bodyParser          = require("body-parser");
+var session             = require("express-session");
+var cookieParser        = require("cookie-parser");
+var captchapng          = require('captchapng');
+var serverConfigs       = require("../../utils/configs");
+var RedisStore          = require("connect-redis")(session);
 
 // 获取png图片方法
 var imgGenerator = function(num){

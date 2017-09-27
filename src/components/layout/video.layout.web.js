@@ -155,7 +155,7 @@ class Videoplayer extends React.Component{
                     <div>
                         <CommonPlayer CollectList={lessonDetails.CollectInfoQueryReq.CollectList} CoverURL={lessonDetails.SecurityTokenReq.CoverURL} RetString={lessonDetails.SecurityTokenReq.RetString} VideoId={VideoId} />
                         <div className="divider" />
-                        <TabExample CollectList={lessonDetails.CollectInfoQueryReq.CollectList} TestList={lessonDetails.TestCaseQueryReq.TestList} />
+                        {/*<TabExample CollectList={lessonDetails.CollectInfoQueryReq.CollectList} TestList={lessonDetails.TestCaseQueryReq.TestList} /> */}
                     </div>
                 }
             </div>

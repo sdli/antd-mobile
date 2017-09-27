@@ -36,6 +36,14 @@ const images = [
     {
         title:"孙云晓",
         image: Sunyunxiao
+    },
+    {
+        title:"王宝祥",
+        image: Sunyunxiao
+    },
+    {
+        title:"王文湛",
+        image: Sunyunxiao
     }
 ];
 

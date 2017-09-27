@@ -1,20 +1,22 @@
-var express = require('express');
-var path = require('path');
-var app = new (express)();
-var httpProxy = require('http-proxy');
-var compression = require('compression');
-var config = require("./src/utils/configs");
-var bodyParse = require("body-parser");
+// 模块引入
+var express       = require('express');
+var path          = require('path');
+var app           = new (express)();
+var httpProxy     = require('http-proxy');
+var compression   = require('compression');
+var config        = require("./src/utils/configs");
+var bodyParse     = require("body-parser");
 
+// 压缩传输，也可以使用gzip模块
 app.use(compression());
 
-var port = config.apiPort;
-var serverPort = config.serverPort;
-var targetUrl = (typeof process.env.NODE_ENV === "undefined" || process.env.NODE_ENV == "dev")?config.server + ":" + port:config.productionServer+":"+config.productionApiPort;
-var proxy = httpProxy.createProxyServer({
-      target: targetUrl
-});
+// 配置信息
+var port          = config.apiPort;
+var serverPort    = config.serverPort;
+var targetUrl     = (typeof process.env.NODE_ENV === "undefined" || process.env.NODE_ENV == "dev")?config.server + ":" + port:config.productionServer+":"+config.productionApiPort;
+var proxy         = httpProxy.createProxyServer({target: targetUrl});
 
+// express静态资源目录
 app.use(express.static(path.join(__dirname, '/dist')));
 app.use(express.static(path.join(__dirname, '/dist/static')));
 

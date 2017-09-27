@@ -39,9 +39,9 @@ export default {
         if(pathname == "/lessionList"){
           dispatch({type:"checkCourseMain"});
         }
-        if(pathname == "/pay"){
-          dispatch({type:"checkOpenid"});
-        }
+        // if(pathname == "/pay"){
+        //   dispatch({type:"checkOpenid"});
+        // }
       });
     },
   },

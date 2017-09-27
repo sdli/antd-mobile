@@ -1,9 +1,9 @@
-var protoBuffer = require("protobuf-tools");
-var path = require("path");
-var https = require("https");
-var configs = require("./lib/config.js");
-var appInit = require("./lib/appInit.js"); // app配置
-var reqVerify = require("./lib/reqVerify.js");
+var protoBuffer        = require("protobuf-tools");
+var path               = require("path");
+var https              = require("https");
+var configs            = require("./lib/config.js");
+var appInit            = require("./lib/appInit.js"); // app配置
+var reqVerify          = require("./lib/reqVerify.js");
 
 // 根据process加载配置，未设置默认为测试环境
 (typeof process.env.NODE_ENV === "undefined" || process.env.NODE_ENV.trim() == "dev")
@@ -11,13 +11,11 @@ var reqVerify = require("./lib/reqVerify.js");
 :protoBuffer.init(configs.production);
 
 // express库
-var express = require('express');
-var app = new express();
+var express            = require('express');
+var app                = new express();
 
 // 初始化APP
 appInit(app,{
-    listen: configs.apiPort, // 开启端口监听
-    img: 4,  // 开启验证码图片监听
     cookieParser: true, // 开启cookie解析（匹配session）,
     jsonParser: true, // 开启json解析
     sessionOptions:{
@@ -34,7 +32,9 @@ appInit(app,{
         saveUninitialized: false,
         cookie: {secure: false} //不设置过期时间
     },
-    openid: true // 开启微信openid获取
+    openid: true, // 开启微信openid获取,
+    listen: configs.apiPort, // 开启端口监听
+    img: 4,  // 开启验证码图片监听
 });
 
 // 接口统一接收地址
