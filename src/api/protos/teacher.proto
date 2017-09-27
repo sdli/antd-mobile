@@ -221,7 +221,8 @@ message PayCourseReq
 {
 	int64 TeacherId = 1;
 	string CourseId = 2; //多个课程,逗号隔开
-	int32 Money = 3;  //金额
+	string OpenId = 3;
+	int32 Money = 4;  //金额
 }
 
 message PayCourseResp
