@@ -19,7 +19,7 @@ function payInit(appId,prepay_id){
 
     // 时间戳
     this.timeStamp = this.getTimeStamp();
-    alert(this.timeStamp);
+
     // JS bradge的配置
     this.options = {
         "appId": this.appId,
