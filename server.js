@@ -43,7 +43,7 @@ app.get("/getOpenid",(req,res)=>{
 // 监听方法
 app.listen(serverPort,function(error) {
   if (error) {
-    console.error(error)
+    console.error(error);
   } else {
     console.info("==> 🌎  Server is listening on port %s. Open up http://localhost:%s/ in your browser.", serverPort, serverPort)
   }

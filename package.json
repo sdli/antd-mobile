@@ -5,6 +5,7 @@
     "start-api": "node ./src/api/index.js",
     "lint": "eslint --ext .js src test",
     "build": "roadhog build",
+    "build-dev": "roadhog build --debug --watch",
     "build-api": "babel ./src/api/ -d ./src/api-build --source-maps",
     "git-pull":"git checkout .&& git pull origin master&& cnpm run build&& pm2 restart pm2.json"
   },

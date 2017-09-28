@@ -8,13 +8,29 @@ class PayPage extends React.Component{
         super(props);
     }
 
+    getCoursesUnpaied(courses){
+        console.log(courses);
+        if(typeof courses.CourseQueryReq !== "undefined" && typeof courses.TeacherCourseReq !== "undefined"){
+            if(courses.TeacherCourseReq.CourseList.length == 0){
+                return courses.CourseQueryReq.CourseList;
+            }else{
+                return courses.CourseQueryReq.CourseList.map(function(val,index){
+                    for(var i =0;i<courses.TeacherCourseReq.CourseList.length;i++){
+                        if(val.CourseId == courses.TeacherCourseReq.CourseList[i].CourseId ){
+                            return 0;
+                        }
+                    }
+                    return val;
+                });
+            }
+        }
+    }
+
     render(){
         const {dispatch,user} = this.props;
         return(
             <div>
-                <PaySelector callBack={()=>{console.log("data");}} courseList={null}/>
-                <div className="divider"></div>
-                <Button className="btn" type="primary" onClick={()=>{dispatch({type:"user/getPreIdAndPay",bodyObj:{reqType:"getPrePay",CourseId:"50008,50009",Money:"1"}})}}>发起支付</Button>
+                <PaySelector dispatch={dispatch} callBack={()=>{console.log("data");}} courseList={user.courses.CourseQueryReq.CourseList}/>
             </div>
         );
     }

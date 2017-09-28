@@ -2,11 +2,26 @@
 var crypto=require('crypto');  
 var md5=crypto.createHash("md5"); 
 
+/**
+ * 
+ * @param {*} appId 
+ * @param {*} prepay_id 
+ */
 function payInit(appId,prepay_id){
-    this.appId = appId,
-    this.pack = "prepay_id=" + prepay_id,
+
+    // 配置appid，此id为公众号id，不为商户id
+    this.appId = appId;
+
+    // 从后台获取的prepay_id
+    this.pack = "prepay_id=" + prepay_id;
+
+    // 随机字符串
     this.nonceStr = this.getNonceStr(32);
+
+    // 时间戳
     this.timeStamp = this.getTimeStamp();
+
+    // JS bradge的配置
     this.options = {
         "appId": this.appId,
         "timeStamp": this.timeStamp,
@@ -15,6 +30,8 @@ function payInit(appId,prepay_id){
         "signType":"MD5",
         "paySign": this.getPaySign(this.appId,this.nonceStr,this.pack,"MD5",this.timeStamp)
     };
+
+    // 唤醒支付
     this.jsApiCall = function(){
         WeixinJSBridge.invoke(
             'getBrandWCPayRequest',

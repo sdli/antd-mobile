@@ -1,6 +1,8 @@
 .paySelectDiv{
     height: 1.8rem;
     padding: 0.32rem 1rem;
+    position: relative;
+    border-bottom: 1px solid #ddd;
 }
 .paySelectDiv > img{
     width: 0.6rem;

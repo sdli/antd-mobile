@@ -1,0 +1,11 @@
+[
+{
+    "name"        : "teacher_api",
+    "script"      : "./src/api/index.js",
+    "error_file" : "./src/logs/api.log",
+    "env": {
+        "NODE_ENV": "production"
+    },
+    "watch": true
+}
+]

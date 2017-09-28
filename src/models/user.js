@@ -39,9 +39,9 @@ export default {
         if(pathname == "/lessionList"){
           dispatch({type:"checkCourseMain"});
         }
-        // if(pathname == "/pay"){
-        //   dispatch({type:"checkOpenid"});
-        // }
+        if(pathname == "/pay"){
+          dispatch({type:"checkOpenid"});
+        }
       });
     },
   },
@@ -104,7 +104,7 @@ export default {
     *lessonDetails({bodyObj},{call,put}){
       var lessonDetails = yield call(request,{bodyObj:bodyObj});
       console.log("lesson request!!!");
-      yield put({type:"setLessonDetails",lessonDetails:lessonDetails.data})
+      yield put({type:"setLessonDetails",lessonDetails:lessonDetails.data});
     },
     *checkOpenid({},{call,put}){
       var checkOpenid = yield call(request,{bodyObj:{reqType:"checkOpenid"}});
@@ -121,8 +121,8 @@ export default {
     *getPreIdAndPay({bodyObj},{call,put}){
       var getPrePay = yield call(request,{bodyObj:bodyObj});
       console.log(getPrePay);
-      // var pay = new WexinPay(configs.appId,"wx201709231619538114f0cfcc0322680862");
-      // pay.callpay();
+      var pay = new WexinPay(configs.appId,"wx201709231619538114f0cfcc0322680862");
+      pay.callpay();
     },
     *getOpenid({bodyObj},{call,put}){
       var data = yield call(request,{bodyObj:bodyObj});
@@ -150,5 +150,5 @@ export default {
     hasOpenid(state,action){
       return {...state,openid:1};
     }
-  },
+  }
 };
