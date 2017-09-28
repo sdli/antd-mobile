@@ -33,7 +33,7 @@ function payInit(appId,prepay_id){
 
     // 唤醒支付
     this.jsApiCall = function(){
-        alert(JSON.stringify(this.options));
+        alert(JSON.stringify(this.options)+"---call");
         WeixinJSBridge.invoke(
             'getBrandWCPayRequest',
             this.options,
@@ -60,7 +60,7 @@ payInit.prototype.getNonceStr = function(int){
 
 payInit.prototype.getPaySign = function(appId,nonceStr,pack,signType,timeStamp){
     const key = "3foptz6c3zk3lh28jd5vpu0q8y4umnai";
-    const str1 = "appId="+appId+"&nonceStr="+nonceStr+"&package="+pack+"&signType="+signType+"&timestamp="+timeStamp;
+    const str1 = "appId="+appId+"&nonceStr="+nonceStr+"&package="+pack+"&signType="+signType+"&timeStamp="+timeStamp;
     const newStr = str1 +"&key="+key;
     return md5(newStr).toUpperCase();
 }
