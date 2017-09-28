@@ -27,7 +27,7 @@ function payInit(appId,prepay_id){
         "nonceStr": this.nonceStr,
         "package":"prepay_id=" + prepay_id,
         "signType":"MD5",
-        "paySign": this.getPaySign(this.appId,this.nonceStr,this.pack,"MD5",this.timeStamp.toString)
+        "paySign": this.getPaySign(this.appId,this.nonceStr,this.pack,"MD5",this.timeStamp.toString())
     };
 
     // 唤醒支付
