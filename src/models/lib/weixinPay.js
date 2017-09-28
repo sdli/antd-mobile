@@ -31,6 +31,8 @@ function payInit(appId,prepay_id){
         "paySign": this.getPaySign(this.appId,this.nonceStr,this.pack,"MD5",this.timeStamp)
     };
 
+    alert(JSON.stringify(this.options));
+    
     // 唤醒支付
     this.jsApiCall = function(){
         WeixinJSBridge.invoke(
