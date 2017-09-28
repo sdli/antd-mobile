@@ -23,11 +23,11 @@ function payInit(appId,prepay_id){
     // JS bradge的配置
     this.options = {
         "appId": this.appId,
-        "timeStamp": this.timeStamp,
+        "timeStamp": this.timeStamp.toString(),
         "nonceStr": this.nonceStr,
         "package":"prepay_id=" + prepay_id,
         "signType":"MD5",
-        "paySign": this.getPaySign(this.appId,this.nonceStr,this.pack,"MD5",this.timeStamp)
+        "paySign": this.getPaySign(this.appId,this.nonceStr,this.pack,"MD5",this.timeStamp.toString)
     };
 
     // 唤醒支付
