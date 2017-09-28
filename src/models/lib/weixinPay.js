@@ -54,7 +54,7 @@ payInit.prototype.getNonceStr = function(int){
     for(var i = 0; i<int; i++){
         string += base.substr(Math.random()*(base.length),1);
     }
-    return string;
+    return string.toUpperCase();
 }
 
 payInit.prototype.getPaySign = function(appId,nonceStr,pack,signType,timeStamp){
