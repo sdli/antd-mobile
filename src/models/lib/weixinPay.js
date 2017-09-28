@@ -15,7 +15,7 @@ function payInit(appId,prepay_id){
     this.pack = "prepay_id=" + prepay_id;
 
     // 随机字符串
-    this.nonceStr = this.getNonceStr(32);
+    this.nonceStr = this.getNonceStr(31);
 
     // 时间戳
     this.timeStamp = this.getTimeStamp();
