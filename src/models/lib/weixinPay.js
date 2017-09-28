@@ -1,6 +1,5 @@
 
-var crypto=require('crypto');  
-var md5=crypto.createHash("md5"); 
+var md5 = require("md5");
 
 /**
  * 
@@ -63,7 +62,7 @@ payInit.prototype.getPaySign = function(appId,nonceStr,pack,signType,timeStamp){
     const key = "3foptz6c3zk3lh28jd5vpu0q8y4umnai";
     const str1 = "appId="+appId+"&nonceStr="+nonceStr+"&package="+pack+"&signType="+signType+"&timeStamp="+timeStamp;
     const newStr = str1 +"&key="+key;
-    return md5.update(newStr).digest("hex").toUpperCase();
+    return md5(newStr).toUpperCase();
 }
 
 payInit.prototype.getTimeStamp = function(){
