@@ -177,6 +177,7 @@ var reqVerify = function(req,res){
                 return pass({
                         TeacherId:req.session.teacherid,
                         CourseId:req.body.CourseId,
+                        OpenId: req.session.openid,
                         Money: req.body.Money,
                     },
                     "PayCourseReq");
