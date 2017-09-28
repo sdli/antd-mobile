@@ -18,7 +18,7 @@ function payInit(appId,prepay_id){
     this.nonceStr = this.getNonceStr(31);
 
     // 时间戳
-    this.timeStamp = this.getTimeStamp();
+    this.timeStamp = this.getTimeStamp().toString();
 
     // JS bradge的配置
     this.options = {
@@ -45,7 +45,7 @@ function payInit(appId,prepay_id){
 }
 
 payInit.prototype.getTimeStamp = function(){
-    return (Date.parse(new Date())/1000).toString();
+    return (Date.parse(new Date())/1000);
 }
 
 payInit.prototype.getNonceStr = function(int){
