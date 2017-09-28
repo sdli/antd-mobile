@@ -59,7 +59,7 @@ payInit.prototype.getNonceStr = function(int){
 
 payInit.prototype.getPaySign = function(appId,nonceStr,pack,signType,timeStamp){
     const key = "3foptz6c3zk3lh28jd5vpu0q8y4umnai";
-    const str1 = "appid="+appId+"&nonceStr="+nonceStr+"&package="+pack+"&signType="+signType+"&timeStamp="+timeStamp;
+    const str1 = "appId="+appId+"&nonceStr="+nonceStr+"&package="+pack+"&signType="+signType+"&timeStamp="+timeStamp;
     const newStr = str1 +"&key="+key;
     return md5.update(newStr).digest("hex").toUpperCase();
 }
