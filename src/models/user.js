@@ -126,7 +126,9 @@ export default {
     },
     *getOpenid({bodyObj},{call,put}){
       var data = yield call(request,{bodyObj:bodyObj});
+      console.log(data);
       if(data.data.Result == 0){
+        yield put({type:"checkCourseMain"});
         hashHistory.push(bodyObj.url);
       }else{
         alert("获取微信openid失败，请稍后重试！");
