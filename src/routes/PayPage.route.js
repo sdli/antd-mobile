@@ -30,7 +30,13 @@ class PayPage extends React.Component{
         const {dispatch,user} = this.props;
         return(
             <div>
-                <PaySelector dispatch={dispatch} callBack={()=>{console.log("data");}} courseList={user.courses.CourseQueryReq.CourseList}/>
+                {
+                    JSON.stringify(user.courses) != "{}"
+                    &&
+                    <div>
+                        <PaySelector dispatch={dispatch} callBack={()=>{console.log("data");}} courseList={user.courses.CourseQueryReq.CourseList}/>
+                    </div>
+                }
             </div>
         );
     }
