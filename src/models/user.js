@@ -99,7 +99,11 @@ export default {
     *getVerifyCode({bodyObj},{call,put}){
       var code = yield call(request,{bodyObj});
       console.log(code);
-      yield toastInit(put,code,{msg:"发送成功！",type:"info"},{msg:"发送失败，号码未注册。",type:"fail"});
+      if(bodyObj.Type){
+        yield toastInit(put,code,{msg:"发送成功！",type:"info"},{msg:"发送失败，号码未注册。",type:"fail"});
+      }else{
+        yield toastInit(put,code,{msg:"发送成功！",type:"info"},{msg:"发送失败，号码已注册。",type:"fail"});
+      }   
     },
     *lessonDetails({bodyObj},{call,put}){
       var lessonDetails = yield call(request,{bodyObj:bodyObj});
