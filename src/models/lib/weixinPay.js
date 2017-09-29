@@ -23,10 +23,10 @@ function payInit(appId,prepay_id){
     // JS bradge的配置
     this.options    = {
             "appId": this.appId,
-            "timeStamp": this.timeStamp,
             "nonceStr": this.nonceStr,
             "package":"prepay_id=" + prepay_id,
             "signType":"MD5",
+            "timeStamp": this.timeStamp,
             "paySign": this.getPaySign(this.appId,this.nonceStr,this.pack,"MD5",this.timeStamp)
     };
 
@@ -58,7 +58,6 @@ payInit.prototype.getNonceStr   = function(int){
 }
 
 payInit.prototype.getPaySign    = function(appId,nonceStr,pack,signType,timeStamp){
-    alert(appId,nonceStr,pack,signType,timeStamp);
     // const key = "3foptz6c3zk3lh28jd5vpu0q8y4umnai";
     const key = "RJxukhMkIAETcbnhmNcjwRAQBeQZN6hu";
     const str1 = "appId="+appId+"&nonceStr="+nonceStr+"&package="+pack+"&signType="+signType+"&timeStamp="+timeStamp;
