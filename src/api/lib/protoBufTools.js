@@ -14,7 +14,7 @@ var ProtoBuffTools = function(reqProtoMessageName,method,data,config){
         port: config.apiPort,
         path: (typeof config.domain === "undefined")?
               "http://"+config.hostname+config.apiPort+"/"+reqProtoMessageName
-              :config.domain,
+              :"http://"+config.domain+"/"+reqProtoMessageName,
         method: method,
         headers: {
             "Content-Type": "application/x-protobuf",
@@ -86,7 +86,6 @@ var protoBufferStart = function(reqProtoMessageName,method,data,func){
         throw "promise rejected";
     });
 }
-
 
 var protoBufferMulti = function(InitArr,Initfunc){
     var arr = InitArr;

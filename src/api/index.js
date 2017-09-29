@@ -1,4 +1,4 @@
-var protoBuffer        = require("protobuf-tools");
+var protoBuffer        = require("./lib/protobufTools");
 var path               = require("path");
 var https              = require("https");
 var configs            = require("./lib/config.js");
