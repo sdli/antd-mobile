@@ -3,35 +3,35 @@ var md5 = require("md5");
 
 /**
  * 
- * @param {*} appId 
- * @param {*} prepay_id 
+ * @param {*} appId 微信appId
+ * @param {*} prepay_id 后台返回的prepay_id
  */
 function payInit(appId,prepay_id){
 
     // 配置appid，此id为公众号id，不为商户id
-    this.appId = appId;
+    this.appId      = appId;
 
     // 从后台获取的prepay_id
-    this.pack = "prepay_id=" + prepay_id;
+    this.pack       = "prepay_id=" + prepay_id;
 
     // 随机字符串
-    this.nonceStr = this.getNonceStr(31);
+    this.nonceStr   = this.getNonceStr(31);
 
     // 时间戳
-    this.timeStamp = this.getTimeStamp().toString();
+    this.timeStamp  = this.getTimeStamp().toString();
 
     // JS bradge的配置
-    this.options = {
-        "appId": this.appId,
-        "timeStamp": this.timeStamp,
-        "nonceStr": this.nonceStr,
-        "package":"prepay_id=" + prepay_id,
-        "signType":"MD5",
-        "paySign": this.getPaySign(this.appId,this.nonceStr,this.pack,"MD5",this.timeStamp)
+    this.options    = {
+            "appId": this.appId,
+            "timeStamp": this.timeStamp,
+            "nonceStr": this.nonceStr,
+            "package":"prepay_id=" + prepay_id,
+            "signType":"MD5",
+            "paySign": this.getPaySign(this.appId,this.nonceStr,this.pack,"MD5",this.timeStamp)
     };
 
     // 唤醒支付
-    this.jsApiCall = function(){
+    this.jsApiCall  = function(){
         alert(JSON.stringify(this.options)+"---call");
         WeixinJSBridge.invoke(
             'getBrandWCPayRequest',
@@ -44,12 +44,12 @@ function payInit(appId,prepay_id){
     }.bind(this);
 }
 
-payInit.prototype.getTimeStamp = function(){
+payInit.prototype.getTimeStamp  = function(){
     return (Date.parse(new Date())/1000);
 }
 
-payInit.prototype.getNonceStr = function(int){
-    var base = "abcdefjhijklmnopqistuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+payInit.prototype.getNonceStr   = function(int){
+    var base = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
     var string = "";
     for(var i = 0; i<int; i++){
         string += base.substr(Math.random()*(base.length),1);
@@ -57,7 +57,7 @@ payInit.prototype.getNonceStr = function(int){
     return string;
 }
 
-payInit.prototype.getPaySign = function(appId,nonceStr,pack,signType,timeStamp){
+payInit.prototype.getPaySign    = function(appId,nonceStr,pack,signType,timeStamp){
     alert(appId,nonceStr,pack,signType,timeStamp);
     // const key = "3foptz6c3zk3lh28jd5vpu0q8y4umnai";
     const key = "RJxukhMkIAETcbnhmNcjwRAQBeQZN6hu";
@@ -67,11 +67,11 @@ payInit.prototype.getPaySign = function(appId,nonceStr,pack,signType,timeStamp){
     return md5(newStr).toUpperCase();
 }
 
-payInit.prototype.getTimeStamp = function(){
+payInit.prototype.getTimeStamp  = function(){
     return Date.parse(new Date())/1000;
 }
 
-payInit.prototype.callpay = function(){
+payInit.prototype.callpay       = function(){
     if (typeof WeixinJSBridge == "undefined"){
         if( document.addEventListener ){
             document.addEventListener('WeixinJSBridgeReady', this.jsApiCall, false);
