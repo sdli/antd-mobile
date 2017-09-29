@@ -10,16 +10,13 @@ var ProtoBuffTools = function(reqProtoMessageName,method,data,config){
     this.method = method;
     this.data = data;
     this.options = {
-        host: config.hostname,
+        host: (typeof config.hostname !== "undefined")?config.hostname:config.domain,
         port: config.apiPort,
         path: (typeof config.domain === "undefined")?
               "http://"+config.hostname+config.apiPort+"/"+reqProtoMessageName
               :"http://"+config.domain+"/"+reqProtoMessageName,
         method: method,
-        headers: {
-            "Content-Type": "application/x-protobuf",
-            "Authorization": config.authorization
-        },
+        headers: config.headers
     };
 }
 
@@ -30,9 +27,7 @@ ProtoBuffTools.prototype.createReqBuff = function(reqProtoMessageName,root,confi
         var message = AwesomeMessage.create(dataTable);  
         var buffer = AwesomeMessage.encode(message).finish();
     }catch(e){
-        if(e) {
-            console.log(e);
-        }
+        if(e) throw "Error in Changing Data into buffer;"
     }
     return buffer;
 }
@@ -86,6 +81,7 @@ var protoBufferStart = function(reqProtoMessageName,method,data,func){
         throw "promise rejected";
     });
 }
+
 
 var protoBufferMulti = function(InitArr,Initfunc){
     var arr = InitArr;
