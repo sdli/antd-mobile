@@ -99,10 +99,10 @@ export default {
     *getVerifyCode({bodyObj},{call,put}){
       var code = yield call(request,{bodyObj});
       console.log(code);
-      if(bodyObj.Type){
-        yield toastInit(put,code,{msg:"发送成功！",type:"info"},{msg:"发送失败，号码未注册。",type:"fail"});
+      if(bodyObj.Type == "1"){
+        yield toastInit(put,code,{msg:"发送成功！",type:"info"},{msg:"发送失败，号码已经注册。",type:"fail"});
       }else{
-        yield toastInit(put,code,{msg:"发送成功！",type:"info"},{msg:"发送失败，号码已注册。",type:"fail"});
+        yield toastInit(put,code,{msg:"发送成功！",type:"info"},{msg:"发送失败，号码尚未注册。",type:"fail"});
       }   
     },
     *lessonDetails({bodyObj},{call,put}){
