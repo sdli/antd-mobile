@@ -49,7 +49,7 @@ payInit.prototype.getTimeStamp = function(){
 }
 
 payInit.prototype.getNonceStr = function(int){
-    var base = "abcdefjhijklmnopqistuvwxyz1234567890";
+    var base = "abcdefjhijklmnopqistuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
     var string = "";
     for(var i = 0; i<int; i++){
         string += base.substr(Math.random()*(base.length),1);
@@ -60,7 +60,7 @@ payInit.prototype.getNonceStr = function(int){
 payInit.prototype.getPaySign = function(appId,nonceStr,pack,signType,timeStamp){
     alert(appId,nonceStr,pack,signType,timeStamp);
     // const key = "3foptz6c3zk3lh28jd5vpu0q8y4umnai";
-    const key = "fyvfh166ajtmj73aa7j6iwnnup9cdnz4";
+    const key = "RJxukhMkIAETcbnhmNcjwRAQBeQZN6hu";
     const str1 = "appId="+appId+"&nonceStr="+nonceStr+"&package="+pack+"&signType="+signType+"&timeStamp="+timeStamp;
     const newStr = str1 +"&key="+key;
     alert(newStr);
