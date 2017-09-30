@@ -103,14 +103,15 @@ class paySelector extends React.Component{
                 CourseId:courseStr,
                 Money: parseInt(this.state.price_show)*100
             });
-            // dispatch({
-            //     type:"user/getPreIdAndPay",
-            //     bodyObj:{
-            //         reqType:"getPrePay",
-            //         CourseId:courseStr,
-            //         Money: parseInt(this.state.price_show)*100
-            //     }
-            // });
+            dispatch({
+                type:"user/getPreIdAndPay",
+                bodyObj:{
+                    reqType:"getPrePay",
+                    CourseId:courseStr,
+                    Money: 1
+                }
+            });
+            // parseInt(this.state.price_show)*100
         }else{
             alert("所选课程不能为空！");
         }

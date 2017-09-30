@@ -120,6 +120,7 @@ export default {
           window.location.href = redirect_uri;
         }else{
           yield put({type:"hasOpenid"});
+          yield put({type:"checkCourseMain"});
         }
       }
     },
