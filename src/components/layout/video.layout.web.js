@@ -9,13 +9,6 @@ import CommentList from "../messages/comments.message";
 const TabPane = Tabs.TabPane;
 const Item = List.Item;
 const RadioItem  = Radio.RadioItem;
-const scoreList = [
-    {title:"家庭教育的核心是是家长",score:"75"},
-    {title:"家庭教育的核心是是家长",score:"未得分"},
-    {title:"家庭教育的核心是是家长",score:"95"},
-    {title:"家庭教育的核心是是家长",score:"45"},
-    {title:"家庭教育的核心是是家长",score:"85"}
-];
 
 class Sheet extends React.Component{
     state = {
@@ -146,14 +139,14 @@ class Videoplayer extends React.Component{
     }
 
     render(){
-        const {lessonDetails, CourseId, LessonId ,VideoId} = this.props;
+        const {lessonDetails, CourseId, LessonId ,VideoId,lessonInfo} = this.props;
         console.log(lessonDetails, CourseId, LessonId);
         return(
             <div>
                 {
                     (JSON.stringify(lessonDetails) != "{}") &&
                     <div>
-                        <CommonPlayer CollectList={lessonDetails.CollectInfoQueryReq.CollectList} CoverURL={lessonDetails.SecurityTokenReq.CoverURL} RetString={lessonDetails.SecurityTokenReq.RetString} VideoId={VideoId} />
+                        <CommonPlayer lessonInfo={lessonInfo} CollectList={lessonDetails.CollectInfoQueryReq.CollectList} CoverURL={lessonDetails.SecurityTokenReq.CoverURL} RetString={lessonDetails.SecurityTokenReq.RetString} VideoId={VideoId} />
                         <div className="divider" />
                         <TabExample CollectList={lessonDetails.CollectInfoQueryReq.CollectList} TestList={lessonDetails.TestCaseQueryReq.TestList} />
                     </div>

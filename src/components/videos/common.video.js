@@ -115,11 +115,12 @@ class CommonVedio extends Component{
 
     render(){
         console.log(isMobile);
-        const {SecurityTokenReq}  = this.props;
+        const {SecurityTokenReq,lessonInfo}  = this.props;
         const favorites = [
             {time:10,content:"visa视频广告，点击收藏。",score:5},
             {time:20,content:"让亲情不被打断，点击收藏。",score:10},
         ];
+        console.log(lessonInfo,"我在这里");
         return (
             <div>
                 <div className={styles.videoSection}>

@@ -23,9 +23,10 @@ var headers ={
 
 //redis配置
 var redis = {
-//    "host" : "172.17.134.132",
-   "host" : "127.0.0.1",
+   "host" : "172.17.134.132",
+//    "host" : "127.0.0.1",
    "port" : "6699",
+//    "port" : "6379",
    "db" : 1,
    "ttl" : 1800,
    "logErrors" : true

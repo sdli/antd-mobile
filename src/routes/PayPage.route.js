@@ -6,35 +6,45 @@ import PaySelector from "../components/list/paySelector.list";
 class PayPage extends React.Component{
     constructor(props){
         super(props);
+        this.state ={
+            notFull : false
+        }
     }
 
     getCoursesUnpaied(courses){
-        console.log(courses);
         if(typeof courses.CourseQueryReq !== "undefined" && typeof courses.TeacherCourseReq !== "undefined"){
             if(courses.TeacherCourseReq.CourseList.length == 0){
-                return courses.CourseQueryReq.CourseList;
+                return {
+                    notFull: false,
+                    courseList : courses.CourseQueryReq.CourseList
+                };
             }else{
-                return courses.CourseQueryReq.CourseList.map(function(val,index){
-                    for(var i =0;i<courses.TeacherCourseReq.CourseList.length;i++){
-                        if(val.CourseId == courses.TeacherCourseReq.CourseList[i].CourseId ){
-                            return 0;
+                
+                return {
+                    notFull: true,
+                    courseList: courses.CourseQueryReq.CourseList.map(function(val,index){
+                        for(var i =0;i<courses.TeacherCourseReq.CourseList.length;i++){
+                            if(val.CourseId == courses.TeacherCourseReq.CourseList[i].CourseId ){
+                                return 0;
+                            }
                         }
-                    }
-                    return val;
-                });
+                        return val;
+                    })
+                }
             }
         }
     }
 
     render(){
         const {dispatch,user} = this.props;
+        const courseInfo = this.getCoursesUnpaied(user.courses);
         return(
             <div>
                 {
                     JSON.stringify(user.courses) != "{}"
                     &&
                     <div>
-                        <PaySelector dispatch={dispatch} callBack={()=>{console.log("data");}} courseList={user.courses.CourseQueryReq.CourseList}/>
+                        <PaySelector dispatch={dispatch} courseList={courseInfo.courseList} notFull={courseInfo.notFull}/>
                     </div>
                 }
             </div>
