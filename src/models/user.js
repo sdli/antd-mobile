@@ -24,7 +24,7 @@ export default {
     setup({ dispatch, history ,query}) {  // eslint-disable-line
       console.log(arguments,query);
       history.listen(({ pathname }) => {
-
+        window.scrollTo(0,0);
         if(pathname !== "/login" && pathname != "/register" && pathname != "/loginSelect" && pathname !== "/pay" && pathname != "/getOpenid"){
           dispatch({type:"checkLogin"});
         }

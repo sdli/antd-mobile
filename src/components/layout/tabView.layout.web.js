@@ -10,6 +10,7 @@ import MessageList from "../messages/messageList.message";
 import Footer from "../cards/footer.card";
 import UserCenter from "../user/tabview.user";
 import { hashHistory } from 'react-router';
+import Show from "../cards/show.card.js";
 
 /* eslint global-require: 0 */
 
@@ -67,6 +68,7 @@ class TabBarExample extends React.Component {
               <div className="divider"></div>
               <LessionList courses={courses} />
               <Footer style={{backgroundColor:"#f6f6f6",marginBottom:"2rem"}} />
+              <Show />
             </div>
           }
         </TabBar.Item>
