@@ -42,7 +42,6 @@ class CommonVedio extends Component{
             format: "mp4",
             x5_type: 'h5',
             x5_video_position: "center",
-            x5_fullscreen: true,
             skinLayout:[
                 {"name":"bigPlayButton","align":"blabs","x":30,"y":80},
                 {"name":"controlBar","align":"blabs","x":0,"y":0,"children":[{"name":"progress","align":"tlabs","x":0,"y":0},
