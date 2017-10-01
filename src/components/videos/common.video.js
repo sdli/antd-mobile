@@ -30,7 +30,7 @@ class CommonVedio extends Component{
         var player = window.player = new Aliplayer({
             id: "J_prismPlayer",
             autoplay: false,
-            playsinline:true,
+            playsinline: true,
             width:"100%",
             height:"100%",
             controlBarVisibility:"clicked",
@@ -39,9 +39,7 @@ class CommonVedio extends Component{
             vid : VideoId,
             playauth : RetString,
             cover: CoverURL,
-            x5_type: "h5",
-            x5_fullscreen: false,
-            x5_video_position: "center"
+            format: "mp4"
         });
 
         var catchViedo;
