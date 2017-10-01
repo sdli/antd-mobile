@@ -32,7 +32,7 @@ class CommonVedio extends Component{
             autoplay: false,
             playsinline: true,
             width:"100%",
-            height:"100%",
+            height:"40%",
             controlBarVisibility:"clicked",
             useH5Prism:true,
             useFlashPrism:false,
