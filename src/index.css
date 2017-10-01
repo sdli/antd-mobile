@@ -49,8 +49,27 @@
 :global(textarea){
     font-size: 0.26rem !important;
 }
+:global(.prism-controlbar-bg){
+    height: 0.9rem !important;
+}
+:global(.prism-controlbar){
+    height: 0.9rem !important;
+}
+:global(.prism-progress){
+    height: 0.12rem !important;
+    top: -0.12rem !important;
+}
 :global(.prism-time-display){
-    line-height: 0.7rem !important;
-    height: 0.7rem !important;
-    padding-left: 0.16rem;
+    line-height: 0.9rem !important;
+    height: 0.9rem !important;
+    padding-left: 0.5rem !important;
+}
+:global(.prism-play-btn.playing){
+    transform: translate(0.3rem,0.3rem) scale(1.5);
+}
+:global(.prism-fullscreen-btn){
+    transform: translate(-0.3rem,0.3rem) scale(1.5);
+}
+:global(.prism-play-btn){
+    transform: translate(0.3rem,0.3rem) scale(1.5);
 }

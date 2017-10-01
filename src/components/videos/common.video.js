@@ -39,7 +39,15 @@ class CommonVedio extends Component{
             vid : VideoId,
             playauth : RetString,
             cover: CoverURL,
-            format: "mp4"
+            format: "mp4",
+            skinLayout:[
+                {"name":"bigPlayButton","align":"blabs","x":30,"y":80},
+                {"name":"controlBar","align":"blabs","x":0,"y":0,"children":[{"name":"progress","align":"tlabs","x":0,"y":0},
+                {"name":"playButton","align":"tl","x":15,"y":26},
+                {"name":"fullScreenButton","align":"tr","x":20,"y":25},
+                {"name":"timeDisplay","align":"tl","x":10,"y":24}]},
+                {"name":"fullControlBar","align":"tlabs","x":0,"y":0,"children":[{"name":"fullZoom","align":"cc"}]}
+            ]   
         });
 
         var catchViedo;
@@ -111,7 +119,6 @@ class CommonVedio extends Component{
     componentWillUnmount(){
         var {dispatch}  = this.props;
         clearTimeout(catchViedo);
-        alert("我被清空了，救命啊！");
         dispatch({type:"user/clearLessonDetails"});
     }
 
@@ -122,7 +129,7 @@ class CommonVedio extends Component{
         return (
             <div>
                 <div className={styles.videoSection}>
-                <div  className="prism-player" id="J_prismPlayer" ref={(video)=>{this.video = video;}}></div>
+                <div id="J_prismPlayer" ref={(video)=>{this.video = video;}}></div>
                     {
                         !this.state.s
                         &&
