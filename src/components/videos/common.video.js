@@ -129,7 +129,7 @@ class CommonVedio extends Component{
                         <div className={styles.videoMask}>
                             <div></div>
                             <div className={styles.videoPlay}>
-                                <h3>"课程名称-空"</h3>
+                                <h3>{lessonInfo.LessonName}</h3>
                                 <p><span ref={(playButton)=>{this.playButton = playButton;}}><Icon type={PlaySvg} style={{height: "0.28rem",width:"0.28rem"}}/> 播放</span></p>
                             </div>
                             <div className={styles.score}>
@@ -138,7 +138,7 @@ class CommonVedio extends Component{
                                     <p>视频时常：{lessonInfo.VideoLength/60}分钟</p>
                                 </div>
                                 <div className={styles.myScore}>
-                                    <p>{lessonInfo.LessonSore}<span>分</span></p>
+                                    <p>{lessonInfo.LessonScore}<span>分</span></p>
                                     <p>我的成绩</p>
                                 </div>
                             </div>
