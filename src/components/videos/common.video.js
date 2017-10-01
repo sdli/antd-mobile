@@ -40,13 +40,8 @@ class CommonVedio extends Component{
             playauth : RetString,
             cover: CoverURL,
             x5_type: "h5",
-            x5_fullscreen: true,
-            x5_video_position: "center",
-            skinLayout:[{"name":"bigPlayButton","align":"blabs","x":30,"y":80},
-                {"name":"H5Loading","align":"cc"},
-                {"name":"controlBar","align":"blabs","x":0,"y":0,"children":[{"name":"progress","align":"tlabs","x":0,"y":0},
-                {"name":"timeDisplay","align":"tl","x":10,"y":24}
-            ]}]
+            x5_fullscreen: false,
+            x5_video_position: "center"
         });
 
         var catchViedo;
