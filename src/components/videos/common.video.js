@@ -40,7 +40,7 @@ class CommonVedio extends Component{
             playauth : RetString,
             cover: CoverURL,
             x5_type: "h5",
-            x5_fullscreen: false,
+            x5_fullscreen: true,
             x5_video_position: "center",
             skinLayout:[{"name":"bigPlayButton","align":"blabs","x":30,"y":80},
                 {"name":"H5Loading","align":"cc"},
