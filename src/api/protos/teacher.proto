@@ -121,12 +121,14 @@ message Course
 	string Description = 3; //课程简介
 	string Professor = 4;  //授课教授
 	string ProfessorTitle = 5;  //教授头衔
-	int32 LessonNum = 6;  //课时数
-	int32 FinishLesson = 7;  //已完成课时数
-	int32 Score = 8;  //课程得分
-	string Opionion = 9;  //心得
-	int32 WatchNum = 10;  //观看人数
-	repeated Lesson LessonList = 11;  //课时列表
+	string HeadPortrait = 6;  //头像url
+	string ImagePhoto = 7;  //形象照
+	int32 LessonNum = 8;  //课时数
+	int32 FinishLesson = 9;  //已完成课时数
+	int32 Score = 10;  //课程得分
+	string Opionion = 11;  //心得
+	int32 WatchNum = 12;  //观看人数
+	repeated Lesson LessonList = 13;  //课时列表
 }
 
 message TeacherCourseResp
@@ -150,6 +152,7 @@ message CollectInfo
 	string CollectCnt = 2; //弹窗语句
 	int32 Time = 3;  //弹窗时间
 	int32 Status = 4;  //状态 0:未收藏  1:已收藏
+	int32 Score = 5;  //分数
 }
 
 message CollectInfoQueryResp
@@ -190,6 +193,7 @@ message TestCase
 	int32 Time = 3;  //弹窗时间
 	int32 Status = 4;  //状态 0:未回答  1:已回答
 	string CommitedAnswer = 5; //Status为0时则改值为空
+	int32 Score = 6;  //分数
 }
 
 message TestCaseQueryResp

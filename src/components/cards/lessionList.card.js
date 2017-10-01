@@ -34,7 +34,7 @@ class LessionList extends Component{
         return(
             <div>
                 <div className={styles.lessionImg}>
-                    <img src={Img} />
+                    <img src={CourseData.ImagePhoto} />
                     <div className={styles.bottomMask}>
                         <div>
                             <p>{CourseData.Professor}<span>{CourseData.ProfessorTitle}</span></p>

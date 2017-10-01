@@ -75,7 +75,7 @@ class LessonList extends Component{
                               var image = getImage(val.Professor); 
                               return (
                                   <div className={styles.lessonCell} key={index}>
-                                    <img src={image.image} />
+                                    <img src={val.HeadPortrait} />
                                     <Link to={{pathname:"/lessionList",query:{CourseId:val.CourseId}}} className={styles.linkInit}>
                                         <div className={styles.lessonStat}>
                                             <p>{val.Professor}</p>
