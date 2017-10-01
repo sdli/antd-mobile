@@ -23,13 +23,14 @@ export default {
   subscriptions: {
     setup({ dispatch, history ,query}) {  // eslint-disable-line
       console.log(arguments,query);
-      history.listen(({ pathname }) => {
+      history.listen(({ pathname,query }) => {
         window.scrollTo(0,0);
-        if(pathname !== "/login" && pathname != "/register" && pathname != "/loginSelect" && pathname !== "/pay" && pathname != "/getOpenid"){
+        console.log(query);
+        if(pathname !== "/login" && pathname != "/register" && pathname != "/loginSelect" && pathname !== "/pay" && pathname != "/getOpenid" && pathname !="/videoplay"){
           dispatch({type:"checkLogin"});
         }
         if(pathname == "/videoplay"){
-          dispatch({type:"checkLoginDeep"});
+          dispatch({type:"checkLoginDeep",query});
         }
         if((new RegExp(/\user?/g)).test(pathname)){
           dispatch({type:"getUserInfo"});
@@ -70,10 +71,20 @@ export default {
          yield put({type:"loginOK"});
       }
     },
-    *checkLoginDeep({},{call,put}){
+    *checkLoginDeep({query},{call,put}){
       var loginStatus = yield call(request,{bodyObj:{reqType:"checkLogin"}});
       if(!loginStatus.data.data.login){
           hashHistory.push("/loginSelect");
+      }else{
+          yield put({type:"checkCourseMain"});
+          yield put({
+            type:"lessonDetails",
+            bodyObj:{
+              ...query,
+              videoType: 1,
+              reqType: "CollectInfoQueryReq"
+            }
+          });
       }
     },
     *getUserInfo({},{call,put}){
@@ -108,7 +119,7 @@ export default {
     },
     *lessonDetails({bodyObj},{call,put}){
       var lessonDetails = yield call(request,{bodyObj:bodyObj});
-      console.log("lesson request!!!");
+      console.log(lessonDetails.data.SecurityTokenReq);
       yield put({type:"setLessonDetails",lessonDetails:lessonDetails.data});
     },
     *checkOpenid({},{call,put}){
@@ -158,6 +169,9 @@ export default {
     },
     hasOpenid(state,action){
       return {...state,openid:1};
+    },
+    clearLessonDetails(state,action){
+      return {...state,lessonDetails:{}};
     }
   }
 };

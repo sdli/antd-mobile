@@ -1,4 +1,5 @@
 import React , {Component} from "react";
+import ReactDom from "react-dom";
 import styles from "./video.css";
 import isMobile from "../tools/isMobile";
 import Img from "../../assets/imgs/lu.jpg";
@@ -15,18 +16,18 @@ class CommonVedio extends Component{
         };
     }
 
-
     getWindowWidth(){
         const w = window.screen.width;
         this.setState({w:w*isMobile,h:w*0.8});
     }
 
-
     componentDidMount(){
         var {CoverURL,RetString,VideoId,CollectList} = this.props;
         var that = this, pause = false;
-        console.log(CoverURL,RetString,VideoId);
-        var player = new prismplayer({
+        console.log(CoverURL,RetString,VideoId,"检测播放器更新");
+        console.log(window.player);
+        
+        var player = window.player = new Aliplayer({
             id: "J_prismPlayer",
             autoplay: false,
             playsinline:true,
@@ -42,9 +43,9 @@ class CommonVedio extends Component{
                 {"name":"H5Loading","align":"cc"},
                 {"name":"controlBar","align":"blabs","x":0,"y":0,"children":[{"name":"progress","align":"tlabs","x":0,"y":0},
                 {"name":"timeDisplay","align":"tl","x":10,"y":24}
-            ]}] 
+            ]}]
         });
-        
+
         var catchViedo;
         window.catchViedo = catchViedo;
 
@@ -91,26 +92,30 @@ class CommonVedio extends Component{
                 }
             }
 
-            console.log(timeDeleted);
             if(timeDeleted == 0){
-                return false
+                return false;
             }else{
                 clearTimeout(window.catchViedo);
                 window.catchViedo = setTimeout(
-                        function(){
-                            player.pause();
-                            if(confirm(text)){
-                                console.log("通过，开始下一个计时");
-                                timeCheck(player,Collects);
-                            }else{ 
-                                console.log("未通过，下一个问题开始计时");
-                                timeCheck(player,Collects);
-                            }
-                        },timeDeleted*1000
-                    );
-                }
-                console.log("设置为第"+(count+1)+"弹窗"+"，弹窗时间："+timeDeleted+"秒以后，弹窗内容："+text);
+                    function(){
+                        player.pause();
+                        if(confirm(text)){
+                            console.log("通过，开始下一个计时");
+                            timeCheck(player,Collects);
+                        }else{ 
+                            console.log("未通过，下一个问题开始计时");
+                            timeCheck(player,Collects);
+                        }
+                    },timeDeleted*1000
+                );
+            }
         }
+    }
+
+    componentWillUnmount(){
+        var {dispatch}  = this.props;
+        clearTimeout(catchViedo);
+        dispatch({type:"user/clearLessonDetails"});
     }
 
     render(){
@@ -126,7 +131,7 @@ class CommonVedio extends Component{
                 <div className={styles.videoSection}>
                 <div  className="prism-player" id="J_prismPlayer" ref={(video)=>{this.video = video;}}></div>
                     {
-                        !this.state.s 
+                        !this.state.s
                         &&
                         <div className={styles.videoMask}>
                             <div></div>

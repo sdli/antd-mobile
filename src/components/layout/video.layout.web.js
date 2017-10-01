@@ -123,30 +123,14 @@ class Videoplayer extends React.Component{
         super(props);
     }
 
-    componentDidMount(){
-        const {dispatch,CourseId,LessonId,VideoId,lessonDetails} = this.props;
-        dispatch({
-            type:"user/lessonDetails",
-            bodyObj:{
-                    CourseId: CourseId,
-                    LessonId: LessonId,
-                    VideoId: VideoId,
-                    videoType: 1,
-                    reqType: "CollectInfoQueryReq"
-                }
-            }
-        );
-    }
-
     render(){
-        const {lessonDetails, CourseId, LessonId ,VideoId,lessonInfo} = this.props;
-        console.log(lessonDetails, CourseId, LessonId);
+        const {lessonDetails, CourseId, LessonId ,VideoId,lessonInfo,dispatch} = this.props;
         return(
             <div>
                 {
                     (JSON.stringify(lessonDetails) != "{}") &&
                     <div>
-                        <CommonPlayer lessonInfo={lessonInfo} CollectList={lessonDetails.CollectInfoQueryReq.CollectList} CoverURL={lessonDetails.SecurityTokenReq.CoverURL} RetString={lessonDetails.SecurityTokenReq.RetString} VideoId={VideoId} />
+                        <CommonPlayer lessonInfo={lessonInfo} dispatch={dispatch} CollectList={lessonDetails.CollectInfoQueryReq.CollectList} CoverURL={lessonDetails.SecurityTokenReq.CoverURL} RetString={lessonDetails.SecurityTokenReq.RetString} VideoId={VideoId} />
                         <div className="divider" />
                         <TabExample CollectList={lessonDetails.CollectInfoQueryReq.CollectList} TestList={lessonDetails.TestCaseQueryReq.TestList} />
                     </div>

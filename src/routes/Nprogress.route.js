@@ -23,9 +23,13 @@ class ProgressPage extends React.Component{
 
     render(){
         const {loading,toast} = this.props;
+        console.log(loading);
         return (
             <div>
-                {this.props.children}
+                {   
+                    (!loading.models.user) &&
+                    this.props.children
+                }
             </div>
         );
     }
