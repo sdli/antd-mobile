@@ -16,7 +16,10 @@ class VideoPage extends Component{
                 for(var j=0;j<coursesList[i].LessonList.length;j++){
                     if(coursesList[i].LessonList[j].LessonId == LessonId ){
                         console.log("找到了课程",coursesList[i].LessonList[j]);
-                        return Object.assign(coursesList[i].LessonList[j],Professor:coursesList[i].Professor);
+                        return Object.assign(
+                            coursesList[i].LessonList[j],
+                            {Professor:coursesList[i].Professor}
+                        );
                     }
                 }
             }
