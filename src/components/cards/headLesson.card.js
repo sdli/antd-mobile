@@ -72,7 +72,6 @@ class LessonList extends Component{
                     {
                         (courses.hasOwnProperty("CourseList")) &&
                         courses.CourseList.map(function(val,index){
-                              var image = getImage(val.Professor); 
                               return (
                                   <div className={styles.lessonCell} key={index}>
                                     <img src={val.HeadPortrait} />
@@ -95,10 +94,9 @@ class LessonList extends Component{
                         (courses.hasOwnProperty("CourseQueryReq")) &&
                         courses.CourseQueryReq.CourseList.map((val,index)=>{
                             var userData = findUserCourse(courses.TeacherCourseReq.CourseList,val.CourseId);
-                            var image = getImage(val.Professor); 
                             return (
                                 <div className={styles.lessonCell} key={index}>
-                                    <img src={image.image} />
+                                    <img src={val.HeadPortrait} />
                                     <Link to={{pathname:"/lessionList",query:{CourseId:val.CourseId}}} className={styles.linkInit}>
                                         <div className={styles.lessonStat}>
                                             <p>{val.Professor} 
