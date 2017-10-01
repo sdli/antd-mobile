@@ -132,16 +132,16 @@ class CommonVedio extends Component{
                         <div className={styles.videoMask}>
                             <div></div>
                             <div className={styles.videoPlay}>
-                                <h3>家庭教育的核心是什么？</h3>
+                                <h3>"课程名称-空"</h3>
                                 <p><span ref={(playButton)=>{this.playButton = playButton;}}><Icon type={PlaySvg} style={{height: "0.28rem",width:"0.28rem"}}/> 播放</span></p>
                             </div>
                             <div className={styles.score}>
                                 <div className={styles.lessionLength}>
-                                    <p>课程专家：陆士桢教授</p>
-                                    <p>视频时常：32分钟</p>
+                                    <p>课程专家：{lessonInfo.Professor}</p>
+                                    <p>视频时常：{lessonInfo.VideoLength/60}分钟</p>
                                 </div>
                                 <div className={styles.myScore}>
-                                    <p>85<span>分</span></p>
+                                    <p>{lessonInfo.LessonSore}<span>分</span></p>
                                     <p>我的成绩</p>
                                 </div>
                             </div>
@@ -150,7 +150,7 @@ class CommonVedio extends Component{
                 </div>
                 <div className={styles.lessionDesc}>
                     <p>课程简介：</p>
-                    <p>陆士桢，女，汉族，中共党员，出生于1947年8月，教授，硕士生导师，国务院特殊贡献专家津贴，在青少年研究和社会工作领域享有一定学术声誉。曾任中国青年政治学院党委书记。</p>
+                    <p>{lessonInfo.Description}</p>
                 </div>
             </div>
 
