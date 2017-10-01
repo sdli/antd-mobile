@@ -73,3 +73,6 @@
 :global(.prism-play-btn){
     transform: translate(0.3rem,0.3rem) scale(1.5);
 }
+:global(video){
+    object-fit: contain !important;    
+}
