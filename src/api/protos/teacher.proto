@@ -108,10 +108,11 @@ message TeacherCourseReq
 message Lesson
 {
 	int32 LessonId = 1;  //课时索引
-	string Description = 2;  //课时简介
-	int32 LessonScore = 3; //课时得分
-	string VideoId = 4;  //视频id
-	int32 VideoLength = 5;  //视频长度,秒
+	string LessonName = 2;  //课时名称
+	string Description = 3;  //课时简介
+	int32 LessonScore = 4; //课时得分
+	string VideoId = 5;  //视频id
+	int32 VideoLength = 6;  //视频长度,秒
 }
 
 message Course
