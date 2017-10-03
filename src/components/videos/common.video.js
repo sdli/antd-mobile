@@ -130,7 +130,7 @@ class CommonVedio extends Component{
                             <div className={styles.score}>
                                 <div className={styles.lessionLength}>
                                     <p>课程专家：{lessonInfo.Professor}</p>
-                                    <p>视频时常：{lessonInfo.VideoLength/60}分钟</p>
+                                    <p>视频时常：{Math.floor(lessonInfo.VideoLength/60)}分钟</p>
                                 </div>
                                 <div className={styles.myScore}>
                                     <p>{lessonInfo.LessonScore}<span>分</span></p>

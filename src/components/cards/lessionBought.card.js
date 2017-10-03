@@ -21,7 +21,7 @@ class listUl extends React.Component{
                                     <Icon type={VideoSvg}/>
                                     <div className={styles.lessionUlTitle}>
                                         <p>{val.LessonName}</p>
-                                        <p>时长：{parseInt(val.VideoLength)/60}分钟</p>
+                                        <p>时长：{Math.floor(parseInt(val.VideoLength)/60)}分钟</p>
                                     </div>
                                     <div className={styles.lessionUlFunc}>
                                         <p style={{lineHeight:"1rem",textAlign:"center",width:"100%",display:"block"}}>{val.Score}<span className={styles.lessionUlSpan}>分</span></p>
