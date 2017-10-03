@@ -46,7 +46,7 @@ class CommonVedio extends Component{
                     console.log(e);
                     switch (e){
                         case "playing": timeCheck(player,CollectList);played=true; break;
-                        case "seeking": (played && !pause)?timeCheck(player,CollectList):null; break;
+                        case "seeking": (played && !pause)?timeCheck(player,CollectList):clearTimeout(catchVideo); break;
                         case "suspended":  clearTimeout(catchVideo); break;
                         case "playEnd": clearTimeout(catchVideo);break;
                         case "ready": clearTimeout(catchVideo);break;
@@ -89,12 +89,12 @@ class CommonVedio extends Component{
                         if(confirm("请点击确认收藏：" + text)){
                             console.log("通过，开始下一个计时");
                             timeCheck(player,Collects);
-                            player.play(collectTime+2);
+                            player.resume();
                             pause = false;
                         }else{ 
                             console.log("未通过，下一个问题开始计时");
                             timeCheck(player,Collects);
-                            player.play(collectTime+2);
+                            player.resume();
                             pause = false;
                         }
                     },(timeDeleted+2)*1000
