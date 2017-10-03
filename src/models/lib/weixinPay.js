@@ -36,7 +36,6 @@ function payInit(appId,prepay_id,func){
     // 唤醒支付
     this.jsApiCall  = function(){
         var method = this.func;
-        alert(JSON.stringify(this.options)+"---call");
         WeixinJSBridge.invoke(
             'getBrandWCPayRequest',
             this.options,
@@ -67,7 +66,6 @@ payInit.prototype.getPaySign    = function(appId,nonceStr,pack,signType,timeStam
     const key = "RJxukhMkIAETcbnhmNcjwRAQBeQZN6hu";
     const str1 = "appId="+appId+"&nonceStr="+nonceStr+"&package="+pack+"&signType="+signType+"&timeStamp="+timeStamp;
     const newStr = str1 +"&key="+key;
-    alert(newStr);
     return md5(newStr).toUpperCase();
 }
 
