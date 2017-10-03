@@ -79,6 +79,7 @@ class TabExample extends React.Component{
     render(){
         const that = this;
         const {CollectList,TestList} = this.props;
+        console.log(colloctList,TestList);
         return(
             <div>
                 <Tabs defaultActiveKey="1" animated={false} swipeable={false}>
