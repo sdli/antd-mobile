@@ -76,6 +76,7 @@ export default {
       if(!loginStatus.data.data.login){
           hashHistory.push("/loginSelect");
       }else{
+          yield put({type:"loginOK"});
           yield put({type:"checkCourseMain"});
           yield put({
             type:"lessonDetails",
@@ -119,7 +120,6 @@ export default {
     },
     *lessonDetails({bodyObj},{call,put}){
       var lessonDetails = yield call(request,{bodyObj:bodyObj});
-      console.log(lessonDetails.data.SecurityTokenReq);
       yield put({type:"setLessonDetails",lessonDetails:lessonDetails.data});
     },
     *checkOpenid({},{call,put}){

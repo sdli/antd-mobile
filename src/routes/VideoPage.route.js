@@ -36,7 +36,8 @@ class VideoPage extends Component{
             <div>
                 <div>
                     {
-                        user.login &&
+                        user.login && 
+                        JSON.stringify(lessonInfo) != "{}" &&
                         <VideoPlayer lessonInfo={lessonInfo} dispatch={dispatch} lessonDetails={user.lessonDetails} LessonId={LessonId} CourseId={CourseId} VideoId={VideoId} />
                     }
                 </div>

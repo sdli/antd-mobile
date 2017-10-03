@@ -19,13 +19,13 @@ class CommonVedio extends Component{
     componentDidMount(){
         var {VideoId,CollectList} = this.props;
         const w = window.screen.width;
-        var that = this, pause = false;
+        var that = this, pause = false,played = false;
 
         console.log(VideoId,"检测播放器更新");
         console.log(window.player);
 
-        var catchViedo;
-        window.catchViedo = catchViedo;
+        var catchVideo;
+        window.catchVideo = catchVideo;
 
         var option ={
             "auto_play":"0",
@@ -45,9 +45,9 @@ class CommonVedio extends Component{
                 playStatus: function(e){
                     console.log(e);
                     switch (e){
-                        case "playing": timeCheck(player,CollectList); break;
-                        case "seeking": timeCheck(player,CollectList); break;
-                        case "suspended":  clearTimeout(catchViedo); break;
+                        case "playing": timeCheck(player,CollectList);played=true; break;
+                        case "seeking": played?timeCheck(player,CollectList):null; break;
+                        case "suspended":  clearTimeout(catchVideo); break;
                         case "playEnd": clearTimeout(catchVideo);break;
                         case "ready": clearTimeout(catchVideo);break;
                         default : return;
@@ -87,8 +87,8 @@ class CommonVedio extends Component{
             if(timeDeleted == 0){
                 return false;
             }else{
-                clearTimeout(window.catchViedo);
-                window.catchViedo = setTimeout(
+                clearTimeout(window.catchVideo);
+                window.catchVideo = setTimeout(
                     function(){
                         player.pause();
                         if(confirm(text)){
@@ -107,13 +107,12 @@ class CommonVedio extends Component{
 
     componentWillUnmount(){
         var {dispatch}  = this.props;
-        clearTimeout(catchViedo);
+        clearTimeout(catchVideo);
         dispatch({type:"user/clearLessonDetails"});
     }
 
     render(){
-        console.log(isMobile);
-        const {SecurityTokenReq,lessonInfo}  = this.props;
+        const {lessonInfo}  = this.props;
         console.log(lessonInfo,"我在这里");
         return (
             <div>
