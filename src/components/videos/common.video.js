@@ -23,7 +23,10 @@ class CommonVedio extends Component{
 
         console.log(VideoId,"检测播放器更新");
         console.log(window.player);
-        
+
+        var catchViedo;
+        window.catchViedo = catchViedo;
+
         var option ={
             "auto_play":"0",
             "file_id":"9031868223295969032",
@@ -35,33 +38,20 @@ class CommonVedio extends Component{
 
         var listener = {
             playStatus: function(e){
-                console.log(e);
+                switch (e){
+                    case "playing": timeCheck(player,CollectList); break;
+                    case "seeking": timeCheck(player,CollectList); break;
+                    case "suspended":  clearTimeout(catchViedo); break;
+                    default :return;
+                }
             }
         };
+
         var player = window.player = new qcVideo.Player( 
-            /*代码中的id_video_container将会作为播放器放置的容器使用,可自行替换*/ 
             "ts_player", 
             option,
             listener
         );
-
-        // var catchViedo;
-        // window.catchViedo = catchViedo;
-
-        // clearTimeout(catchViedo);
-
-        // player.on("play",function(){
-        //     pause= false;
-        //     timeCheck(player,CollectList);
-        // });
-
-        // player.on("seek",function(){
-        //     timeCheck(player,CollectList);
-        // });
-        // player.on("pause",function(){
-        //     pause = true;
-        //     clearTimeout(window.catchViedo);
-        // });
 
         this.playButton.addEventListener("click",function(){
             that.setState({s:true});
@@ -107,6 +97,7 @@ class CommonVedio extends Component{
                         }
                     },timeDeleted*1000
                 );
+                console.log("设置为第"+count+"个弹窗"+", 弹窗将会在"+timeDeleted+"后出现");
             }
         }
     }
