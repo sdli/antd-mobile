@@ -22,8 +22,8 @@ const requestMethod = {
 
 const requestExport = function*({bodyObj}){
     var url;
-    // url = (typeof process.env.NODE_ENV !== "undefined" && process.env.NODE_ENV == "production")?(config.domain+"/api"):config.server+":"+config.serverPort+"/api";
-    url = config.server+":"+config.serverPort+"/api";
+    url = (typeof process.env.NODE_ENV !== "undefined" && process.env.NODE_ENV == "production")?(config.domain+"/api"):config.server+":"+config.serverPort+"/api";
+    // url = config.server+":"+config.serverPort+"/api";
     var postInitObj = postInit(requestMethod.post,bodyObj);
     console.log(url,postInitObj);
     var data = yield request(url,postInitObj);
