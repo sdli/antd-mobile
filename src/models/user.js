@@ -138,7 +138,10 @@ export default {
     *getPreIdAndPay({bodyObj},{call,put}){
       var getPrePay = yield call(request,{bodyObj:bodyObj});
       console.log(getPrePay);
-      var pay = new WexinPay(configs.appId,getPrePay.data.PrepayId);
+      var pay = new WexinPay(configs.appId,getPrePay.data.PrepayId,function(){
+          alert("支付成功, 现在您可以开始观看已经购买的课程。");
+          hashHistory.push("/");
+      });
       pay.callpay();
     },
     *getOpenid({bodyObj},{call,put}){

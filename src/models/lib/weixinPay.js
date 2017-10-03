@@ -6,7 +6,7 @@ var md5 = require("md5");
  * @param {*} appId 微信appId
  * @param {*} prepay_id 后台返回的prepay_id
  */
-function payInit(appId,prepay_id){
+function payInit(appId,prepay_id,func){
 
     // 配置appid，此id为公众号id，不为商户id
     this.appId      = appId;
@@ -30,15 +30,20 @@ function payInit(appId,prepay_id){
             "paySign": this.getPaySign(this.appId,this.nonceStr,this.pack,"MD5",this.timeStamp)
     };
 
+    // 支付成功后的调用方法
+    this.func       = func;
+
     // 唤醒支付
     this.jsApiCall  = function(){
+        var method = this.func;
         alert(JSON.stringify(this.options)+"---call");
         WeixinJSBridge.invoke(
             'getBrandWCPayRequest',
             this.options,
             function(res){
-                WeixinJSBridge.log(res.err_msg);
-                alert(res.err_code+res.err_desc+res.err_msg);
+                if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                    method();
+                }
             }
         );
     }.bind(this);

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from 'dva';
 import {Button} from "antd-mobile";
 import PaySelector from "../components/list/paySelector.list";
+import {hashHistory} from "react-router";
 
 class PayPage extends React.Component{
     constructor(props){
@@ -38,6 +39,9 @@ class PayPage extends React.Component{
     render(){
         const {dispatch,user} = this.props;
         const courseInfo = this.getCoursesUnpaied(user.courses);
+        if(courseInfo.courseList.every((val)=>{val == 0})){
+            hashHistory.push("/");
+        }
         return(
             <div>
                 {
