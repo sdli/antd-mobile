@@ -16,14 +16,11 @@ class CommonVedio extends Component{
         };
     }
 
-    getWindowWidth(){
-        const w = window.screen.width;
-        this.setState({w:w*isMobile,h:w*0.8});
-    }
-
     componentDidMount(){
         var {VideoId,CollectList} = this.props;
+        const w = window.screen.width;
         var that = this, pause = false;
+        
         console.log(VideoId,"检测播放器更新");
         console.log(window.player);
         
@@ -32,7 +29,7 @@ class CommonVedio extends Component{
             "file_id":"9031868223295969032",
             "app_id":"1254207344",
             "width":"100%",
-            "height":"100%",
+            "height": w*540/960,
             "https": 1
         };
 
