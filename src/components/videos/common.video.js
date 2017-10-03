@@ -24,7 +24,7 @@ class CommonVedio extends Component{
     componentDidMount(){
         var {VideoId,CollectList} = this.props;
         var that = this, pause = false;
-        console.log(CoverURL,RetString,VideoId,"检测播放器更新");
+        console.log(VideoId,"检测播放器更新");
         console.log(window.player);
         
         var option ={
