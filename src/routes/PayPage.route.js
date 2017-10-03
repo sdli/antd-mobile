@@ -39,7 +39,8 @@ class PayPage extends React.Component{
     render(){
         const {dispatch,user} = this.props;
         const courseInfo = this.getCoursesUnpaied(user.courses);
-        if(courseInfo.courseList.every((val)=>{val == 0})){
+        console.log(courseInfo.courseList);
+        if(courseInfo.courseList.every((val)=>(val == 0))){
             hashHistory.push("/");
         }
         return(
@@ -47,7 +48,7 @@ class PayPage extends React.Component{
                 {
                     JSON.stringify(user.courses) != "{}"
                     &&
-                    user.login 
+                    user.login
                     &&
                     <div>
                         <PaySelector dispatch={dispatch} courseList={courseInfo.courseList} notFull={courseInfo.notFull}/>
