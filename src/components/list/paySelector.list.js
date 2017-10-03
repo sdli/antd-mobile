@@ -111,7 +111,6 @@ class paySelector extends React.Component{
                     Money: 1
                 }
             });
-            // parseInt(this.state.price_show)*100
         }else{
             alert("所选课程不能为空！");
         }
@@ -145,7 +144,7 @@ class paySelector extends React.Component{
                                 if(val != 0){
                                     return (
                                         <div className={styles.paySelectDiv} key={index} onClick={that.toggleCourse(val.CourseId)} >
-                                            <img src={logo} />
+                                            <img src={val.HeadPortrait} />
                                             <div className={styles.paySelectDiv1}>
                                                 <p>{val.CourseName}</p>
                                                 <p>课程单价：￥{parseInt(val.LessonList.length)*8}</p>
@@ -162,7 +161,7 @@ class paySelector extends React.Component{
                 </Tabs>
                 <div className="divider"></div>
                 <div style={{padding:"0.32rem 0.16rem"}}>
-                    <p style={{lineHeight:"0.6rem"}}>支付金额：{this.state.price_show}</p>
+                    <p style={{lineHeight:"0.8rem",fontSize:"0.26rem",color:"#999999",textAlign:"center"}}>待支付金额：{this.state.price_show}</p>
                     <Button className="btn" type="primary" onClick={this.callPay}>发起支付</Button>
                 </div>
             </div>

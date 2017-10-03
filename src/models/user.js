@@ -123,16 +123,22 @@ export default {
       yield put({type:"setLessonDetails",lessonDetails:lessonDetails.data});
     },
     *checkOpenid({},{call,put}){
-      var checkOpenid = yield call(request,{bodyObj:{reqType:"checkOpenid"}});
-      if(typeof checkOpenid.data.data.openid !== "undefined"){
-        var ifOpenid = checkOpenid.data.data.openid;
-        console.log(ifOpenid);
-        if(ifOpenid == 0){
-          window.location.href = redirect_uri;
-        }else{
-          yield put({type:"hasOpenid"});
-          yield put({type:"checkCourseMain"});
+      var loginStatus = yield call(request,{bodyObj:{reqType:"checkLogin"}});
+      if(!loginStatus.data.data.login){
+        var checkOpenid = yield call(request,{bodyObj:{reqType:"checkOpenid"}});
+        if(typeof checkOpenid.data.data.openid !== "undefined"){
+          var ifOpenid = checkOpenid.data.data.openid;
+          console.log(ifOpenid);
+          if(ifOpenid == 0){
+            window.location.href = redirect_uri;
+          }else{
+            yield put({type:"hasOpenid"});
+            yield put({type:"loginOK"});
+            yield put({type:"checkCourseMain"});
+          }
         }
+      }else{
+        hashHistory.push("/loginSelect");
       }
     },
     *getPreIdAndPay({bodyObj},{call,put}){

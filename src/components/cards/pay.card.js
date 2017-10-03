@@ -13,7 +13,7 @@ class PayCard extends React.Component{
     render(){
         return (
             <div>
-                <p>检测openid...</p>
+                <p>正在加载微信支付...</p>
             </div>
         );
     }
