@@ -61,14 +61,6 @@ class CommonVedio extends Component{
             player.play();
         });
 
-        this.video.addEventListener("click",function(){
-            if(!pause){
-                player.pause();
-            }else{
-                player.play();
-            } 
-        });
-
         function timeCheck(player,Collects){
             var timeDeleted = 0;
             var currentTime = player.getCurrentTime();
