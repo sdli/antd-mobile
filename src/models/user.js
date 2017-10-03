@@ -146,8 +146,6 @@ export default {
     },
     *getOpenid({bodyObj},{call,put}){
       var data = yield call(request,{bodyObj:bodyObj});
-      alert(JSON.stringify(data));
-      alert(JSON.stringify(bodyObj));
       if(data.data.Result == 0){
         yield put({type:"checkCourseMain"});
         hashHistory.push(bodyObj.url);
