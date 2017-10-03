@@ -69,7 +69,7 @@ class CommonVedio extends Component{
             var collectTime = 0;
             for(var i = 0;i<Collects.length;i++){
                 console.log(Collects[i].Time,currentTime);
-                if(currentTime <= Collects[i].Time){
+                if(currentTime+15 <= Collects[i].Time){
                     timeDeleted = Collects[i].Time-currentTime;
                     collectTime = Collects[i].Time; 
                     text = Collects[i].CollectCnt;
@@ -97,7 +97,7 @@ class CommonVedio extends Component{
                             player.resume();
                             pause = false;
                         }
-                    },(timeDeleted+2)*1000
+                    },(timeDeleted)*1000
                 );
                 console.log("设置为第"+count+"个弹窗"+", 弹窗将会在"+timeDeleted+"后出现");
             }
