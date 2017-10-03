@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 import styles from "./card.style.less";
 import ShowImg from "../../assets/imgs/show.jpg";
+import {setLocalStore,getLocalStore} from "../../utils/setLocalStore";
 
 class Show extends Component{
     constructor(){
@@ -14,10 +15,13 @@ class Show extends Component{
     closeShow(){
         this.setState({
             show: false
-        })
+        });
+        setLocalStore("show","ADSFJIEJLKSJIDJW",10);
     }
+
     render(){
-        if(!this.state.show) return null;
+        const ifShow = getLocalStore("show");
+        if(!this.state.show || ifShow) return null;
         return (
             <div className={styles.showDiv}>
                 <div className={styles.showMask}></div>
