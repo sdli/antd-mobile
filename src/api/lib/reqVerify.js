@@ -148,14 +148,6 @@ var reqVerify = function(req,res){
                                 CourseId: req.body.CourseId,
                                 LessonId : req.body.LessonId 
                             }
-                        },
-                        {
-                            reqProtoMessageName: "SecurityTokenReq",
-                            method:"POST",
-                            data:{
-                                Type: req.body.videoType,
-                                VideoId: req.body.VideoId
-                            }  
                         }
                     ]
                 );

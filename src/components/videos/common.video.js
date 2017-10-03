@@ -22,52 +22,49 @@ class CommonVedio extends Component{
     }
 
     componentDidMount(){
-        var {CoverURL,RetString,VideoId,CollectList} = this.props;
+        var {VideoId,CollectList} = this.props;
         var that = this, pause = false;
         console.log(CoverURL,RetString,VideoId,"检测播放器更新");
         console.log(window.player);
         
-        var player = window.player = new Aliplayer({
-            id: "J_prismPlayer",
-            autoplay: false,
-            playsinline: true,
-            width:"100%",
-            height:"100%",
-            controlBarVisibility:"clicked",
-            useH5Prism:true,
-            useFlashPrism:false,
-            vid : VideoId,
-            playauth : RetString,
-            cover: CoverURL,
-            format: "mp4",
-            x5_type: 'h5',
-            skinLayout:[
-                {"name":"bigPlayButton","align":"blabs","x":30,"y":80},
-                {"name":"controlBar","align":"blabs","x":0,"y":0,"children":[{"name":"progress","align":"tlabs","x":0,"y":0},
-                {"name":"playButton","align":"tl","x":15,"y":26},
-                {"name":"fullScreenButton","align":"tr","x":20,"y":25},
-                {"name":"timeDisplay","align":"tl","x":10,"y":24}]},
-                {"name":"fullControlBar","align":"tlabs","x":0,"y":0,"children":[{"name":"fullZoom","align":"cc"}]}
-            ]   
-        });
+        var option ={
+            "auto_play":"0",
+            "file_id":"9031868223295969032",
+            "app_id":"1254207344",
+            "width":"100%",
+            "height":"100%",
+            "https": 1
+        };
 
-        var catchViedo;
-        window.catchViedo = catchViedo;
+        var listener = {
+            playStatus: function(e){
+                console.log(e);
+            }
+        };
+        var player = window.player = new qcVideo.Player( 
+            /*代码中的id_video_container将会作为播放器放置的容器使用,可自行替换*/ 
+            "ts_player", 
+            option,
+            listener
+        );
 
-        clearTimeout(catchViedo);
+        // var catchViedo;
+        // window.catchViedo = catchViedo;
 
-        player.on("play",function(){
-            pause= false;
-            timeCheck(player,CollectList);
-        });
+        // clearTimeout(catchViedo);
 
-        player.on("seek",function(){
-            timeCheck(player,CollectList);
-        });
-        player.on("pause",function(){
-            pause = true;
-            clearTimeout(window.catchViedo);
-        });
+        // player.on("play",function(){
+        //     pause= false;
+        //     timeCheck(player,CollectList);
+        // });
+
+        // player.on("seek",function(){
+        //     timeCheck(player,CollectList);
+        // });
+        // player.on("pause",function(){
+        //     pause = true;
+        //     clearTimeout(window.catchViedo);
+        // });
 
         this.playButton.addEventListener("click",function(){
             that.setState({s:true});
@@ -119,7 +116,7 @@ class CommonVedio extends Component{
 
     componentWillUnmount(){
         var {dispatch}  = this.props;
-        clearTimeout(catchViedo);
+        // clearTimeout(catchViedo);
         dispatch({type:"user/clearLessonDetails"});
     }
 
@@ -130,7 +127,7 @@ class CommonVedio extends Component{
         return (
             <div>
                 <div className={styles.videoSection}>
-                <div id="J_prismPlayer" ref={(video)=>{this.video = video;}}></div>
+                <div id="ts_player" ref={(video)=>{this.video = video;}}></div>
                     {
                         !this.state.s
                         &&
