@@ -91,6 +91,7 @@ class CommonVedio extends Component{
                 window.catchVideo = setTimeout(
                     function(){
                         player.pause();
+                        clearTimeout(catchVideo);
                         if(confirm("请点击确认收藏：" + text)){
                             console.log("通过，开始下一个计时");
                             timeCheck(player,Collects);
@@ -100,7 +101,7 @@ class CommonVedio extends Component{
                             timeCheck(player,Collects);
                             player.play();
                         }
-                    },(timeDeleted-1)*1000
+                    },(timeDeleted+2)*1000
                 );
                 console.log("设置为第"+count+"个弹窗"+", 弹窗将会在"+timeDeleted+"后出现");
             }
