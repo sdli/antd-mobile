@@ -36,8 +36,8 @@ class CommonVedio extends Component{
             "https": 1
         };
 
-        console.log(options);
-        
+        console.log(option);
+
         var player = window.player = new qcVideo.Player( 
             "ts_player", 
             option,
