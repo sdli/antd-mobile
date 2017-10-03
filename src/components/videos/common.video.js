@@ -47,6 +47,7 @@ class CommonVedio extends Component{
                         case "playing": timeCheck(player,CollectList); break;
                         case "seeking": timeCheck(player,CollectList); break;
                         case "suspended":  clearTimeout(catchViedo); break;
+                        case "playEnd": clearTimeout(catchVideo);break;
                         default : return;
                     }
                 }
@@ -104,7 +105,7 @@ class CommonVedio extends Component{
 
     componentWillUnmount(){
         var {dispatch}  = this.props;
-        // clearTimeout(catchViedo);
+        clearTimeout(catchViedo);
         dispatch({type:"user/clearLessonDetails"});
     }
 
