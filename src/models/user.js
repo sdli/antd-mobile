@@ -124,7 +124,7 @@ export default {
     },
     *checkOpenid({},{call,put}){
       var loginStatus = yield call(request,{bodyObj:{reqType:"checkLogin"}});
-      if(!loginStatus.data.data.login){
+      if(loginStatus.data.data.login){
         var checkOpenid = yield call(request,{bodyObj:{reqType:"checkOpenid"}});
         if(typeof checkOpenid.data.data.openid !== "undefined"){
           var ifOpenid = checkOpenid.data.data.openid;
