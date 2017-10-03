@@ -42,6 +42,7 @@ class CommonVedio extends Component{
             option,
             {
                 playStatus: function(e){
+                    console.log(e);
                     switch (e){
                         case "playing": timeCheck(player,CollectList); break;
                         case "seeking": timeCheck(player,CollectList); break;
