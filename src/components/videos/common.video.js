@@ -74,10 +74,12 @@ class CommonVedio extends Component{
             var currentTime = player.getCurrentTime();
             var text = "";
             var count = 1;
+            var collectTime = 0;
             for(var i = 0;i<Collects.length;i++){
                 console.log(Collects[i].Time,currentTime);
                 if(currentTime <= Collects[i].Time){
                     timeDeleted = Collects[i].Time-currentTime;
+                    collectTime = Collects[i].Time; 
                     text = Collects[i].CollectCnt;
                     count = i;
                     break;
@@ -95,12 +97,12 @@ class CommonVedio extends Component{
                         if(confirm("请点击确认收藏：" + text)){
                             console.log("通过，开始下一个计时");
                             timeCheck(player,Collects);
-                            player.play();
+                            player.play(collectTime+2);
                             pause = false;
                         }else{ 
                             console.log("未通过，下一个问题开始计时");
                             timeCheck(player,Collects);
-                            player.play();
+                            player.play(collectTime+2);
                             pause = false;
                         }
                     },(timeDeleted+2)*1000
