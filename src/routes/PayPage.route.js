@@ -47,6 +47,8 @@ class PayPage extends React.Component{
                 {
                     JSON.stringify(user.courses) != "{}"
                     &&
+                    user.login 
+                    &&
                     <div>
                         <PaySelector dispatch={dispatch} courseList={courseInfo.courseList} notFull={courseInfo.notFull}/>
                     </div>
