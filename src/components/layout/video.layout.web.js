@@ -88,7 +88,7 @@ class TabExample extends React.Component{
                             <List renderHeader={() => '课程收获'} className="my-list" style={{width:"100%",overflow:"hidden",borderBottom: "1px solid #ddd"}}>
                                 {CollectList.map(function(val,index){
                                     return (
-                                        <Item extra={val.CollectIndex} multipleLine align="center" key={index} wrap style={{fontSize:"0.20rem !important"}}>
+                                        <Item extra={val.status?<span>{val.Score}</span>:"未收藏"} multipleLine align="center" key={index} wrap style={{fontSize:"0.20rem !important"}}>
                                             {val.CollectCnt}
                                         </Item>
                                     );
