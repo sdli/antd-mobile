@@ -76,7 +76,7 @@ class CommonVedio extends Component{
             var count = 1;
             for(var i = 0;i<Collects.length;i++){
                 console.log(Collects[i].Time,currentTime);
-                if(currentTime < Collects[i].Time){
+                if(currentTime <= Collects[i].Time){
                     timeDeleted = Collects[i].Time-currentTime;
                     text = Collects[i].CollectCnt;
                     count = i;
@@ -91,14 +91,16 @@ class CommonVedio extends Component{
                 window.catchVideo = setTimeout(
                     function(){
                         player.pause();
-                        if(confirm(text)){
+                        if(confirm("请点击确认收藏：" + text)){
                             console.log("通过，开始下一个计时");
                             timeCheck(player,Collects);
+                            player.play();
                         }else{ 
                             console.log("未通过，下一个问题开始计时");
                             timeCheck(player,Collects);
+                            player.play();
                         }
-                    },timeDeleted*1000
+                    },(timeDeleted-1)*1000
                 );
                 console.log("设置为第"+count+"个弹窗"+", 弹窗将会在"+timeDeleted+"后出现");
             }
