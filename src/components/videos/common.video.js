@@ -29,13 +29,12 @@ class CommonVedio extends Component{
 
         var option ={
             "auto_play":"0",
-            "file_id":"9031868223295969032",
-            "app_id":"1254207344",
+            "file_id": VideoId,
+            "app_id":"1254437760",
             "width":"100%",
             "height": parseInt(w*isMobile*540/960,10),
             "https": 1
         };
-
 
         var player = window.player = new qcVideo.Player( 
             "ts_player", 
