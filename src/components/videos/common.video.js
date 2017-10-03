@@ -36,21 +36,20 @@ class CommonVedio extends Component{
             "https": 1
         };
 
-        var listener = {
-            playStatus: function(e){
-                switch (e){
-                    case "playing": timeCheck(player,CollectList); break;
-                    case "seeking": timeCheck(player,CollectList); break;
-                    case "suspended":  clearTimeout(catchViedo); break;
-                    default :return;
-                }
-            }
-        };
 
         var player = window.player = new qcVideo.Player( 
             "ts_player", 
             option,
-            listener
+            {
+                playStatus: function(e){
+                    switch (e){
+                        case "playing": timeCheck(player,CollectList); break;
+                        case "seeking": timeCheck(player,CollectList); break;
+                        case "suspended":  clearTimeout(catchViedo); break;
+                        default : return;
+                    }
+                }
+            }
         );
 
         this.playButton.addEventListener("click",function(){
