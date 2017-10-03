@@ -29,7 +29,7 @@ class CommonVedio extends Component{
             "file_id":"9031868223295969032",
             "app_id":"1254207344",
             "width":"100%",
-            "height": w*540/960,
+            "height": parseInt(w*isMobile*960/540,10),
             "https": 1
         };
 
