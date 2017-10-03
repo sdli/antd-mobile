@@ -96,12 +96,12 @@ class CommonVedio extends Component{
                             console.log("通过，开始下一个计时");
                             timeCheck(player,Collects);
                             player.play();
-                            pause = true;
+                            pause = false;
                         }else{ 
                             console.log("未通过，下一个问题开始计时");
                             timeCheck(player,Collects);
                             player.play();
-                            pause = true;
+                            pause = false;
                         }
                     },(timeDeleted+2)*1000
                 );
