@@ -49,6 +49,7 @@ class CommonVedio extends Component{
                         case "seeking": timeCheck(player,CollectList); break;
                         case "suspended":  clearTimeout(catchViedo); break;
                         case "playEnd": clearTimeout(catchVideo);break;
+                        case "ready": clearTimeout(catchVideo);break;
                         default : return;
                     }
                 }

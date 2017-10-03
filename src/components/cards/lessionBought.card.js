@@ -20,8 +20,8 @@ class listUl extends React.Component{
                                 <Link to={{pathname:"/videoplay",query:{CourseId:val.CourseId,LessonId:val.LessonId,VideoId:val.VideoId}}} className="linkInit">
                                     <Icon type={VideoSvg}/>
                                     <div className={styles.lessionUlTitle}>
-                                        <p>{val.Description}</p>
-                                        <p>时长：32分钟</p>
+                                        <p>{val.LessonName}</p>
+                                        <p>时长：{parseInt(val.VideoLength)/60}分钟</p>
                                     </div>
                                     <div className={styles.lessionUlFunc}>
                                         <p style={{lineHeight:"1rem",textAlign:"center",width:"100%",display:"block"}}>{val.Score}<span className={styles.lessionUlSpan}>分</span></p>
