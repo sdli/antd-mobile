@@ -33,7 +33,10 @@ class PayPage extends React.Component{
                 }
             }
         }else{
-            return [];
+            return {
+                notFull: true,
+                courseList: []
+            }
         }
     }
 
