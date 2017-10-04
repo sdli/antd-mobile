@@ -165,6 +165,15 @@ export default {
       var data = yield call(request,{bodyObj:bodyObj});
       console.log(data);
       yield toastInit(put,data,{msg:"收藏成功！",type:"info"},{msg:"收藏失败，请重试！",type:"fail"});
+      yield put({
+        type:"lessonDetails",
+        bodyObj:{
+          CourseId: bodyObj.CourseId,
+          LessonId: bodyObj.LessonId,
+          videoType: 1,
+          reqType: "CollectInfoQueryReq"
+        }
+      });
     }
   },
 

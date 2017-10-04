@@ -20,6 +20,7 @@ class Sheet extends React.Component{
             value,
         });
     };
+
     render(){
         const {close,submit,content,title} = this.props;
         const AnswerInit = ["A","B","C","D","E","F","G","H"];
@@ -88,7 +89,7 @@ class TabExample extends React.Component{
                             <List renderHeader={() => '课程收获'} className="my-list" style={{width:"100%",overflow:"hidden",borderBottom: "1px solid #ddd"}}>
                                 {CollectList.map(function(val,index){
                                     return (
-                                        <Item extra={val.status?<span style={{color:"green"}}>{val.Score}</span>:"未收藏"} multipleLine align="center" key={index} wrap style={{fontSize:"0.20rem !important"}}>
+                                        <Item extra={val.Status?<span style={{color:"green"}}>{val.Score+"分"}</span>:"未收藏"} multipleLine align="center" key={index} wrap style={{fontSize:"0.20rem !important"}}>
                                             {val.CollectCnt}
                                         </Item>
                                     );
@@ -122,6 +123,16 @@ class TabExample extends React.Component{
 class Videoplayer extends React.Component{
     constructor(props){
         super(props);
+        this.state = {
+            show: true
+        }
+        this.onStart = this.onStart.bind(this);
+    }
+
+    onStart = () =>{
+        this.setState({
+            show:false
+        });
     }
 
     render(){
@@ -131,7 +142,7 @@ class Videoplayer extends React.Component{
                 {
                     (JSON.stringify(lessonDetails) != "{}") &&
                     <div>
-                        <CommonPlayer lessonInfo={lessonInfo} dispatch={dispatch} CollectList={lessonDetails.CollectInfoQueryReq.CollectList} VideoId={VideoId} CourseId={CourseId} LessonId={LessonId} />
+                        <CommonPlayer lessonInfo={lessonInfo} onStart={this.onStart} show={this.state.show} dispatch={dispatch} CollectList={lessonDetails.CollectInfoQueryReq.CollectList} VideoId={VideoId} CourseId={CourseId} LessonId={LessonId} />
                         <div className="divider" />
                         <TabExample CollectList={lessonDetails.CollectInfoQueryReq.CollectList} TestList={lessonDetails.TestCaseQueryReq.TestList} />
                     </div>

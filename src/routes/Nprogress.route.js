@@ -27,7 +27,6 @@ class ProgressPage extends React.Component{
         return (
             <div>
                 {   
-                    (!loading.models.user) &&
                     this.props.children
                 }
             </div>

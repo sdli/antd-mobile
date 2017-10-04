@@ -17,7 +17,7 @@ class CommonVedio extends Component{
     }
 
     componentDidMount(){
-        var {VideoId,CollectList,dispatch,CourseId,LessonId} = this.props;
+        var {VideoId,CollectList,dispatch,CourseId,LessonId,onStart} = this.props;
         const w = window.screen.width;
         var that = this, pause = false,played = false;
 
@@ -57,8 +57,8 @@ class CommonVedio extends Component{
         );
 
         this.playButton.addEventListener("click",function(){
-            that.setState({s:true});
-            player.play(390);
+            player.play();
+            onStart();
         });
 
         function timeCheck(player,Collects){
@@ -118,20 +118,20 @@ class CommonVedio extends Component{
         dispatch({type:"user/clearLessonDetails"});
     }
 
-    // shouldComponentUpdate(nextProps){
-    //     console.log(nextProps);
-    //     return (nextProps.CourseId == this.props.CourseId && nextProps.LessonId == this.props.LessonId)?false:true;
-    // }
+    shouldComponentUpdate(nextProps){
+        console.log(nextProps);
+        return (nextProps.CourseId == this.props.CourseId && nextProps.LessonId == this.props.LessonId && nextProps.show == this.props.show)?false:true;
+    }
 
     render(){
-        const {lessonInfo}  = this.props;
+        const {lessonInfo,onStart,show}  = this.props;
         console.log(lessonInfo,"我在这里");
         return (
             <div>
                 <div className={styles.videoSection}>
                 <div id="ts_player" ref={(video)=>{this.video = video;}}></div>
                     {
-                        !this.state.s
+                        show
                         &&
                         <div className={styles.videoMask}>
                             <div></div>
