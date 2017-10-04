@@ -42,7 +42,7 @@ class PayPage extends React.Component{
     render(){
         const {dispatch,user} = this.props;
         const courseInfo = this.getCoursesUnpaied(user.courses);
-        if(JSON.stringify(user.courses) != "{}"){
+        if(JSON.stringify(user.courses) == "{}"){
             return null;
         }
         if("courseList" in courseInfo && courseInfo.courseList.every((val)=>(val === 0))){
