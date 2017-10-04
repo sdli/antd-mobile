@@ -16,7 +16,7 @@ class GetOpenid extends React.Component{
     render(){
         return(
             <div>
-                <p>获取openid</p>
+                <p style={{textAlign:"center",lineHeight:"2rem",fontSize:"0.28rem"}}>加载微信支付中，请稍后...</p>
             </div>
         );
     }

@@ -152,12 +152,17 @@ export default {
       pay.callpay();
     },
     *getOpenid({bodyObj},{call,put}){
-      var data = yield call(request,{bodyObj:bodyObj});
-      if(data.data.Result == 0){
-        yield put({type:"checkCourseMain"});
-        hashHistory.push(bodyObj.url);
+      var checkOpenid = yield call(request,{bodyObj:{reqType:"checkOpenid"}});
+      if(typeof checkOpenid.data.data.openid !== "undefined" && checkOpenid.data.data.openid == 1){
+        hashHistory.push("/");
       }else{
-        alert("获取微信openid失败，请稍后重试！");
+        var data = yield call(request,{bodyObj:bodyObj});
+        if(data.data.Result == 0){
+          yield put({type:"checkCourseMain"});
+          hashHistory.push(bodyObj.url);
+        }else{
+          alert("获取微信openid失败，请稍后重试！");
+        }
       }
     },
     *collect({bodyObj},{call,put}){
