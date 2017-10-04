@@ -127,9 +127,10 @@ message Course
 	int32 LessonNum = 8;  //课时数
 	int32 FinishLesson = 9;  //已完成课时数
 	int32 Score = 10;  //课程得分
-	string Opionion = 11;  //心得
-	int32 WatchNum = 12;  //观看人数
-	repeated Lesson LessonList = 13;  //课时列表
+	int32 HighestScore = 11;  //课时最高分
+	string Opionion = 12;  //心得
+	int32 WatchNum = 13;  //观看人数
+	repeated Lesson LessonList = 14;  //课时列表
 }
 
 message TeacherCourseResp
