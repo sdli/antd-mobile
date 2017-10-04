@@ -13,14 +13,13 @@ class PayPage extends React.Component{
     }
 
     getCoursesUnpaied(courses){
-        if(typeof courses.CourseQueryReq !== "undefined" && typeof courses.TeacherCourseReq !== "undefined"){
+        if("CourseQueryReq" in courses && "TeacherCourseReq" in courses){
             if(courses.TeacherCourseReq.CourseList.length == 0){
                 return {
                     notFull: false,
                     courseList : courses.CourseQueryReq.CourseList
                 };
             }else{
-                
                 return {
                     notFull: true,
                     courseList: courses.CourseQueryReq.CourseList.map(function(val,index){
@@ -33,13 +32,14 @@ class PayPage extends React.Component{
                     })
                 }
             }
+        }else{
+            return [];
         }
     }
 
     render(){
         const {dispatch,user} = this.props;
         const courseInfo = this.getCoursesUnpaied(user.courses);
-        console.log(courseInfo.courseList);
         if(courseInfo.courseList.every((val)=>(val == 0))){
             hashHistory.push("/");
         }
@@ -49,6 +49,8 @@ class PayPage extends React.Component{
                     JSON.stringify(user.courses) != "{}"
                     &&
                     user.login
+                    &&
+                    (courseList in courseInfo)
                     &&
                     <div>
                         <PaySelector dispatch={dispatch} courseList={courseInfo.courseList} notFull={courseInfo.notFull}/>
