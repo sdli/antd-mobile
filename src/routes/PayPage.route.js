@@ -53,7 +53,7 @@ class PayPage extends React.Component{
                     &&
                     user.login
                     &&
-                    (courseList in courseInfo)
+                    ("courseList" in courseInfo)
                     &&
                     <div>
                         <PaySelector dispatch={dispatch} courseList={courseInfo.courseList} notFull={courseInfo.notFull}/>
