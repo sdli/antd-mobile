@@ -42,9 +42,6 @@ class PayPage extends React.Component{
     render(){
         const {dispatch,user} = this.props;
         const courseInfo = this.getCoursesUnpaied(user.courses);
-        if("courseList" in courseInfo && courseInfo.courseList.every((val)=>(val === 0))){
-            hashHistory.push("/");
-        }
         return(
             <div>
                 {
