@@ -13,7 +13,9 @@ var dictionary = {
     TeacherCourseReq: "TeacherCourseResp",
     SecurityTokenReq: "SecurityTokenResp",
     TeaInfoQueryReq: "TeaInfoQueryResp",
-    PayCourseReq:"PayCourseResp"
+    PayCourseReq:"PayCourseResp",
+    DialogCollectReq:"DialogCollectResp",
+    TestAnswerCommitReq: "TestAnswerCommitResp"
 };
 
 var headers ={

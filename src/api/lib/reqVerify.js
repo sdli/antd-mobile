@@ -174,6 +174,42 @@ var reqVerify = function(req,res){
                     },
                     "PayCourseReq");
             }
+        case "collect":
+            if(typeof req.session.teacherid !== "undefined"){
+                console.log({
+                    TeacherId: req.session.teacherid,
+                    CourseId: req.body.CourseId,
+                    LessonId: req.body.LessonId,
+                    CollectIndex: req.body.CollectIndex
+                });
+                return pass({
+                        TeacherId: req.session.teacherid,
+                        CourseId: req.body.CourseId,
+                        LessonId: req.body.LessonId,
+                        CollectIndex: req.body.CollectIndex
+                    },
+                    "DialogCollectReq"
+                );
+            }
+        case "testcase":
+            if(typeof req.session.teacherid !== "undefined"){
+                console.log({
+                    TeacherId: req.session.teacherid,
+                    CourseId: req.body.CourseId,
+                    LessonId: req.body.LessonId,
+                    TestIndex: req.body.TestIndex,
+                    Answer: req.body.Answer
+                });
+                return pass({
+                        TeacherId: req.session.teacherid,
+                        CourseId: req.body.CourseId,
+                        LessonId: req.body.LessonId,
+                        TestIndex: req.body.TestIndex,
+                        Answer: req.body.Answer
+                    },
+                    "TestAnswerCommitReq"
+                );
+            }
         default:
             return pass();
     }

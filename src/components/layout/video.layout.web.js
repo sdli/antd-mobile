@@ -131,7 +131,7 @@ class Videoplayer extends React.Component{
                 {
                     (JSON.stringify(lessonDetails) != "{}") &&
                     <div>
-                        <CommonPlayer lessonInfo={lessonInfo} dispatch={dispatch} CollectList={lessonDetails.CollectInfoQueryReq.CollectList} VideoId={VideoId} />
+                        <CommonPlayer lessonInfo={lessonInfo} dispatch={dispatch} CollectList={lessonDetails.CollectInfoQueryReq.CollectList} VideoId={VideoId} CourseId={CourseId} LessonId={LessonId} />
                         <div className="divider" />
                         <TabExample CollectList={lessonDetails.CollectInfoQueryReq.CollectList} TestList={lessonDetails.TestCaseQueryReq.TestList} />
                     </div>

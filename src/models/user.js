@@ -7,6 +7,7 @@ import WexinPay from "./lib/weixinPay";
 
 const api_route = "http%3a%2f%2fteacher.yiaitech.com%2fgetOpenid";
 const redirect_uri = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+configs.appId+"&redirect_uri="+api_route+"&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect"
+
 export default {
 
   namespace: 'user',
@@ -158,6 +159,12 @@ export default {
       }else{
         alert("获取微信openid失败，请稍后重试！");
       }
+    },
+    *collect({bodyObj},{call,put}){
+      console.log(bodyObj);
+      var data = yield call(request,{bodyObj:bodyObj});
+      console.log(data);
+      yield toastInit(put,data,{msg:"收藏成功！",type:"info"},{msg:"收藏失败，请重试！",type:"fail"});
     }
   },
 

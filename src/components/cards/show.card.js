@@ -16,7 +16,7 @@ class Show extends Component{
         this.setState({
             show: false
         });
-        setLocalStore("show","ADSFJIEJLKSJIDJW",10);
+        setLocalStore("show","ADSFJIEJLKSJIDJW",3600);
     }
 
     render(){

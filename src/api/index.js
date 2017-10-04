@@ -60,7 +60,11 @@ app.post('/',function(req,res){
             res.json({
                 Result: -1,
                 ErrMsg: "请求出错",
-                data: {}
+                data: {
+                    data: "1",
+                    result: verifyResult.result,
+                    verifyResult: verifyResult
+                }
             });
         }
     }else if(verifyResult.result == 2){

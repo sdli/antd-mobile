@@ -17,7 +17,7 @@ class CommonVedio extends Component{
     }
 
     componentDidMount(){
-        var {VideoId,CollectList} = this.props;
+        var {VideoId,CollectList,dispatch,CourseId,LessonId} = this.props;
         const w = window.screen.width;
         var that = this, pause = false,played = false;
 
@@ -58,7 +58,7 @@ class CommonVedio extends Component{
 
         this.playButton.addEventListener("click",function(){
             that.setState({s:true});
-            player.play();
+            player.play(390);
         });
 
         function timeCheck(player,Collects){
@@ -67,12 +67,14 @@ class CommonVedio extends Component{
             var text = "";
             var count = 1;
             var collectTime = 0;
+            var CollectIndex = 0;
             for(var i = 0;i<Collects.length;i++){
                 console.log(Collects[i].Time,currentTime);
                 if(currentTime+15 <= Collects[i].Time){
                     timeDeleted = Collects[i].Time-currentTime;
                     collectTime = Collects[i].Time; 
                     text = Collects[i].CollectCnt;
+                    CollectIndex = Collects[i].CollectIndex;
                     count = i;
                     break;
                 }
@@ -88,6 +90,12 @@ class CommonVedio extends Component{
                         pause = true;
                         if(confirm("请点击确认收藏：" + text)){
                             console.log("通过，开始下一个计时");
+                            dispatch({type:"user/collect",bodyObj:{
+                                CollectIndex: CollectIndex,
+                                CourseId: CourseId,
+                                LessonId: LessonId,
+                                reqType: "collect"
+                            }});
                             timeCheck(player,Collects);
                             player.resume();
                             pause = false;
@@ -109,6 +117,11 @@ class CommonVedio extends Component{
         clearTimeout(catchVideo);
         dispatch({type:"user/clearLessonDetails"});
     }
+
+    // shouldComponentUpdate(nextProps){
+    //     console.log(nextProps);
+    //     return (nextProps.CourseId == this.props.CourseId && nextProps.LessonId == this.props.LessonId)?false:true;
+    // }
 
     render(){
         const {lessonInfo}  = this.props;
