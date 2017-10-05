@@ -11,9 +11,14 @@ const Item = List.Item;
 const RadioItem  = Radio.RadioItem;
 
 class Sheet extends React.Component{
-    state = {
-        value: "A"
-    };
+    constructor(props){
+        super(props);
+        this.state={
+            value: this.props.commitedAnswer
+        }
+        this.submit = this.submit.bind(this);
+    }
+
     onChange = (value) => {
         console.log('checkbox',value);
         this.setState({
@@ -21,8 +26,23 @@ class Sheet extends React.Component{
         });
     };
 
+    submit(){
+        var Answer = this.state.value;
+        const {dispatch,LessonId,CourseId,TestIndex} = this.props;
+        if(Answer == ""){
+            alert("请选择一个答案！");
+        }else{
+            dispatch({type:"user/testcase",bodyObj:{
+                CourseId: CourseId,
+                LessonId: LessonId,
+                TestIndex: TestIndex,
+                Answer: Answer
+            }});
+        }
+    }
+
     render(){
-        const {close,submit,content,title} = this.props;
+        const {close,content,title,dispatch,commitedAnswer} = this.props;
         const AnswerInit = ["A","B","C","D","E","F","G","H"];
         const value = this.state.value;
         return (
@@ -40,7 +60,7 @@ class Sheet extends React.Component{
                 <div className={styles.sheetFooter}>
                     <div>
                         <Button inline style={{width: "50%",border:"0",fontSize:"0.28rem" }} onClick={close}>关闭窗口</Button>
-                        <Button type="ghost" inline  style={{width: "50%",border:"0",fontSize:"0.28rem" }} onClick={submit}>提交答案</Button>
+                        <Button type="ghost" inline  style={{width: "50%",border:"0",fontSize:"0.28rem" }} onClick={this.submit}>提交答案</Button>
                     </div>
                 </div>
             </div>
@@ -48,20 +68,23 @@ class Sheet extends React.Component{
     }
 }
 
-class TabExample extends React.Component{
+class VideoTests extends React.Component{
     constructor(props){
         super(props);
         this.state={
             showSheet: false,
         }
+        this.closeSheet = this.closeSheet.bind(this);
     }
 
-    showSheet(answer,title){
+    showSheet(answer,title,Index,CommitedAnswer){
         const showFunc = function(){
             this.setState({
                 showSheet: true,
                 answer: answer,
-                title: title
+                title: title,
+                CommitedAnswer: CommitedAnswer,
+                TestIndex: Index
             });
         }
         return showFunc.bind(this);
@@ -77,9 +100,15 @@ class TabExample extends React.Component{
         return submitFunc.bind(this);
     }
 
+    closeSheet(){
+        this.setState({
+            showSheet: false
+        });
+    }
+
     render(){
         const that = this;
-        const {CollectList,TestList} = this.props;
+        const {CollectList,TestList,dispatch,LessonId,CourseId} = this.props;
         console.log(CollectList,TestList);
         return(
             <div>
@@ -99,7 +128,15 @@ class TabExample extends React.Component{
                                 {TestList.map(function(val,index){
                                     var test = JSON.parse(val.TestProblem);
                                     return (
-                                        <Item extra={!!(val.CommitedAnswerval)?<span style={{color:"green"}}>{val.Score}</span>:"0分"} multipleLine align="center" key={index} wrap style={{fontSize:"0.20rem"}} onClick={that.showSheet(test.answer,test.question)}>
+                                        <Item 
+                                            extra={(val.CommitedAnswer == val.Answer)?<span style={{color:"green"}}>{val.Score}</span>:"0分"} 
+                                            multipleLine 
+                                            align="center" 
+                                            key={index} 
+                                            wrap 
+                                            style={{fontSize:"0.20rem"}} 
+                                            onClick={that.showSheet(test.answer,test.question,val.TestIndex,val.CommitedAnswer)}
+                                        >
                                             {test.question}
                                         </Item>
                                     );
@@ -114,7 +151,17 @@ class TabExample extends React.Component{
                     </TabPane>
                 </Tabs>
                 <WhiteSpace />
-                {this.state.showSheet && <Sheet close={this.submitSheet()} submit={this.submitSheet()} content={this.state.answer} title={this.state.title}/>}
+                {this.state.showSheet && 
+                <Sheet 
+                    close={this.closeSheet} 
+                    dispatch={dispatch} 
+                    TestIndex={this.state.TestIndex} 
+                    LessonId={LessonId} 
+                    CourseId={CourseId} 
+                    content={this.state.answer} 
+                    commitedAnswer={this.state.CommitedAnswer} 
+                    title={this.state.title}
+                />}
             </div>
         );
     }
@@ -142,9 +189,24 @@ class Videoplayer extends React.Component{
                 {
                     (JSON.stringify(lessonDetails) != "{}") &&
                     <div>
-                        <CommonPlayer lessonInfo={lessonInfo} onStart={this.onStart} show={this.state.show} dispatch={dispatch} CollectList={lessonDetails.CollectInfoQueryReq.CollectList} VideoId={VideoId} CourseId={CourseId} LessonId={LessonId} />
+                        <CommonPlayer 
+                            lessonInfo={lessonInfo} 
+                            onStart={this.onStart} 
+                            show={this.state.show} 
+                            dispatch={dispatch} 
+                            CollectList={lessonDetails.CollectInfoQueryReq.CollectList} 
+                            VideoId={VideoId} 
+                            CourseId={CourseId} 
+                            LessonId={LessonId} 
+                        />
                         <div className="divider" />
-                        <TabExample CollectList={lessonDetails.CollectInfoQueryReq.CollectList} TestList={lessonDetails.TestCaseQueryReq.TestList} />
+                        <VideoTests 
+                            CollectList={lessonDetails.CollectInfoQueryReq.CollectList} 
+                            TestList={lessonDetails.TestCaseQueryReq.TestList}
+                            LessonId={LessonId}
+                            CourseId={CourseId}
+                            dispatch={dispatch}
+                        />
                     </div>
                 }
             </div>
