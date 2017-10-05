@@ -28,7 +28,7 @@ class Sheet extends React.Component{
 
     submit(){
         var Answer = this.state.value;
-        const {dispatch,LessonId,CourseId,TestIndex} = this.props;
+        const {dispatch,LessonId,CourseId,TestIndex,close} = this.props;
         if(Answer == ""){
             alert("请选择一个答案！");
         }else{
@@ -38,6 +38,7 @@ class Sheet extends React.Component{
                 TestIndex: TestIndex,
                 Answer: Answer
             }});
+            close();
         }
     }
 
