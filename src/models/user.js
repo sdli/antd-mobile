@@ -182,17 +182,23 @@ export default {
     },
     *testcase({bodyObj},{call,put}){
       var data = yield call(request,{bodyObj:bodyObj});
-      console.log(data);
-      yield toastInit(put,data,{mes:"回答正确！",type:"info"},{msg:"回答错误！",type:"info"});
-      yield put({
-        type:"lessonDetails",
-        bodyObj:{
-          CourseId: bodyObj.CourseId,
-          LessonId: bodyObj.LessonId,
-          videoType: 1,
-          reqType: "CollectInfoQueryReq"
+      if(data){
+        var code = {
+          data:{
+            Result: (bodyObj.RightAnswer==bodyObj.Answer)?0:1
+          }
         }
-      });
+        yield toastInit(put,code,{msg:"回答正确！",type:"info"},{msg:"回答错误！",type:"info"});
+        yield put({
+          type:"lessonDetails",
+          bodyObj:{
+            CourseId: bodyObj.CourseId,
+            LessonId: bodyObj.LessonId,
+            videoType: 1,
+            reqType: "CollectInfoQueryReq"
+          }
+        });
+      }
     }
   },
 

@@ -28,7 +28,7 @@ class Sheet extends React.Component{
 
     submit(){
         var Answer = this.state.value;
-        const {dispatch,LessonId,CourseId,TestIndex,close} = this.props;
+        const {dispatch,LessonId,CourseId,TestIndex,close,RightAnswer} = this.props;
         if(Answer == ""){
             alert("请选择一个答案！");
         }else{
@@ -36,14 +36,16 @@ class Sheet extends React.Component{
                 CourseId: CourseId,
                 LessonId: LessonId,
                 TestIndex: TestIndex,
-                Answer: Answer
+                Answer: Answer,
+                RightAnswer: RightAnswer,
+                reqType: "testcase"
             }});
             close();
         }
     }
 
     render(){
-        const {close,content,title,dispatch,commitedAnswer} = this.props;
+        const {close,content,title,dispatch,commitedAnswer,RightAnswer} = this.props;
         const AnswerInit = ["A","B","C","D","E","F","G","H"];
         const value = this.state.value;
         return (
@@ -52,7 +54,7 @@ class Sheet extends React.Component{
                 <div className={styles.sheetContent}>
                     <List renderHeader={() => title}>
                         {content.map((val,index)=>(
-                            <RadioItem key={index} checked={value === AnswerInit[index]} onChange={() => this.onChange(AnswerInit[index])}>
+                            <RadioItem  key={index}  wrap checked={value === AnswerInit[index]} onChange={() => this.onChange(AnswerInit[index])}>
                                 {val}
                             </RadioItem>
                         ))}
@@ -61,7 +63,7 @@ class Sheet extends React.Component{
                 <div className={styles.sheetFooter}>
                     <div>
                         <Button inline style={{width: "50%",border:"0",fontSize:"0.28rem" }} onClick={close}>关闭窗口</Button>
-                        <Button type="ghost" inline  style={{width: "50%",border:"0",fontSize:"0.28rem" }} onClick={this.submit}>提交答案</Button>
+                        <Button type="ghost" inline  style={{width: "50%",border:"0",fontSize:"0.28rem" }} onClick={this.submit} disabled={commitedAnswer==RightAnswer}>提交答案</Button>
                     </div>
                 </div>
             </div>
@@ -78,14 +80,15 @@ class VideoTests extends React.Component{
         this.closeSheet = this.closeSheet.bind(this);
     }
 
-    showSheet(answer,title,Index,CommitedAnswer){
+    showSheet(answer,title,Index,CommitedAnswer,RightAnswer){
         const showFunc = function(){
             this.setState({
                 showSheet: true,
                 answer: answer,
                 title: title,
                 CommitedAnswer: CommitedAnswer,
-                TestIndex: Index
+                TestIndex: Index,
+                RightAnswer: RightAnswer
             });
         }
         return showFunc.bind(this);
@@ -136,7 +139,7 @@ class VideoTests extends React.Component{
                                             key={index} 
                                             wrap 
                                             style={{fontSize:"0.20rem"}} 
-                                            onClick={that.showSheet(test.answer,test.question,val.TestIndex,val.CommitedAnswer)}
+                                            onClick={that.showSheet(test.answer,test.question,val.TestIndex,val.CommitedAnswer,val.Answer)}
                                         >
                                             {test.question}
                                         </Item>
@@ -160,7 +163,8 @@ class VideoTests extends React.Component{
                     LessonId={LessonId} 
                     CourseId={CourseId} 
                     content={this.state.answer} 
-                    commitedAnswer={this.state.CommitedAnswer} 
+                    commitedAnswer={this.state.CommitedAnswer}
+                    RightAnswer={this.state.RightAnswer}
                     title={this.state.title}
                 />}
             </div>
@@ -185,6 +189,7 @@ class Videoplayer extends React.Component{
 
     render(){
         const {lessonDetails, CourseId, LessonId ,VideoId,lessonInfo,dispatch} = this.props;
+        console.log(lessonDetails,"嗯嗯嗯？？");
         return(
             <div>
                 {
