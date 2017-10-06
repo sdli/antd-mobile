@@ -31,7 +31,7 @@ export default {
         if(pathname !== "/login" && pathname != "/register" && pathname != "/loginSelect" && pathname !== "/pay" && pathname != "/getOpenid" && pathname !="/videoplay"){
           dispatch({type:"checkLogin"});
         }
-        if(pathname == "/videoplay"){
+        if(pathname == "/videoplay" || pathname=="/user" || pathname=="/user/statics"){
           dispatch({type:"checkLoginDeep",query});
         }
         if((new RegExp(/\user?/g)).test(pathname)){

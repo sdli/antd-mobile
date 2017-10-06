@@ -19,15 +19,21 @@ class LessionForUser extends React.Component{
     const {courses}  = this.props;
     return (
       <div>
-        <Tabs defaultActiveKey="1">
-          <TabPane tab={<Badge>已购买课程</Badge>} key="1">
-            <LessionUl LessionList={courses.TeacherCourseReq.CourseList} />
-          </TabPane>
-          <TabPane tab={<Badge >待学习的课程</Badge>} key="2">
-            <LessionUl LessionList={courses.TeacherCourseReq.CourseList} />
-          </TabPane>
-        </Tabs>
-        <WhiteSpace />
+        {
+          ("TeacherCourseReq" in courses)
+          &&
+          <div>
+            <Tabs defaultActiveKey="1">
+              <TabPane tab={<Badge>已购买课程</Badge>} key="1">
+                <LessionUl LessionList={courses.TeacherCourseReq.CourseList} type="1" />
+              </TabPane>
+              <TabPane tab={<Badge >未完成的课程</Badge>} key="2">
+                <LessionUl LessionList={courses.TeacherCourseReq.CourseList} type="2" />
+              </TabPane>
+            </Tabs>
+            <WhiteSpace />
+          </div>
+        }
       </div>
     );
   }
