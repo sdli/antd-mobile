@@ -28,14 +28,14 @@ class CommentDetailsPage extends React.Component{
     }
 
     render(){
-        const {user} = this.props;
+        const {user,dispatch} = this.props;
         const CourseId = getQuery(this.props,"CourseId");
         const LessonId = getQuery(this.props,"LessonId");
         const LessonDetails = ("TeacherCourseReq" in user.courses)?this.getLessonInfo(user.courses.TeacherCourseReq.CourseList,CourseId,LessonId):{};
         return(
             <div>
                 <Details LessonDetails={LessonDetails} />
-                <Reply title="输入您的回复" CourseId={CourseId} LessonId={LessonId} />
+                <Reply title="输入您的回复" CourseId={CourseId} LessonId={LessonId} dispatch={dispatch} />
             </div>
         );
     }    

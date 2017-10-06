@@ -9,7 +9,7 @@ class Reply extends React.Component{
     }
 
     leaveMsg(){
-        const {dispatch,CourseId,LessonId,dispatch} = this.props;
+        const {dispatch,CourseId,LessonId} = this.props;
         const form = this.props.form;
         form.validateFields((error,values) => {
             if(values.message.length >= 10 && values.message.length < 200){
