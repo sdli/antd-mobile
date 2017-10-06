@@ -12,8 +12,8 @@ class Details extends React.Component{
             <div>  
                 <div className={styles.detailsBody}>
                     <div className={styles.detailsTitle}>
-                        <p>留言给 <span>{lessonInfo.Professor}</span></p>
-                        <p>{LessonDetails.LessonName}</p>
+                        <p>留言给： <span>{LessonDetails.Professor}(教授)</span></p>
+                        <p><span style={{fontSize:"0.28rem",color:"#4d4d4d"}}>留言课程：</span>{LessonDetails.LessonName}</p>
                     </div>
                     {/* <p style={{textAlign:"center",fontSize:"0.24rem",lineHeight:"0.6rem"}}>共计 5 条回复</p> */}
                     {/* <div className={styles.detailsCell}>
@@ -50,7 +50,7 @@ class Details extends React.Component{
                             </div>
                         </div>
                     </div> */}
-                    <div stlye={{clear:"both"}}></div>
+                    <div style={{clear:"both"}}></div>
                 </div>
             </div>
         );

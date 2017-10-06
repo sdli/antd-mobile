@@ -38,7 +38,7 @@ class CommentDetailsPage extends React.Component{
                 <Reply title="输入您的回复" CourseId={CourseId} LessonId={LessonId} dispatch={dispatch} />
             </div>
         );
-    }    
+    }
 }
 
 export default connect(({user})=>({user}))(CommentDetailsPage);

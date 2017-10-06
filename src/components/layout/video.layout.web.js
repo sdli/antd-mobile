@@ -78,6 +78,7 @@ class VideoTests extends React.Component{
             showSheet: false,
         }
         this.closeSheet = this.closeSheet.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     showSheet(answer,title,Index,CommitedAnswer,RightAnswer){
@@ -110,13 +111,24 @@ class VideoTests extends React.Component{
         });
     }
 
+    handleChange(key){
+        if(key == 2){
+            const {dispatch,LessonId,CourseId} = this.props;
+            dispatch({type:"user/checkLessonMsg",bodyObj:{
+                LessonId: LessonId,
+                CourseId: CourseId,
+                reqType: "checkLessonMsg"
+            }});
+        }
+    }
+
     render(){
         const that = this;
         const {CollectList,TestList,dispatch,LessonId,CourseId,LessonMsg} = this.props;
         console.log(CollectList,TestList);
         return(
             <div>
-                <Tabs defaultActiveKey="1" animated={false} swipeable={false}>
+                <Tabs defaultActiveKey="1" animated={false} swipeable={false} onChange={this.handleChange}>
                     <TabPane tab="课程积分"  key="1" >
                         <div style={{  width:"100%", backgroundColor: '#fff' }} >
                             <List renderHeader={() => '课程收获'} className="my-list" style={{width:"100%",overflow:"hidden",borderBottom: "1px solid #ddd"}}>

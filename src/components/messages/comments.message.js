@@ -23,22 +23,29 @@ class CommentList extends React.Component {
             <List style={{borderBottom:"1px solid #ddd"}}>
                 {
                   LessonMsg.map(function(val,index){
+                    var newDate = new Date();
+                    newDate.setTime(parseInt(val.LeaveTime)*1000);
                     return (
-                      <Item multipleLine extra={<span><Icon type={CommentSvg} size="xxs" onClick={()=>hashHistory.push("/commentDetails")} /> 1</span> }>
-                        用户***<Brief>{val.Message}</Brief><Brief><span className={styles.commentTime}>{val.LeaveTime}</span></Brief>
+                      <Item 
+                      key={"comments"+CourseId+LessonId+index} 
+                      multipleLine
+                      wrap
+                      extra={
+                        <span>
+                          <Icon type={CommentSvg} 
+                                size="xxs" 
+                          /> 
+                                0
+                        </span> 
+                      }>
+                        用户***<br/>
+                        {val.Message}
+                        <Brief>
+                        <span className={styles.commentTime}>{newDate.toJSON().substr(0,10)}</span></Brief>
                       </Item>
                     );
                   })
                 }
-                <Item multipleLine extra={<span><Icon type={CommentSvg} size="xxs" onClick={()=>hashHistory.push("/commentDetails")} /> 1</span> }>
-                  李道然<Brief>家庭教育的核心是什么？</Brief><Brief><span className={styles.commentTime}>2017.09.01</span></Brief>
-                </Item>
-                <Item multipleLine extra={<span><Icon type={CommentSvg} size="xxs" onClick={()=>hashHistory.push("/commentDetails")} /> 1</span> }>
-                  李道然<Brief>家庭教育的核心是什么？</Brief><Brief><span className={styles.commentTime}>2017.09.01</span></Brief>
-                </Item>
-                <Item multipleLine extra={<span><Icon type={CommentSvg} size="xxs" onClick={()=>hashHistory.push("/commentDetails")} /> 1</span> }>
-                  李道然<Brief>家庭教育的核心是什么？</Brief><Brief><span className={styles.commentTime}>2017.09.01</span></Brief>
-                </Item>
             </List>
     </div>);
   }

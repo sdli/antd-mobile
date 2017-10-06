@@ -13,10 +13,12 @@ class Reply extends React.Component{
         const form = this.props.form;
         form.validateFields((error,values) => {
             if(values.message.length >= 10 && values.message.length < 200){
+                console.log(values.message);
                 dispatch({type:"user/leaveLessonMsg",bodyObj:{
                     CourseId: CourseId,
                     LessonId: LessonId,
-                    Message: values.message
+                    Message: values.message,
+                    reqType: "leaveLessonMsg"
                 }});
             }else{
                 alert("留言请在10至200字以内。");
@@ -32,9 +34,10 @@ class Reply extends React.Component{
                 <List renderHeader={() => title}>
                     <TextareaItem
                         {...getFieldProps('message', {
-                        initialValue: '请输入...',
+                        initialValue: '',
                         })}
                         rows={6}
+                        placeholder="请输入您的评论..."
                         count={300}
                     />
                 </List>
