@@ -1,8 +1,6 @@
 syntax = "proto3";
 package teacher;
 
-//视频请求
-
 //课程查询
 message CourseQueryReq
 {
@@ -128,7 +126,7 @@ message Course
 	int32 FinishLesson = 9;  //已完成课时数
 	int32 Score = 10;  //课程得分
 	int32 HighestScore = 11;  //课时最高分
-	string Opionion = 12;  //心得
+	string Opinion = 12;  //心得
 	int32 WatchNum = 13;  //观看人数
 	repeated Lesson LessonList = 14;  //课时列表
 }
@@ -356,4 +354,55 @@ message SecurityTokenResp
 	string ErrMsg = 2;
 	string CoverURL = 3;   //封面
 	string RetString = 4; // 凭证/地址
+}
+
+//课程心得提交
+message CourseOpinionCommitReq
+{
+	int64 TeacherId = 1;
+	string CourseId = 2;
+	string Opinion = 3;  //课程心得
+}
+
+message CourseOpinionCommitResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+}
+
+//课时留言提交
+message LessonMessageCommitReq
+{
+	int64 TeacherId = 1;
+	int32 CourseId = 2;
+	int32 LessonId = 3;
+	string Message = 4;  //课时留言
+}
+
+message LessonMessageCommitResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+}
+
+//课时留言查询
+message LessonMessageQueryReq
+{
+	int32 CourseId = 1;
+	int32 LessonId = 2;
+	int32 PageSize = 3;  //分页大小,用户后续分页用,可不填
+	int32 TimeStamp = 4;  //时间起点,可不填
+}
+
+message LessonMessage
+{
+	string Message = 1;
+	int32 LeaveTime = 2;
+}
+
+message LessonMessageQueryResp
+{
+	int32 Result = 1;
+	string ErrMsg = 2;
+	repeated LessonMessage LessonMsg = 3;
 }

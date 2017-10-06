@@ -210,6 +210,30 @@ var reqVerify = function(req,res){
                     "TestAnswerCommitReq"
                 );
             }
+        case "checkLessonMsg":
+            if(typeof req.session.teacherid !== "undefined"){
+                return pass(
+                    {
+                        CourseId: req.body.CourseId,
+                        LessonId: req.body.LessonId,
+                        PageSize: "",
+                        TimeStamp: ""
+                    },
+                    "LessonMessageQueryReq"
+                );
+            }
+        case "leaveLessonMsg":
+            if(typeof req.session.teacherid !== "undefined"){
+                return pass(
+                    {
+                        TeacherId: req.session.teacherid,
+                        CourseId: req.body.CourseId,
+                        LessonId: req.body.LessonId,
+                        Message: req.body.Message
+                    },
+                    "LessonMessageCommitReq"
+                );
+            }
         default:
             return pass();
     }

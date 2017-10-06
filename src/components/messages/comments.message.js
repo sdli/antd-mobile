@@ -13,16 +13,23 @@ class CommentList extends React.Component {
   }
 
   render() {
+    const {LessonMsg,LessonId,CourseId} = this.props;
     return (
         <div>
             <div className={styles.commentLink}>
-              <p><Button size="small" type="ghost" inline onClick={()=>hashHistory.push("/commentDetails")}>点击评论</Button></p>
+              <p><Button size="small" type="ghost" inline onClick={()=>hashHistory.push("/commentDetails?LessonId="+LessonId+"&CourseId="+CourseId)}>点击评论</Button></p>
               <p>提交后，专家将看到您的留言</p>
             </div>
             <List style={{borderBottom:"1px solid #ddd"}}>
-                <Item multipleLine extra={<span><Icon type={CommentSvg} size="xxs" onClick={()=>hashHistory.push("/commentDetails")} /> 1</span> }>
-                  李道然<Brief>家庭教育的核心是什么？</Brief><Brief><span className={styles.commentTime}>2017.09.01</span></Brief>
-                </Item>
+                {
+                  LessonMsg.map(function(val,index){
+                    return (
+                      <Item multipleLine extra={<span><Icon type={CommentSvg} size="xxs" onClick={()=>hashHistory.push("/commentDetails")} /> 1</span> }>
+                        用户***<Brief>{val.Message}</Brief><Brief><span className={styles.commentTime}>{val.LeaveTime}</span></Brief>
+                      </Item>
+                    );
+                  })
+                }
                 <Item multipleLine extra={<span><Icon type={CommentSvg} size="xxs" onClick={()=>hashHistory.push("/commentDetails")} /> 1</span> }>
                   李道然<Brief>家庭教育的核心是什么？</Brief><Brief><span className={styles.commentTime}>2017.09.01</span></Brief>
                 </Item>

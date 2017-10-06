@@ -76,6 +76,3 @@
 :global(video){
     object-fit: contain !important;    
 }
-/* :global(.am-list-content){
-    white-space: normal !important;
-} */

@@ -18,7 +18,8 @@ export default {
     lessonDetails: {},
     login: false,
     userInfo: {},
-    openid: 0
+    openid: 0,
+    lessonMsg:[]
   },
 
   subscriptions: {
@@ -199,6 +200,15 @@ export default {
           }
         });
       }
+    },
+    *leaveLessonMsg({bodyObj},{call,put}){
+      var data = yield call(request,{bodyObj:bodyObj});
+      yield toastInit(put,data,{msg:"提交成功！",type:"success"},{msg:"提交失败，请稍后重试",type:"fail"});
+      hashHistory.go(-1);
+    },
+    *checkLessonMsg({bodyObj},{call,put}){
+      var data = yield call(request,{bodyObj: bodyObj});
+      yield put({type:"lessonMsg",msg:data.data.LessonMsg});
     }
   },
 
@@ -220,6 +230,9 @@ export default {
     },
     clearLessonDetails(state,action){
       return {...state,lessonDetails:{}};
+    },
+    lessonMsg(state,action){
+      return {...state,lessonMsg:action.msg};
     }
   }
 };

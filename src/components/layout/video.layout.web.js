@@ -112,7 +112,7 @@ class VideoTests extends React.Component{
 
     render(){
         const that = this;
-        const {CollectList,TestList,dispatch,LessonId,CourseId} = this.props;
+        const {CollectList,TestList,dispatch,LessonId,CourseId,LessonMsg} = this.props;
         console.log(CollectList,TestList);
         return(
             <div>
@@ -150,7 +150,7 @@ class VideoTests extends React.Component{
                     </TabPane>
                     <TabPane  tab="留言评论" key="2">
                         <div style={{ width:"100%", backgroundColor: '#fff' }} >
-                            <CommentList />
+                            <CommentList CourseId={CourseId} LessonId={LessonId} LessonMsg={LessonMsg}/>
                         </div>
                     </TabPane>
                 </Tabs>
@@ -188,7 +188,7 @@ class Videoplayer extends React.Component{
     }
 
     render(){
-        const {lessonDetails, CourseId, LessonId ,VideoId,lessonInfo,dispatch} = this.props;
+        const {lessonDetails, CourseId, LessonId ,VideoId,lessonInfo,dispatch,LessonMsg} = this.props;
         console.log(lessonDetails,"嗯嗯嗯？？");
         return(
             <div>
@@ -212,6 +212,7 @@ class Videoplayer extends React.Component{
                             LessonId={LessonId}
                             CourseId={CourseId}
                             dispatch={dispatch}
+                            LessonMsg={LessonMsg}
                         />
                     </div>
                 }

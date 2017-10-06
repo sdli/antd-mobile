@@ -73,7 +73,7 @@ class LessonList extends Component{
                         (courses.hasOwnProperty("CourseList")) &&
                         courses.CourseList.map(function(val,index){
                               return (
-                                  <div className={styles.lessonCell} key={index}>
+                                  <div className={styles.lessonCell} key={"CourseList"+index}>
                                     <img src={val.HeadPortrait} />
                                     <Link to={{pathname:"/lessionList",query:{CourseId:val.CourseId}}} className={styles.linkInit}>
                                         <div className={styles.lessonStat}>
@@ -95,7 +95,7 @@ class LessonList extends Component{
                         courses.CourseQueryReq.CourseList.map((val,index)=>{
                             var userData = findUserCourse(courses.TeacherCourseReq.CourseList,val.CourseId);
                             return (
-                                <div className={styles.lessonCell} key={index}>
+                                <div className={styles.lessonCell} key={"CourseList"+index}>
                                     <img src={val.HeadPortrait} />
                                     <Link to={{pathname:"/lessionList",query:{CourseId:val.CourseId}}} className={styles.linkInit}>
                                         <div className={styles.lessonStat}>

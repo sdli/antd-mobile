@@ -16,7 +16,7 @@ class listUl extends React.Component{
         return(
                 <ul className={styles.lessionUl}>
                     {typeof LessionList !== "undefined" && LessionList.map((val,index)=>{
-                        return  (<li key={index}>
+                        return  (<li key={"lessonList"+index}>
                                 <Link to={{pathname:"/videoplay",query:{CourseId:val.CourseId,LessonId:val.LessonId,VideoId:val.VideoId}}} className="linkInit">
                                     <Icon type={VideoSvg}/>
                                     <div className={styles.lessionUlTitle}>
