@@ -33,7 +33,7 @@ var redis = {
    "port" : "6699",
 //    "port" : "6379",
    "db" : 1,
-   "ttl" : 1800,
+   "ttl" : 3600*24,
    "logErrors" : true
 };
 
