@@ -360,7 +360,7 @@ message SecurityTokenResp
 message CourseOpinionCommitReq
 {
 	int64 TeacherId = 1;
-	string CourseId = 2;
+	int32 CourseId = 2;
 	string Opinion = 3;  //课程心得
 }
 

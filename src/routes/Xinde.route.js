@@ -10,9 +10,10 @@ class XindePage extends React.Component{
 
     render(){
         const CourseId = getQuery(this.props,"CourseId");
+        const {dispatch} = this.props;
         return(
             <div>
-                <Reply title="心得体会" CourseId={CourseId} />
+                <Reply title="心得体会" CourseId={CourseId} dispatch={dispatch} />
             </div>
         );
     }    

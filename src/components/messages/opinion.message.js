@@ -17,7 +17,7 @@ class Reply extends React.Component{
                 dispatch({type:"user/leaveOpinion",bodyObj:{
                     CourseId: CourseId,
                     Opinion: values.message,
-                    reqType: "CourseOpinionCommitReq"
+                    reqType: "courseOpinion"
                 }});
             }else{
                 alert("心得请在10至200字以内。");
