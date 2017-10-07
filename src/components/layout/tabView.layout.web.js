@@ -64,7 +64,7 @@ class TabBarExample extends React.Component {
         >
           { <div>
               <Carou />
-              <HeadStat />
+              <HeadStat courses={courses} />
               <div className="divider"></div>
               <LessionList courses={courses} />
               <Footer style={{backgroundColor:"#f6f6f6",marginBottom:"2rem"}} />

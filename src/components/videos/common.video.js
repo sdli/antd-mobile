@@ -131,8 +131,7 @@ class CommonVedio extends Component{
                 <div className={styles.videoSection}>
                 <div id="ts_player" ref={(video)=>{this.video = video;}}></div>
                     {
-                        show
-                        &&
+                        show &&
                         <div className={styles.videoMask}>
                             <div></div>
                             <div className={styles.videoPlay}>

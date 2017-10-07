@@ -31,6 +31,7 @@ class VideoPage extends Component{
         const CourseId = getQuery(this.props,"CourseId");
         const LessonId = getQuery(this.props,"LessonId");
         const VideoId = getQuery(this.props,"VideoId");
+        console.log(user.courses,"重新检查");
         const lessonInfo = ("TeacherCourseReq" in user.courses)?this.getLessonInfo(user.courses.TeacherCourseReq.CourseList,CourseId,LessonId):{};            
         return (
             <div>

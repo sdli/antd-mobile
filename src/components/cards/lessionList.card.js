@@ -61,7 +61,7 @@ class LessionList extends Component{
                             (UserData && UserData.FinishLesson != CourseData.LessonList.length) &&
                             <div className={styles.commentLink}>
                                     <p style={{padding:"0 20%"}}><Button size="small" type="ghost" icon={PencilSVG} inline onClick={()=>hashHistory.push("/xinde?CourseId="+CourseId)}>写心得</Button></p>
-                                <p>提交您的学习心得</p>
+                                <p>已完成课程，可以写学习心得！</p>
                             </div>
                         }
                     </div>

@@ -5,6 +5,7 @@ import React from "react";
 import { Tabs, WhiteSpace, Badge, List,Radio,Button, Flex, } from 'antd-mobile';
 import styles from "./layout.css";
 import CommentList from "../messages/comments.message";
+import {setLocalStore, getLocalStore} from "../../utils/setLocalStore";
 
 const TabPane = Tabs.TabPane;
 const Item = List.Item;
@@ -194,14 +195,22 @@ class Videoplayer extends React.Component{
     }
 
     onStart = () =>{
+        const {lessonInfo,CourseId, LessonId ,VideoId} = this.props;
         this.setState({
             show:false
         });
+        setLocalStore("videoHistory",JSON.stringify({
+            LessonName: lessonInfo?lessonInfo.LessonName:"暂无课程",
+            LessonUrl: {
+                LessonId: LessonId,
+                VideoId: VideoId,
+                CourseId: CourseId
+            }
+        }),3600*24*90);
     }
 
     render(){
         const {lessonDetails, CourseId, LessonId ,VideoId,lessonInfo,dispatch,LessonMsg} = this.props;
-        console.log(lessonDetails,"嗯嗯嗯？？");
         return(
             <div>
                 {

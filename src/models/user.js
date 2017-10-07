@@ -28,7 +28,7 @@ export default {
       history.listen(({ pathname,query }) => {
         window.scrollTo(0,0);
         console.log(query);
-        if(pathname !== "/login" && pathname != "/register" && pathname != "/loginSelect" && pathname !== "/pay" && pathname != "/getOpenid" && pathname !="/videoplay"){
+        if(pathname !== "/login" && pathname != "/register" && pathname != "/" && pathname != "/loginSelect" && pathname !== "/pay" && pathname != "/getOpenid" && pathname !="/videoplay"){
           dispatch({type:"checkLogin"});
         }
         if(pathname == "/videoplay" || pathname=="/user" || pathname=="/user/statics"){
