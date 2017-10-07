@@ -29,7 +29,9 @@ class RegisterLayout extends React.Component{
         this.state = {
             codeError: false,
             phoneError: false,
-            passwordError: false
+            passwordError: false,
+            verifyContext: "发送验证码",
+            verifyDisabled: false
         }
     }
 
@@ -128,12 +130,33 @@ class RegisterLayout extends React.Component{
             form.validateFields((error,values) => {
                 console.log(values);
                 if(that.verifyType3(values.phone1)){
+                    var count = 60;
                     methods.getVerifyCode({Phone:that.trim(values.phone1),reqType: "VerifyCodeReq",Type:"1"});
+                    var verify = window.verifyCodeSet = setInterval(function(){
+                        if(count == 0){
+                            clearInterval(verify);
+                            that.setState({
+                                verifyDisabled: false,
+                                verifyContext: "重新发送"
+                            });
+                            count = 60;
+                        }else{
+                            that.setState({
+                                verifyDisabled: true,
+                                verifyContext: (count-1)+"s"
+                            });
+                            count = count -1;
+                        }
+                    },1000);
                 }
             });
         }
     }
 
+    componentWillUnmount(){
+        clearTimeout(window.verifyCodeSet);
+    }
+    
     render(){
         const { getFieldProps } = this.props.form;
         return(
@@ -159,7 +182,7 @@ class RegisterLayout extends React.Component{
                                         {...getFieldProps('code1')}
                                         placeholder="验证码"
                                         error={this.state.codeError}
-                                        extra={<Button type="ghost" size="small" inline onClick={this.getVerifyCode()}>获取验证码</Button>}
+                                        extra={<Button type="ghost" size="small" disabled={this.state.verifyDisabled} inline onClick={this.getVerifyCode()}>{this.state.verifyContext}</Button>}
                                     >
                                        <div style={{position:"relative",height:"0.88rem",padding:"0.24rem 0"}}>
                                             <Icon type={MesgSvg} style={{width:"0.38rem",height:"0.38rem",color:"#4d4d4d"}}/>

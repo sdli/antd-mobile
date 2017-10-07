@@ -234,6 +234,17 @@ var reqVerify = function(req,res){
                     "LessonMessageCommitReq"
                 );
             }
+        case "courseOpinion":
+            if(typeof req.session.teacherid !== "undefined"){
+                return pass(
+                    {
+                        TeacherId: req.session.teacherid,
+                        CourseId: req.body.CourseId,
+                        Opinion: req.body.Opinion,
+                    },
+                    "CourseOpinionCommitReq"
+                );
+            }
         default:
             return pass();
     }

@@ -53,12 +53,12 @@ class LessionList extends Component{
                         我的进度
                     </p>
                     <div className={styles.lessionProgress}>
-                        <p>学习课程：{(typeof UserData !== "undefined")?UserData.FinishLesson:"0"}/{CourseData.LessonList.length}</p>
+                        <p>学习课程：{(typeof UserData !== "undefined" && "FinishLesson" in UserData)?UserData.FinishLesson:"0"}/{CourseData.LessonList.length}</p>
                         <div>
                             <Progress percent={34} position="normal" unfilled="show" />
                         </div>
                         {
-                            (UserData && UserData.FinishLesson == CourseData.LessonList.length) &&
+                            (UserData && UserData.FinishLesson != CourseData.LessonList.length) &&
                             <div className={styles.commentLink}>
                                     <p style={{padding:"0 20%"}}><Button size="small" type="ghost" icon={PencilSVG} inline onClick={()=>hashHistory.push("/xinde?CourseId="+CourseId)}>写心得</Button></p>
                                 <p>提交您的学习心得</p>

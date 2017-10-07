@@ -145,7 +145,7 @@ class VideoTests extends React.Component{
                                     var test = JSON.parse(val.TestProblem);
                                     return (
                                         <Item 
-                                            extra={(val.CommitedAnswer == val.Answer)?<span style={{color:"green"}}>{val.Score}</span>:"0分"} 
+                                            extra={(val.CommitedAnswer == val.Answer)?<span style={{color:"green"}}>{val.Score}分</span>:"0分"} 
                                             multipleLine 
                                             align="center" 
                                             key={index} 

@@ -17,7 +17,8 @@ var dictionary = {
     DialogCollectReq:"DialogCollectResp",
     TestAnswerCommitReq: "TestAnswerCommitResp",
     LessonMessageQueryReq: "LessonMessageQueryResp",
-    LessonMessageCommitReq: "LessonMessageCommitResp"
+    LessonMessageCommitReq: "LessonMessageCommitResp",
+    CourseOpinionCommitReq: "CourseOpinionCommitResp"
 };
 
 var headers ={

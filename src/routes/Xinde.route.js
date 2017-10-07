@@ -1,6 +1,7 @@
-import Reply from "../components/messages/reply.message";
+import Reply from "../components/messages/opinion.message";
 import React from "react";
 import { connect } from 'dva';
+import getQuery from "../components/tools/getQuery";
 
 class XindePage extends React.Component{
     constructor(props){
@@ -8,9 +9,10 @@ class XindePage extends React.Component{
     }
 
     render(){
+        const CourseId = getQuery(this.props,"CourseId");
         return(
             <div>
-                <Reply title="心得体会" />
+                <Reply title="心得体会" CourseId={CourseId} />
             </div>
         );
     }    
