@@ -17,6 +17,7 @@ import LoginSelectPage from "./routes/LoginSelect.route";
 import GetOpenidPage from "./routes/GetOpenid.route";
 import PayPage from "./routes/PayPage.route";
 import Videotest from "./routes/videotest.route";
+import UserAbout from "./routes/UserAbout.route";
 
 function RouterConfig({ history }) {
   return (
@@ -30,6 +31,7 @@ function RouterConfig({ history }) {
           <IndexRoute component={UserCenterPage} />
           <Route path="/user/statics" component={UserStatics} />
           <Route path="/user/info" component={UserInfoPage} />
+          <Route path="/user/about" component={UserAbout} />
         </Route>
         <Route path="/commentDetails" component={CommentDetailsPage} />
         <Route path="/xinde" component={XindePage} />

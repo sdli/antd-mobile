@@ -6,6 +6,7 @@ import ListAltSVG from "../../assets/svgs/list-alt.svg";
 import StarHalfSVG from "../../assets/svgs/star-half-o.svg";
 import EditSVG from "../../assets/svgs/pencil-square-o.svg";
 import HeadPhoneSVG from "../../assets/svgs/headphones.svg";
+import Bullhorn from "../../assets/svgs/bullhorn.svg";
 import {hashHistory} from "react-router";
 
 const Item = List.Item;
@@ -57,13 +58,20 @@ class UserCenter extends React.Component{
                 </div>
                 <div className="divider" />
                 <div>
-                    <List renderHeader={() =>'意见反馈'}>
+                    <List renderHeader={() =>'系统功能'}>
                         <Item
-                        thumb={<Icon type={HeadPhoneSVG} size="sm" style={{color: "#999999"}} />}
-                        arrow="horizontal"
-                        onClick={() => {alert("尊敬的用户，请在微信公众号直接留言提交！");}}
-                        >
-                        <span style={{paddingLeft:"0.2rem"}}>提交反馈</span>
+                            thumb={<Icon type={Bullhorn} size="sm" style={{color: "#F78152"}} />}
+                            arrow="horizontal"
+                            onClick={() => {hashHistory.push("/user/about");}}
+                            >
+                            <span style={{paddingLeft:"0.2rem"}}>关于我们</span>
+                        </Item>
+                        <Item
+                            thumb={<Icon type={HeadPhoneSVG} size="sm" style={{color: "#999999"}} />}
+                            arrow="horizontal"
+                            onClick={() => {alert("尊敬的用户，请在微信公众号直接留言提交！");}}
+                            >
+                            <span style={{paddingLeft:"0.2rem"}}>提交反馈</span>
                         </Item>
                     </List>
                 </div>

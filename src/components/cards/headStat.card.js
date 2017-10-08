@@ -6,7 +6,7 @@ import {getLocalStore} from "../../utils/setLocalStore";
 
 const headStat = function({courses}){
     console.log(courses);
-    if(JSON.stringify(courses) == "{}") return null;
+    if(typeof courses === "undefined" || JSON.stringify(courses) == "{}") return null;
     var length = 0;
     var average = 0;
     var finished = 0;
