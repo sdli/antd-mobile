@@ -245,6 +245,14 @@ var reqVerify = function(req,res){
                     "CourseOpinionCommitReq"
                 );
             }
+        case "logout":
+            if(typeof req.session.teacherid !== "undefined"){
+                req.session = null;
+                return passToRes({
+                    code: 1,
+                    msg: "succ"
+                });
+            }
         default:
             return pass();
     }

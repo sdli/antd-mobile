@@ -16,6 +16,19 @@ function getCityName(code){
 }
 
 class UserInfo extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.logout = this.logout.bind(this);
+  }
+
+  logout(){
+    if(confirm("确认退出登录？")){
+      const {dispatch} = this.props;
+      dispatch({type:"user/logout"});
+    }
+  }
+
   render() {
     const { getFieldProps } = this.props.form;
     const { userInfo } = this.props;
@@ -30,6 +43,7 @@ class UserInfo extends React.Component {
             </List>
           }        
           <div className="divider" />
+          <p style={{lineHeight:"1rem",fontSize:"0.28rem",color:"red",textAlign:"center"}} onClick={this.logout}>退出登录</p>
       </div>
     );
   }
