@@ -66,7 +66,7 @@ class CommonVedio extends Component{
             var timeDeleted = 0;
             var currentTime = player.getCurrentTime(), 
                 text = "",
-                count = 1; 
+                count = 1,
                 collectTime = 0, 
                 CollectIndex = 0,
                 CollectStatus = false;
