@@ -18,6 +18,7 @@ class CommonVedio extends Component{
 
     componentDidMount(){
         var {VideoId,CollectList,dispatch,CourseId,LessonId,onStart} = this.props;
+        console.log(CollectList);
         const w = window.screen.width;
         var that = this, pause = false,played = false;
 

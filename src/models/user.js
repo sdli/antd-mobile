@@ -214,6 +214,12 @@ export default {
       var data = yield call(request,{bodyObj:bodyObj});
       yield toastInit(put,data,{msg:"提交成功！",type:"success"},{msg:"提交失败，请稍后重试",type:"fail"});
       hashHistory.go(-1);
+    },
+    *logout({},{call,put}){
+      var data = yield call(request,{bodyObj:{reqType:"logout"}});
+      if(data.data.data.code == 1){
+        hashHistory.push("/");
+      }
     }
   },
 
