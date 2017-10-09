@@ -102,7 +102,7 @@ class CommonVedio extends Component{
                                 }});
                             }else{
                                 dispatch({
-                                    type:"user/toast",
+                                    type:"user/showToast",
                                     details:{
                                         msg:"已收藏!",
                                         type:"info"
