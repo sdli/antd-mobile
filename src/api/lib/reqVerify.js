@@ -247,7 +247,7 @@ var reqVerify = function(req,res){
             }
         case "logout":
             if(typeof req.session.teacherid !== "undefined"){
-                req.session = null;
+                req.session.destroy();
                 return passToRes({
                     code: 1,
                     msg: "succ"
