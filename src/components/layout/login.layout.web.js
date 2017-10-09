@@ -30,8 +30,11 @@ class LoginLayout extends React.Component{
             phone1Error: false,
             code1Error: false,
             verifyDisabled: false,
-            verifyContext: "获取验证码"
+            verifyContext: "获取验证码",
+            code: Math.random()*100000
         }
+
+        this.changeImg = this.changeImg.bind(this);
     }
 
     trim(str) {
@@ -204,6 +207,12 @@ class LoginLayout extends React.Component{
         clearTimeout(window.verifyCodeSet);
     }
 
+    changeImg(){
+        this.setState({
+            code:Math.random()*100000
+        });
+    }
+    
     render(){
         const { getFieldProps } = this.props.form;
         return(
@@ -240,7 +249,7 @@ class LoginLayout extends React.Component{
                                         {...getFieldProps('code')}
                                         placeholder="验证码"
                                         error={this.state.codeError}
-                                        extra={<img src={"/api/verifycode"} style={{width:"2rem",height:"0.5rem"}} />}
+                                        extra={<img src={"/api/verifycode?code="+this.state.code} onClick={this.changeImg} style={{width:"2rem",height:"0.5rem"}} />}
                                     >
                                        <div style={{position:"relative",height:"0.88rem",padding:"0.24rem 0"}}>
                                             <Icon type={MesgSvg} style={{width:"0.38rem",height:"0.38rem",color:"#4d4d4d"}}/>

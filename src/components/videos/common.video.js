@@ -64,11 +64,13 @@ class CommonVedio extends Component{
 
         function timeCheck(player,Collects){
             var timeDeleted = 0;
-            var currentTime = player.getCurrentTime();
-            var text = "";
-            var count = 1;
-            var collectTime = 0;
-            var CollectIndex = 0;
+            var currentTime = player.getCurrentTime(), 
+                text = "",
+                count = 1; 
+                collectTime = 0, 
+                CollectIndex = 0,
+                CollectStatus = false;
+
             for(var i = 0;i<Collects.length;i++){
                 console.log(Collects[i].Time,currentTime);
                 if(currentTime+15 <= Collects[i].Time){
@@ -76,6 +78,7 @@ class CommonVedio extends Component{
                     collectTime = Collects[i].Time; 
                     text = Collects[i].CollectCnt;
                     CollectIndex = Collects[i].CollectIndex;
+                    CollectStatus = Collects[i].Status;
                     count = i;
                     break;
                 }
@@ -90,17 +93,25 @@ class CommonVedio extends Component{
                         player.pause();
                         pause = true;
                         if(confirm("请点击确认收藏：" + text)){
-                            console.log("通过，开始下一个计时");
-                            dispatch({type:"user/collect",bodyObj:{
-                                CollectIndex: CollectIndex,
-                                CourseId: CourseId,
-                                LessonId: LessonId,
-                                reqType: "collect"
-                            }});
+                            if(!CollectStatus){
+                                dispatch({type:"user/collect",bodyObj:{
+                                    CollectIndex: CollectIndex,
+                                    CourseId: CourseId,
+                                    LessonId: LessonId,
+                                    reqType: "collect"
+                                }});
+                            }else{
+                                dispatch({
+                                    type:"user/toast",
+                                    details:{
+                                        msg:"已收藏!",
+                                        type:"info"
+                                    }});
+                            }
                             timeCheck(player,Collects);
                             player.resume();
                             pause = false;
-                        }else{ 
+                        }else{
                             console.log("未通过，下一个问题开始计时");
                             timeCheck(player,Collects);
                             player.resume();
