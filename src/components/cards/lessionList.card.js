@@ -58,10 +58,17 @@ class LessionList extends Component{
                             <Progress percent={34} position="normal" unfilled="show" />
                         </div>
                         {
-                            (UserData && UserData.FinishLesson == CourseData.LessonList.length) &&
+                            (UserData && UserData.FinishLesson == CourseData.LessonList.length) && UserData.Opinion == "" &&
                             <div className={styles.commentLink}>
                                     <p style={{padding:"0 20%"}}><Button size="small" type="ghost" icon={PencilSVG} inline onClick={()=>hashHistory.push("/xinde?CourseId="+CourseId)}>写心得</Button></p>
                                 <p>已完成课程，可以写学习心得！</p>
+                            </div>
+                        }
+                        {
+                            UserData && UserData.Opinion != "" &&
+                            <div>
+                                <p style={{color:"#999999",fontSize:"0.24rem",lineHeight:"0.5rem"}}>课程心得：</p>
+                                <p style={{color:"#4d4d4d",fontSize:"0.28rem",lineHeight:"0.3rem"}}>{UserData.Opinion}</p>
                             </div>
                         }
                     </div>
