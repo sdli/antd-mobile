@@ -140,7 +140,8 @@ class CommonVedio extends Component{
             "width":"100%",
             "height": parseInt(w*isMobile*540/960,10),
             "https": 1,
-            "controls":"system"
+            "controls":"system",
+            "x5_type": "h5"
         };
 
         console.log(option);
