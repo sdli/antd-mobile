@@ -139,7 +139,8 @@ class CommonVedio extends Component{
             "app_id":"1254437760",
             "width":"100%",
             "height": parseInt(w*isMobile*540/960,10),
-            "https": 1
+            "https": 1,
+            "disable_drag": 1
         };
 
         console.log(option);
