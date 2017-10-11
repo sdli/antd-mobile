@@ -198,6 +198,7 @@ class CommonVedio extends Component{
                     clearInterval(timer);
                     alertArr.push(CollectIndex);
                     pause = true;
+                    player.pause();
                     if(confirm("请点击确认收藏：" + content)){
                         if(!CollectStatus){
                             dispatch({type:"user/collect",bodyObj:{
