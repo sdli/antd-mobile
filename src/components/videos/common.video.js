@@ -182,7 +182,7 @@ class CommonVedio extends Component{
                     timeLeft        =[];
 
                 for(var i=0;i<CollectGroup.length;i++){
-                    if(duration == CollectGroup[i].Time && !alertArr.some((val)=>(val == CollectGroup[i].CollectIndex))){
+                    if((duration == CollectGroup[i].Time-1 || duration == CollectGroup[i].Time || duration == CollectGroup[i].Time+1 ) && !alertArr.some((val)=>(val == CollectGroup[i].CollectIndex))){
                         show = true;
                         content = CollectGroup[i].CollectCnt;
                         CollectStatus = CollectGroup[i].Status;
