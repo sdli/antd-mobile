@@ -34,6 +34,13 @@ app.get("/MP_verify_8NkWdD5pYfIZ0k0p.txt",(req,res)=>{
   res.end();
 });
 
+app.get("/wetest-8de8645bbf12ce49c7e41c413c453984.txt",(req,res)=>{
+  var body = "wetest-8de8645bbf12ce49c7e41c413c453984";
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write(body);
+  res.end();
+});
+
 // 微信重定向
 app.get("/getOpenid",(req,res)=>{
   var code = req.query.code;
