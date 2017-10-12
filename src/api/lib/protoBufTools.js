@@ -11,7 +11,7 @@ var ProtoBuffTools = function(reqProtoMessageName,method,data,config){
     this.data = data;
     this.options = {
         host: (typeof config.hostname !== "undefined")?config.hostname:config.domain,
-        port: (typeof config.hostname !== "undefined")?"":config.apiPort,
+        port: (typeof config.hostname !== "undefined")?config.apiPort:null,
         path: (typeof config.domain === "undefined")?
                 config.hostname+config.apiPort+"/"+reqProtoMessageName
               : config.domain+"/"+reqProtoMessageName,
