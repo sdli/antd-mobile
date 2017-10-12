@@ -11,10 +11,10 @@ var ProtoBuffTools = function(reqProtoMessageName,method,data,config){
     this.data = data;
     this.options = {
         host: (typeof config.hostname !== "undefined")?config.hostname:config.domain,
-        port: config.apiPort,
+        port: (typeof config.hostname !== "undefined")?"":config.apiPort,
         path: (typeof config.domain === "undefined")?
-              "http://"+config.hostname+config.apiPort+"/"+reqProtoMessageName
-              :"http://"+config.domain+"/"+reqProtoMessageName,
+                config.hostname+config.apiPort+"/"+reqProtoMessageName
+              : config.domain+"/"+reqProtoMessageName,
         method: method,
         headers: config.headers
     };
