@@ -49,7 +49,6 @@ module.exports = {
     appSecret:"ed630046456d36d2ac82f0456f79a06b",
     dev:{
         headers: headers,
-        hostname: '47.94.101.71',
         apiPort: 8001,
         package: "teacher",
         filePath: filepath,
@@ -58,7 +57,6 @@ module.exports = {
     },
     production:{
         headers: headers,
-        hostname: '47.94.101.71',
         apiPort: 8001,
         package: "teacher",
         domain: "api.yiaitech.com",
