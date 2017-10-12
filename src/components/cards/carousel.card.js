@@ -1,9 +1,26 @@
 import { Carousel, WhiteSpace, WingBlank } from 'antd-mobile';
 import Img from "../../assets/imgs/carousel.jpg";
 import isMobile from "../tools/isMobile";
+import {Link} from "react-router";
 import React from "react";
 
-const data=["","",""];
+const data=[
+    {
+        url:"http://image-edu.oss-cn-beijing.aliyuncs.com/banner/jf.jpg",
+        link: "50000"
+    },
+    {
+        url:"http://image-edu.oss-cn-beijing.aliyuncs.com/banner/jxgy.jpg",
+        link:"50005"
+    },{
+        url:"http://image-edu.oss-cn-beijing.aliyuncs.com/banner/sd.jpg",
+        link:"50001"
+    },
+    {
+        url:"http://image-edu.oss-cn-beijing.aliyuncs.com/banner/xlga.jpg",
+        link:"50002"  
+    }
+];
 class carousel extends React.Component{
     constructor(props){
         super(props);
@@ -35,10 +52,10 @@ class carousel extends React.Component{
                 beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
                 afterChange={index => console.log('slide to', index)}
                 >
-                {data.map(ii => (
-                    <a href="http://www.baidu.com" key={ii} style={{display:"inline-block",width:"100%",height: this.state.height}}>
+                {data.map((ii,index) => (
+                    <Link to={{pathname:"/lessionList",query:{CourseId:ii.link}}} key={"banner"+index} style={{display:"inline-block",width:"100%",height: this.state.height}}>
                         <img
-                            src={Img}
+                            src={ii.url}
                             alt="icon"
                             style={{width:"100%",verticalAlign: "top"}}
                             onLoad={() => {
@@ -49,7 +66,7 @@ class carousel extends React.Component{
                                 });
                             }}
                         />
-                    </a>
+                    </Link>
                 ))}
             </Carousel>
         );
