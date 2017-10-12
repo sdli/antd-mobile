@@ -1,6 +1,7 @@
 var http = require("http");
 var path = require("path");
 var protoBuf = require("protobufjs");
+var bufferHelper = require("bufferHelper");
 
 var ProtoBuffTools = function(reqProtoMessageName,method,data,config){
     //test new declaration
@@ -51,13 +52,16 @@ var protoBufferStart = function(reqProtoMessageName,method,data,func){
             console.log(options,"这是请求报文");
             var reqHttps = http.request(options, function(resHttps) {
                 var status = resHttps.statusCode;
-                var fileroot = root,rawData = "";
+                var fileroot = root;
+                var rawData = new bufferHelper();
+
                 if(status == 200){
                     resHttps.on('data', function(buffer){
-                        rawData += buffer;
+                        rawData.concat(buffer)
                     });
                     resHttps.on("end",function(){
-                        resolve({rawData,fileroot,reqProtoMessageName});
+                        var realBuffer = rawData.toBuffer();
+                        resolve({buffer:realBuffer,fileroot,reqProtoMessageName});
                     });
                 }else{
                     reject();
@@ -114,13 +118,15 @@ var protoBufferMulti = function(InitArr,Initfunc){
                 );
                 var reqHttps = http.request(options, function(resHttps) {
                     var status = resHttps.statusCode;
-                    var fileroot = root,rawData;
+                    var fileroot = root;
+                    var rawData = new bufferHelper();
                     if(status == 200){
                         resHttps.on('data', function(buffer){
-                            rawData += buffer;
+                            rawData.concat(buffer)
                         });
                         resHttps.on("end",function(){
-                            resolve({rawData,fileroot,reqProtoMessageName,arr,obj});
+                            var realBuffer = rawData.toBuffer();
+                            resolve({buffer:realBuffer,fileroot,reqProtoMessageName,arr,obj});
                         });
                     }else{
                         reject();
