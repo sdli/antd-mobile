@@ -28,10 +28,14 @@ var headers ={
 
 //redis配置
 var redis = {
-   "host" : "172.17.134.132",
-//    "host" : "127.0.0.1",
+   "host" : "172.31.218.116",
    "port" : "6699",
-//    "port" : "6379",
+   "db" : 1,
+   "ttl" : 3600*24,
+   "logErrors" : true
+},devRedis = {
+   "host" : "172.17.134.132",
+   "port" : "6699",
    "db" : 1,
    "ttl" : 3600*24,
    "logErrors" : true
@@ -40,6 +44,7 @@ var redis = {
 module.exports = {
     apiPort: 3061,
     redis: redis,
+    devRedis: devRedis,
     appId:"wx7d69cc6664fea758",
     appSecret:"ed630046456d36d2ac82f0456f79a06b",
     dev:{
@@ -48,7 +53,7 @@ module.exports = {
         apiPort: 8001,
         package: "teacher",
         filePath: filepath,
-        domain: "apitest.yiaitech.com",
+        domain: "test.api.yiaitech.com",
         protoReqList: dictionary
     },
     production:{

@@ -13,7 +13,7 @@ app.use(compression());
 // 配置信息
 var port          = config.apiPort;
 var serverPort    = config.serverPort;
-var targetUrl     = (typeof process.env.NODE_ENV === "undefined" || process.env.NODE_ENV == "dev")?config.server + ":" + port:config.productionServer+":"+config.productionApiPort;
+var targetUrl     = (typeof process.env.NODE_ENV === "undefined" || process.env.NODE_ENV == "dev")?config.devServer + ":" + port:config.productionServer+":"+config.productionApiPort;
 var proxy         = httpProxy.createProxyServer({target: targetUrl});
 
 // express静态资源目录
