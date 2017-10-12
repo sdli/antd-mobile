@@ -54,10 +54,8 @@ var appInit = function(app,options){
     console.info((typeof options.jsonParser !== "undefined" && options.cookieParser)?"bodyParser加载成功！":null);
     (typeof options.jsonParser !== "undefined" && options.cookieParser)?app.use(bodyParser.urlencoded({ extended: false })):null;
     console.info((typeof options.jsonParser !== "undefined" && options.cookieParser)?"urlEncode加载成功！":null);
-    (typeof options.sessionOptions !== "undefined" && options.cookieParser && typeof process.env.NODE_ENV !== "undefined" && process.env.NODE_ENV == "production")?app.use(session(Object.assign(options.sessionOptions,{store: new RedisStore(configs.redis)}))):app.use(session(Object.assign(options.sessionOptions,{store: new RedisStore(configs.devRedis)})));
-    console.info((typeof options.sessionOptions !== "undefined" && options.cookieParser && typeof process.env.NODE_ENV !== "undefined" && process.env.NODE_ENV == "production")?"使用redis加载session成功！":"关闭redis store连接！");
-    (typeof options.sessionDevOptions !== "undefined" && options.cookieParser && process.env.NODE_ENV !== "production" )?app.use(session(options.sessionDevOptions)):null;
-    console.info((typeof options.sessionDevOptions !== "undefined" && options.cookieParser && process.env.NODE_ENV !== "production" )?"使用store加载session！（仅限测试环境！）":null);
+    (typeof options.sessionOptions !== "undefined" && options.cookieParser && typeof process.env.NODE_ENV !== "undefined" && process.env.NODE_ENV == "production" && process.env.domain == "production")?app.use(session(Object.assign(options.sessionOptions,{store: new RedisStore(configs.redis)}))):app.use(session(Object.assign(options.sessionOptions,{store: new RedisStore(configs.devRedis)})));
+    console.info((typeof options.sessionOptions !== "undefined" && options.cookieParser && typeof process.env.NODE_ENV !== "undefined" && process.env.NODE_ENV == "production" && process.env.domain == "production")?"使用正式环境redis加载session成功！":"使用测试环境redis store连接！");
     (typeof options.img !== "undefined" && options.cookieParser)?app.get("/verifycode",imgGenerator(options.img)):null;
     (typeof options.listen !== "undefined")?app.listen(options.listen,listen(options.listen)):null;
     (typeof options.openid !== "undefined")?app.get("/getOpenid",getOpenid):null;

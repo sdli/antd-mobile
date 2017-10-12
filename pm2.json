@@ -12,7 +12,8 @@
     "script"      : "./src/api/index.js",
     "error_file" : "./src/logs/api.log",
     "env": {
-        "NODE_ENV": "production"
+        "NODE_ENV": "production",
+        "domain":"production"
     },
     "watch": true
 }

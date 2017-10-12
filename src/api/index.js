@@ -6,7 +6,7 @@ var appInit            = require("./lib/appInit.js"); // app配置
 var reqVerify          = require("./lib/reqVerify.js");
 
 // 根据process加载配置，未设置默认为测试环境
-(typeof process.env.NODE_ENV === "undefined" || process.env.NODE_ENV.trim() == "dev")
+(typeof process.env.NODE_ENV !== "undefined" && process.env.NODE_ENV.trim() == "production" && process.env.domain.trim() == "test")
 ?protoBuffer.init(configs.dev)
 :protoBuffer.init(configs.production);
 
