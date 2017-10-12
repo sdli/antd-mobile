@@ -53,7 +53,7 @@ module.exports = {
         apiPort: 8001,
         package: "teacher",
         filePath: filepath,
-        domain: "test.api.yiaitech.com",
+        domain: "apitest.yiaitech.com",
         protoReqList: dictionary
     },
     production:{
