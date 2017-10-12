@@ -45,6 +45,7 @@ var protoBufferStart = function(reqProtoMessageName,method,data,func){
                     body:reqBuffer
                 }
             );
+            console.log(options,"这是请求报文");
             var reqHttps = http.request(options, function(resHttps) {
                 var status = resHttps.statusCode;
                 var fileroot = root;
