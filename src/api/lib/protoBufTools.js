@@ -66,6 +66,8 @@ var protoBufferStart = function(reqProtoMessageName,method,data,func){
                 return "系统异常："+e.message;
             });
         });
+    }).catch(function(err){
+        console.log(err);
     });
 
     reqPromise.then(function({buffer,fileroot,reqProtoMessageName}){
@@ -123,6 +125,8 @@ var protoBufferMulti = function(InitArr,Initfunc){
                 reqHttps.on('error', function(e) {
                     return "系统异常："+e.message;
                 });
+            }).catch(function(err){
+                console.log(err);
             });
 
             protoPromise.then(function({buffer,fileroot,reqProtoMessageName,arr,obj}){
