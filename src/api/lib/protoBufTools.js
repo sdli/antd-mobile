@@ -77,6 +77,7 @@ var protoBufferStart = function(reqProtoMessageName,method,data,func){
                 objects: true,  // populates empty objects (map fields) even if defaults=false
                 oneofs: true    // includes virtual oneof fields set to the present field's name
         });
+        console.log(returnObj);
         func(returnObj);
     },function(){
         throw "promise rejected";
