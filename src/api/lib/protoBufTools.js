@@ -51,10 +51,13 @@ var protoBufferStart = function(reqProtoMessageName,method,data,func){
             console.log(options,"这是请求报文");
             var reqHttps = http.request(options, function(resHttps) {
                 var status = resHttps.statusCode;
-                var fileroot = root;
+                var fileroot = root,rawData = "";
                 if(status == 200){
                     resHttps.on('data', function(buffer){
-                        resolve({buffer,fileroot,reqProtoMessageName});
+                        rawData += buffer;
+                    });
+                    resHttps.on("end",function(){
+                        resolve({rawData,fileroot,reqProtoMessageName});
                     });
                 }else{
                     reject();
@@ -111,10 +114,13 @@ var protoBufferMulti = function(InitArr,Initfunc){
                 );
                 var reqHttps = http.request(options, function(resHttps) {
                     var status = resHttps.statusCode;
-                    var fileroot = root;
+                    var fileroot = root,rawData;
                     if(status == 200){
                         resHttps.on('data', function(buffer){
-                            resolve({buffer,fileroot,reqProtoMessageName,arr,obj});
+                            rawData += buffer;
+                        });
+                        resHttps.on("end",function(){
+                            resolve({rawData,fileroot,reqProtoMessageName,arr,obj});
                         });
                     }else{
                         reject();
