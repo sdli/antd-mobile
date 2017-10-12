@@ -15,6 +15,7 @@ var port          = config.apiPort;
 var serverPort    = config.serverPort;
 var targetUrl     = (typeof process.env.NODE_ENV === "undefined" || process.env.NODE_ENV == "dev")?config.devServer + ":" + port:config.productionServer+":"+config.productionApiPort;
 var proxy         = httpProxy.createProxyServer({target: targetUrl});
+var domain        = (typeof process.env.NODE_ENV === "undefined" || process.env.NODE_ENV == "dev")?config.devDomain:config.domain;
 
 // express静态资源目录
 app.use(express.static(path.join(__dirname, '/dist')));
@@ -36,7 +37,7 @@ app.get("/MP_verify_8NkWdD5pYfIZ0k0p.txt",(req,res)=>{
 // 微信重定向
 app.get("/getOpenid",(req,res)=>{
   var code = req.query.code;
-  res.writeHead(301, {'Location': 'http://teacher.yiaitech.com/#/getOpenid?code='+code});
+  res.writeHead(301, {'Location': domain + '/#/getOpenid?code='+code});
   res.end();
 });
 
