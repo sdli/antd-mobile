@@ -5,11 +5,11 @@ import configs from "../utils/configs";
 import {setLocalStore,getLocalStore} from "../utils/setLocalStore";
 import WexinPay from "./lib/weixinPay";
 
-const api_route = "http%3a%2f%2fteacher.yiaitech.com%2fgetOpenid";
+// 使用weixin.yiaitech.com作为转发，使得正式环境和测试环境都可以获取code
+const api_route = "http%3a%2f%2fweixin.yiaitech.com%2fgetOpenid%3furl%3dtest.teacher.yiaitech.com";
 const redirect_uri = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+configs.appId+"&redirect_uri="+api_route+"&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect"
 
 export default {
-
   namespace: 'user',
 
   state: {
