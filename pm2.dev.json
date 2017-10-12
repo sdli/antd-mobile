@@ -2,6 +2,8 @@
     "name"        : "teacher_server",
     "script"      : "server.js",
     "error_file" : "./src/logs/server.log",
+    "instances" : "max",
+    "exec_mode" : "cluster",
     "env": {
         "NODE_ENV": "dev"
     },
@@ -15,6 +17,8 @@
         "NODE_ENV": "production",
         "domain":"test"
     },
+    "instances" : "max",
+    "exec_mode" : "cluster",
     "watch": true
 }
 ]
