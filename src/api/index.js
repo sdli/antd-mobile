@@ -26,12 +26,6 @@ appInit(app,{
             secure: false
         }
     },
-    sessionDevOptions:{
-        secret: 'sessiontest',
-        resave: true,
-        saveUninitialized: false,
-        cookie: {secure: false} //不设置过期时间
-    },
     openid: true, // 开启微信openid获取,
     listen: configs.apiPort, // 开启端口监听
     img: 4,  // 开启验证码图片监听
