@@ -1,7 +1,7 @@
 var http = require("http");
 var path = require("path");
 var protoBuf = require("protobufjs");
-var bufferHelper = require("bufferHelper");
+var bufferHelper = require("bufferhelper");
 
 var ProtoBuffTools = function(reqProtoMessageName,method,data,config){
     //test new declaration
