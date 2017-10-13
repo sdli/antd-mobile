@@ -226,6 +226,7 @@ export default {
     },
     *logout({},{call,put}){
       var data = yield call(request,{bodyObj:{reqType:"logout"}});
+      yield put({type:"loginFalse"});
       if(data.data.data.code == 1){
         hashHistory.push("/");
       }
@@ -241,6 +242,9 @@ export default {
     },
     loginOK(state,action){
       return {...state,login: true};
+    },
+    loginFalse(state,action){
+      return {...state,login: false};
     },
     setUserInfo(state,action){
       return {...state,userInfo:action.userInfo};
