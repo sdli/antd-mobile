@@ -22,8 +22,7 @@ const requestMethod = {
 
 const requestExport = function*({bodyObj}){
     var url;
-    url = (config.devDomain)+"/api";
-    // url = config.server+":"+config.serverPort+"/api";
+    url = (config.domain)+"/api";
     var postInitObj = postInit(requestMethod.post,bodyObj);
     console.log(url,postInitObj);
     var data = yield request(url,postInitObj);
