@@ -46,11 +46,20 @@ export default {
         if(pathname == "/pay"){
           dispatch({type:"checkOpenid"});
         }
+        if(pathname == "/login" || pathname == "/register"){
+          dispatch({type:"ifNeedLoginOrRegister"})
+        }
       });
     },
   },
 
   effects: {
+    *ifNeedLoginOrRegister({},{call,select}){
+      var loginStatus = yield select(({user})=>user.login);
+      if(loginStatus){
+        hashHistory.push("/");
+      }
+    },
     *login({ bodyObj }, { call, put }) {  // eslint-disable-line
       var loginResult = yield call(request,{bodyObj:bodyObj});
       yield toastInit(put,loginResult,{msg:"登陆成功",type:"success"},{msg:"登录失败，请检查！",type:"fail"});
