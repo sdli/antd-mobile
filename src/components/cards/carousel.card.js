@@ -13,7 +13,7 @@ const data=[
         url:"http://image-edu.oss-cn-beijing.aliyuncs.com/banner/jxgy.jpg",
         link:"50005"
     },{
-        url:"http://image-edu.oss-cn-beijing.aliyuncs.com/banner/sd.jpg",
+        url:"http://image-edu.oss-cn-beijing.aliyuncs.com/banner/newsd.jpg",
         link:"50001"
     },
     {
