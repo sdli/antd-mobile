@@ -76,3 +76,12 @@
 :global(video){
     object-fit: contain !important;    
 }
+:global(.trump-play-controller) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: none;
+    z-index: 101;
+    cursor: pointer;
+    transform: translate(-50%,-50%) !important;
+}
