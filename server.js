@@ -15,7 +15,7 @@ var port          = config.apiPort;
 var serverPort    = config.serverPort;
 var targetUrl     = (typeof process.env.NODE_ENV === "undefined" || process.env.NODE_ENV == "dev")?config.devServer + ":" + port:config.productionServer+":"+config.productionApiPort;
 var proxy         = httpProxy.createProxyServer({target: targetUrl});
-var domain        = (typeof process.env.NODE_ENV === "undefined" || process.env.NODE_ENV == "dev")?config.devDomain:config.domain;
+var domain        = config.domain;
 
 // express静态资源目录
 app.use(express.static(path.join(__dirname, '/dist')));

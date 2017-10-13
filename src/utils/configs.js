@@ -6,7 +6,7 @@ var config ={
     productionApiPort:"3061",
     serverPort: "7001",
     appId: "wx7d69cc6664fea758",
-    domain: "http://teacher.yiaitech.com",
+    domain: "http://test.teacher.yiaitech.com",
     // domain: "http://teacher.yiaitech.com",
     payurl: "http%3a%2f%2fweixin.yiaitech.com%3furl%3dtest.teacher.yiaitech.com%2fgetOpenid"
     // payurl: "http%3a%2f%2fweixin.yiaitech.com%3furl%3dteacher.yiaitech.com%2fgetOpenid"
