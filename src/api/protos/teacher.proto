@@ -41,6 +41,7 @@ message RegisterResp
 {
 	int32 Result = 1;
 	string ErrMsg = 2;
+	int64 TeacherId = 3;
 }
 
 //教师登录

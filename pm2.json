@@ -5,6 +5,8 @@
     "env": {
         "NODE_ENV": "production"
     },
+    "instances" : "max",
+    "exec_mode" : "cluster",
     "watch" : true
 },
 {
@@ -15,6 +17,8 @@
         "NODE_ENV": "production",
         "domain":"production"
     },
+    "instances" : "max",
+    "exec_mode" : "cluster",
     "watch": true
 }
 ]
