@@ -38,7 +38,7 @@ class LessionList extends Component{
                     <div className={styles.bottomMask}>
                         <div>
                             <p>{CourseData.Professor}<span>{CourseData.ProfessorTitle}</span></p>
-                            <p>授课：{CourseData.CourseName}</p>
+                            <p>授课：《{CourseData.CourseName}》</p>
                             <p>课时：{CourseData.LessonList.length}课时</p>
                         </div> 
                     </div>
