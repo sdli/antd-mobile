@@ -112,6 +112,9 @@ export default {
       var courses = yield call(request,{bodyObj:{reqType:"CourseQueryReq"}});
       console.log(courses);
       yield put({type:"setCourses",courses:courses.data});
+      if("TeacherCourseReq" in courses.data){
+        yield put({type:"loginOK"});
+      }
     },
     *checkCourseMain({},{call,put,select}){
       var courseList = yield select(({user})=>user.courses);
