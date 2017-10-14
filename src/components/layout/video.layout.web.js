@@ -141,7 +141,8 @@ class VideoTests extends React.Component{
                                     );
                                 })}
                             </List>
-                            <List renderHeader={() => '问卷得分'} className="my-list" style={{width:"100%",overflow:"hidden",borderBottom: "1px solid #ddd"}}>
+                            <div className="divider"></div>
+                            <List renderHeader={() => '问卷测评'} className="my-list" style={{width:"100%",overflow:"hidden",borderBottom: "1px solid #ddd"}}>
                                 {TestList.map(function(val,index){
                                     var test = JSON.parse(val.TestProblem);
                                     return (
@@ -160,6 +161,13 @@ class VideoTests extends React.Component{
                                 })}
                             </List>
                         </div>
+                        <p style={{padding:"0.32rem 0.16rem",lineHeight:"0.36rem",color:"#4d4d4d"}}>
+                            课程得分方法 <br/>
+                            您可以通过“课程收获”和“问卷测评”来获得您的成绩，详细介绍：<br />
+                            1. ”课程收获“是指课程播放过程中，您留意手机的弹窗，点击“确定”按钮，即可收藏；（注意：点击取消或者关闭网页不会获得收藏得分）<br />
+                            2. ”问卷测评“是指课程播放完成或播放中，您可以点击问题来打开问卷内容，选择您的答案后，点击提交，即可获得相应积分。（注意：点击取消或者关闭网页不会获得收藏得分）<br />
+                            成绩达到60分时，表示该课程通过考核。<br />
+                        </p>
                     </TabPane>
                     <TabPane  tab="留言评论" key="2">
                         <div style={{ width:"100%", backgroundColor: '#fff' }} >
@@ -227,8 +235,8 @@ class Videoplayer extends React.Component{
                             LessonId={LessonId} 
                         />
                         <div className="divider" />
-                        <VideoTests 
-                            CollectList={lessonDetails.CollectInfoQueryReq.CollectList} 
+                        <VideoTests
+                            CollectList={lessonDetails.CollectInfoQueryReq.CollectList}
                             TestList={lessonDetails.TestCaseQueryReq.TestList}
                             LessonId={LessonId}
                             CourseId={CourseId}
