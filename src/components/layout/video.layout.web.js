@@ -132,7 +132,7 @@ class VideoTests extends React.Component{
                 <Tabs defaultActiveKey="1" animated={false} swipeable={false} onChange={this.handleChange}>
                     <TabPane tab="课程积分"  key="1" >
                         <div style={{  width:"100%", backgroundColor: '#fff' }} >
-                            <List renderHeader={() => '课程收获'} className="my-list" style={{width:"100%",overflow:"hidden",borderBottom: "1px solid #ddd"}}>
+                            <List renderHeader={() => '课程收获（播放中点击弹窗获得）'} className="my-list" style={{width:"100%",overflow:"hidden",borderBottom: "1px solid #ddd"}}>
                                 {CollectList.map(function(val,index){
                                     return (
                                         <Item extra={val.Status?<span style={{color:"green"}}>{val.Score+"分"}</span>:"未收藏"} multipleLine align="center" key={index} wrap style={{fontSize:"0.20rem !important"}}>
@@ -142,7 +142,7 @@ class VideoTests extends React.Component{
                                 })}
                             </List>
                             <div className="divider"></div>
-                            <List renderHeader={() => '问卷测评'} className="my-list" style={{width:"100%",overflow:"hidden",borderBottom: "1px solid #ddd"}}>
+                            <List renderHeader={() => '问卷测评（请点击题目答题）'} className="my-list" style={{width:"100%",overflow:"hidden",borderBottom: "1px solid #ddd"}}>
                                 {TestList.map(function(val,index){
                                     var test = JSON.parse(val.TestProblem);
                                     return (
@@ -161,13 +161,17 @@ class VideoTests extends React.Component{
                                 })}
                             </List>
                         </div>
-                        <p style={{padding:"0.32rem 0.16rem",lineHeight:"0.36rem",color:"#4d4d4d"}}>
-                            课程得分方法 <br/>
-                            您可以通过“课程收获”和“问卷测评”来获得您的成绩，详细介绍：<br />
-                            1. ”课程收获“是指课程播放过程中，您留意手机的弹窗，点击“确定”按钮，即可收藏；（注意：点击取消或者关闭网页不会获得收藏得分）<br />
-                            2. ”问卷测评“是指课程播放完成或播放中，您可以点击问题来打开问卷内容，选择您的答案后，点击提交，即可获得相应积分。（注意：点击取消或者关闭网页不会获得收藏得分）<br />
-                            成绩达到60分时，表示该课程通过考核。<br />
-                        </p>
+                        <div style={{background:"#f0f0f0f",padding:"0.32rem 0.32rem"}}>
+                            <div style={{background:"#ffffff",border:"1px solid #eee",borderRadius:"6px"}}>
+                                <p style={{padding:"0.16rem",lineHeight:"0.32rem",color:"#4d4d4d",fontSize:"0.22rem"}}>
+                                    <span style={{fontWeight:"bold"}}>课程得分方法</span> <br/>
+                                    您可以通过“课程收获”和“问卷测评”来获得您的成绩，详细介绍：<br />
+                                    1. ”课程收获“是指课程播放过程中，您留意手机的弹窗，点击“确定”按钮，即可收藏；（注意：点击取消或者关闭网页不会获得收藏得分）<br />
+                                    2. ”问卷测评“是指课程播放完成或播放中，您可以点击问题来打开问卷内容，选择您的答案后，点击提交，即可获得相应积分。（注意：点击取消或者关闭网页不会获得收藏得分）<br />
+                                    成绩达到60分时，表示该课程通过考核。<br />
+                                </p>
+                            </div>
+                        </div>
                     </TabPane>
                     <TabPane  tab="留言评论" key="2">
                         <div style={{ width:"100%", backgroundColor: '#fff' }} >
