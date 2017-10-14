@@ -95,7 +95,7 @@ class paySelector extends React.Component{
 
     callPay(){
         const {dispatch} = this.props;
-        var notFullList = this.state.notFullList.reduce((pre,cur)=>{return (cur && cur != null && cur != "")?cur+","+pre:pre;});
+        var notFullList = this.state.notFullList.reduce((pre,cur)=>{return (cur != null)?((pre!=null)?pre+","+cur:cur):pre;});
         var courseStr = this.state.full?this.state.fullList.join(","):notFullList;
         console.log(courseStr);
         if(parseInt(this.state.price_show) != 0){
