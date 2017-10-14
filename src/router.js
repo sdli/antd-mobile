@@ -18,6 +18,7 @@ import GetOpenidPage from "./routes/GetOpenid.route";
 import PayPage from "./routes/PayPage.route";
 import Videotest from "./routes/videotest.route";
 import UserAbout from "./routes/UserAbout.route";
+import Show from "./components/cards/show.card.js";
 
 function RouterConfig({ history }) {
   return (
@@ -40,7 +41,7 @@ function RouterConfig({ history }) {
         <Route path="/loginSelect" component={LoginSelectPage} />
         <Route path="/getOpenid" component={GetOpenidPage} />
         <Route path="/pay" component={PayPage} />
-        <Route path="/videotest" component={Videotest} />
+        <Route path="/test" component={Show} />
       </Route>
     </Router>
   );

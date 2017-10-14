@@ -256,43 +256,70 @@
 }
 .showContent{
     width: 80%;
-    height: 70%;
+    height: 80%;
     position: absolute;
-    top: 15%;
+    top: 10%;
     left: 10%;
-    background: #ffffff;
     z-index: 111;
     border-radius: 0.05rem;
 }
 .showContent > img{
     width: 100%;
 }
-.showTitle{
-    height: 2rem;
-    padding: 0.4rem 0.32rem;
-    text-align: center;
+.showBody{
+    background:#ffffff;
+    transform:translateY(-5%);
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    padding-bottom: 0.32rem;
 }
-.showTitle > p{
-    line-height: 0.4rem;
-    font-size: 0.28rem;
-    color: #108EE9;
+.showTitle{
+    padding: 0.16rem 0;    
+}
+.showTitle:before,.showTitle:after{
+    content:"."; 
+    display:block;
+    height:0; 
+    visibility:hidden; 
+    clear: both; 
+}
+.showTitle > div{
+    float: left;
+    display: block;
+    width: 33%;
+    text-align: center;
+    padding: 0.16rem;
+}
+.showTitle > div > p{
+    font-size: 0.24rem;
+    font-weight: bold;
 }
 .showSubtitle{
-    height: 2rem;
     text-align: center;
-    padding: 0.4rem 0.32rem;
+    padding: 0.16rem;
 }
-.showSubtitle > p{
-    line-height: 0.3rem;
-    font-size: 0.24rem;
-    color: #4d4d4d;
+.showSubtitle > img{
+    width: 100%;
 }
 .showFunc{
-    height: 0.6rem;
-    position: absolute;
+    padding: 0.16rem 15%;
+}
+.showFunc > p{
     width: 100%;
-    bottom: 0;
+    border-radius: 0.32rem;
+    font-size: 0.28rem;
+    padding: 0.16rem;
     text-align: center;
+    background: #F76809;
+    color: #ffffff;
+    box-shadow: 0 6px 16px #999999;
+}
+.closeTag{
+    position: absolute;
+    text-align: right;
+    line-height: 0.4rem;
+    top: -0.4rem;
     font-size: 0.24rem;
-    color: #999999;
+    width: 100%;
+    color: #4d4d4d;
 }
