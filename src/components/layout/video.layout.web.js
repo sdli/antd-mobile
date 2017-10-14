@@ -161,7 +161,7 @@ class VideoTests extends React.Component{
                                 })}
                             </List>
                         </div>
-                        <div style={{background:"#f0f0f0f",padding:"0.32rem 0.32rem"}}>
+                        <div style={{background:"#f0f0f0",padding:"0.32rem 0.32rem"}}>
                             <div style={{background:"#ffffff",border:"1px solid #eee",borderRadius:"6px"}}>
                                 <p style={{padding:"0.16rem",lineHeight:"0.32rem",color:"#4d4d4d",fontSize:"0.22rem"}}>
                                     <span style={{fontWeight:"bold"}}>课程得分方法</span> <br/>
