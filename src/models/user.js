@@ -41,7 +41,7 @@ export default {
           dispatch({type:"getCourseMain"});
         }
         if(pathname == "/lessionList"){
-          dispatch({type:"checkCourseMain"});
+          dispatch({type:"getCourseMain"});
         }
         if(pathname == "/pay"){
           dispatch({type:"checkOpenid"});
