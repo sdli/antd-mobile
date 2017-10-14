@@ -16,7 +16,8 @@ const requestMethod = {
         headers: {
             "Content-type": "application/json; charset=UTF-8" 
         },
-        credentials: 'include'
+        credentials: 'include',
+        mode: "cors"
     }
 };
 
