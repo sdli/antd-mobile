@@ -161,9 +161,9 @@ class VideoTests extends React.Component{
                                 })}
                             </List>
                         </div>
-                        <div style={{background:"#f0f0f0",padding:"0.32rem 0.32rem"}}>
+                        <div style={{background:"#f0f0f0",padding:"0.32rem 0.16rem"}}>
                             <div style={{background:"#ffffff",border:"1px solid #eee",borderRadius:"6px"}}>
-                                <p style={{padding:"0.16rem",lineHeight:"0.32rem",color:"#4d4d4d",fontSize:"0.24rem"}}>
+                                <p style={{padding:"0.16rem",lineHeight:"0.36rem",color:"#4d4d4d",fontSize:"0.24rem"}}>
                                     <span style={{fontWeight:"bold"}}>课程得分说明</span> <br/>
                                     <span style={{fontWeight:"bold"}}> 总分：</span> “课程收获”得分 + “问卷测评”得分<br />
                                     <span style={{fontWeight:"bold"}}> 课程收获：</span> 播放过程中，您留意手机的弹窗，点击“确定”按钮，即可收藏；（注意：点击取消或者关闭网页不会获得收藏得分）<br />
