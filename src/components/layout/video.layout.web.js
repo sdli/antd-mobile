@@ -167,7 +167,8 @@ class VideoTests extends React.Component{
                                     <span style={{fontWeight:"bold"}}>课程得分说明</span> <br/>
                                     <span style={{fontWeight:"bold"}}> 总分：</span> “课程收获”得分 + “问卷测评”得分<br />
                                     <span style={{fontWeight:"bold"}}> 课程收获：</span> 播放过程中，您留意手机的弹窗，点击“确定”按钮，即可收藏；（注意：点击取消或者关闭网页不会获得收藏得分）<br />
-                                    <span style={{fontWeight:"bold"}}> 问卷测评：</span> 是指课程播放完成或播放中，您可以点击问题来打开问卷内容，选择您的答案后，点击提交，即可获得相应积分。（注意：点击取消或者关闭网页不会获得收藏得分）<br />
+                                    <span style={{fontWeight:"bold"}}> 问卷测评：</span> 是指课程播放完成或播放中，您可以点击问题来打开问卷内容，选择您的答案后，点击提交，即可获得相应积分。<br />
+                                    <br />
                                     成绩达到60分时，表示该课程通过考核。<br />
                                 </p>
                             </div>
