@@ -13,7 +13,7 @@ class paySelector extends React.Component{
             price_single: 299,
             price_show: 299,
             courseList: [],
-            full: true,
+            full: !this.props.notFull,
             fullList: []
         };
         this.handleChange = this.handleChange.bind(this);
