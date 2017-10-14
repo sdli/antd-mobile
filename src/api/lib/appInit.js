@@ -48,6 +48,7 @@ var getOpenid = function(req,res){
 
 // 配置传输session和cookie
 var appInit = function(app,options){
+    (typeof options.cors !== "undefined" && options.cors == true )?app.all("*",function(req, res, next) {res.header("Access-Control-Allow-Origin", "*");next();}):null    
     (typeof options.cookieParser !== "undefined" && options.cookieParser)?app.use(cookieParser()):null;
     console.info((typeof options.cookieParser !== "undefined" && options.cookieParser)?"cookieParser加载成功!":null);
     (typeof options.jsonParser !== "undefined" && options.cookieParser)?app.use(bodyParser.json()):null;
