@@ -242,6 +242,8 @@ class CommonVedio extends Component{
 
     render(){
         const {lessonInfo,onStart,show}  = this.props;
+        const lessonArr = ["一","二","三","四","五","六","七","八","九","十"];
+
         console.log(lessonInfo,"我在这里");
         return (
             <div>
@@ -258,7 +260,7 @@ class CommonVedio extends Component{
                             <div className={styles.score}>
                                 <div className={styles.lessionLength}>
                                     <p>课程专家：{lessonInfo.Professor}</p>
-                                    <p>视频时常：{Math.floor(lessonInfo.VideoLength/60)}分钟</p>
+                                    <p>视频时长：{Math.floor(lessonInfo.VideoLength/60)}分钟</p>
                                 </div>
                                 <div className={styles.myScore}>
                                     <p>{lessonInfo.LessonScore}<span>分</span></p>
@@ -268,9 +270,9 @@ class CommonVedio extends Component{
                         </div>
                     }
                 </div>
-                <p style={{padding:"0.16rem",lineHeight:"0.5rem",fontSize:"0.34rem",fontWeight:"bold"}}>{lessonInfo.LessonName}</p>
+                <p style={{padding:"0.16rem",lineHeight:"0.5rem",fontSize:"0.34rem",fontWeight:"bold"}}>{"课时"+lessonArr[lessonInfo-LessonId]+": " + lessonInfo.LessonName}</p>
                 <div className={styles.lessionDesc}>
-                    <p>课程简介：</p>
+                    <p>课时简介：</p>
                     <p>{lessonInfo.Description}</p>
                 </div>
             </div>

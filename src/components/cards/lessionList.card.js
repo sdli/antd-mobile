@@ -38,13 +38,13 @@ class LessionList extends Component{
                     <div className={styles.bottomMask}>
                         <div>
                             <p>{CourseData.Professor}<span>{CourseData.ProfessorTitle}</span></p>
-                            <p>授课：《{CourseData.CourseName}》</p>
+                            <p>专题：《{CourseData.CourseName}》</p>
                             <p>课时：{CourseData.LessonList.length}课时</p>
                         </div> 
                     </div>
                 </div>
                 <div className={styles.lessionDesc}>
-                    <p>课程简介：</p>
+                    <p>专题简介：</p>
                     <p>{CourseData.Description}</p>
                 </div>
                 <div className="divider"></div>
