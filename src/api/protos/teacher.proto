@@ -130,6 +130,7 @@ message Course
 	string Opinion = 12;  //心得
 	int32 WatchNum = 13;  //观看人数
 	repeated Lesson LessonList = 14;  //课时列表
+	string ProfessorIntro = 15;  //专家简介
 }
 
 message TeacherCourseResp

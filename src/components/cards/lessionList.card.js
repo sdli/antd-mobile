@@ -93,6 +93,11 @@ class LessionList extends Component{
                         <p>请购买后查看此课程</p>
                     </div>
                 }
+                <div className={styles.proInfo}>
+                    <img src={CourseData.HeadPortrait}/>
+                    <p className={styles.proInfoTitle}>{CourseData.Professor}</p>
+                    <p className={styles.proInfoContent}>{CourseData.ProfessorIntro}</p>
+                </div>
             </div>
         );
     }
