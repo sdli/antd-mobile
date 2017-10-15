@@ -80,7 +80,7 @@ class LessionList extends Component{
                     </p>
                     <LessionUl login={login} bought={(typeof UserData == "undefined")?false:true} LessionList={(typeof UserData !== "undefined" && UserData.length!=0)?UserData.LessonList:CourseData.LessonList} CourseId={CourseId} />
                 </div>
-                <div className="divider" style={{height:"2rem"}}></div>
+                <div className="divider"></div>
                 {
                     !login &&
                     <div className={styles.loginBottom} onClick={()=>{hashHistory.push("/loginSelect")}}>
