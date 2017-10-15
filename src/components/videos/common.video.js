@@ -270,7 +270,7 @@ class CommonVedio extends Component{
                         </div>
                     }
                 </div>
-                <p style={{padding:"0.16rem",lineHeight:"0.5rem",fontSize:"0.34rem",fontWeight:"bold"}}>{"课时"+lessonArr[lessonInfo-LessonId]+": " + lessonInfo.LessonName}</p>
+                <p style={{padding:"0.16rem",lineHeight:"0.5rem",fontSize:"0.34rem",fontWeight:"bold"}}>{"课时"+lessonArr[lessonInfo.LessonId - 1]+": " + lessonInfo.LessonName}</p>
                 <div className={styles.lessionDesc}>
                     <p>课时简介：</p>
                     <p>{lessonInfo.Description}</p>
